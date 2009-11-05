@@ -93,16 +93,31 @@ namespace Farol {
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 
-	private: System::Windows::Forms::Label^  label3;
 
-	private: System::Windows::Forms::Panel^  panel2;
-	private: System::Windows::Forms::Panel^  panel4;
+
+
+
 	private: System::Windows::Forms::SplitContainer^  splitContainer3;
-	private: System::Windows::Forms::GroupBox^  groupBox1;
+
 	private: System::Windows::Forms::GroupBox^  groupBox2;
-	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::Panel^  panel3;
+
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: System::Windows::Forms::SplitContainer^  splitContainer4;
+	private: System::Windows::Forms::Panel^  panel1;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::Panel^  panel2;
+	private: System::Windows::Forms::Panel^  panel3;
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::TreeView^  treeView1;
+
+
+
+
+
 
 
 
@@ -171,17 +186,22 @@ namespace Farol {
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->splitContainer4 = (gcnew System::Windows::Forms::SplitContainer());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->splitContainer3 = (gcnew System::Windows::Forms::SplitContainer());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->splitContainer3 = (gcnew System::Windows::Forms::SplitContainer());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->treeView1 = (gcnew System::Windows::Forms::TreeView());
 			this->menuStrip1->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
 			this->splitContainer2->Panel1->SuspendLayout();
@@ -190,20 +210,26 @@ namespace Farol {
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
-			this->panel2->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->splitContainer4->Panel1->SuspendLayout();
+			this->splitContainer4->Panel2->SuspendLayout();
+			this->splitContainer4->SuspendLayout();
 			this->splitContainer3->Panel1->SuspendLayout();
 			this->splitContainer3->Panel2->SuspendLayout();
 			this->splitContainer3->SuspendLayout();
-			this->groupBox2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
+			this->groupBox3->SuspendLayout();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {this->funçõesToolStripMenuItem, 
 				this->opçõesToolStripMenuItem, this->configuraçõesToolStripMenuItem, this->ajudaToolStripMenuItem, this->sairToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(788, 24);
+			this->menuStrip1->Size = System::Drawing::Size(836, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -346,9 +372,10 @@ namespace Farol {
 				this->toolStripSeparator5, this->toolStripButton7, this->toolStripButton8});
 			this->toolStrip1->Location = System::Drawing::Point(0, 24);
 			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(788, 46);
+			this->toolStrip1->Size = System::Drawing::Size(836, 46);
 			this->toolStrip1->TabIndex = 1;
 			this->toolStrip1->Text = L"toolStrip1";
+			this->toolStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &Form1::toolStrip1_ItemClicked);
 			// 
 			// toolStripButton1
 			// 
@@ -457,12 +484,12 @@ namespace Farol {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(9, 4);
+			this->label1->Location = System::Drawing::Point(15, 2);
 			this->label1->Name = L"label1";
 			this->label1->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-			this->label1->Size = System::Drawing::Size(118, 22);
+			this->label1->Size = System::Drawing::Size(99, 19);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Arquivo XMI";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -470,7 +497,9 @@ namespace Farol {
 			// 
 			// splitContainer2
 			// 
+			this->splitContainer2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->splitContainer2->Dock = System::Windows::Forms::DockStyle::Top;
+			this->splitContainer2->IsSplitterFixed = true;
 			this->splitContainer2->Location = System::Drawing::Point(0, 70);
 			this->splitContainer2->Name = L"splitContainer2";
 			// 
@@ -484,9 +513,10 @@ namespace Farol {
 			this->splitContainer2->Panel2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->splitContainer2->Panel2->Controls->Add(this->label2);
 			this->splitContainer2->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->splitContainer2->Size = System::Drawing::Size(788, 32);
-			this->splitContainer2->SplitterDistance = 149;
+			this->splitContainer2->Size = System::Drawing::Size(836, 27);
+			this->splitContainer2->SplitterDistance = 132;
 			this->splitContainer2->TabIndex = 3;
+			this->splitContainer2->SplitterMoved += gcnew System::Windows::Forms::SplitterEventHandler(this, &Form1::splitContainer2_SplitterMoved);
 			// 
 			// label2
 			// 
@@ -500,139 +530,254 @@ namespace Farol {
 			// 
 			// splitContainer1
 			// 
-			this->splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer1->Location = System::Drawing::Point(0, 102);
+			this->splitContainer1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->splitContainer1->IsSplitterFixed = true;
+			this->splitContainer1->Location = System::Drawing::Point(0, 101);
 			this->splitContainer1->Name = L"splitContainer1";
 			// 
 			// splitContainer1.Panel1
 			// 
 			this->splitContainer1->Panel1->BackColor = System::Drawing::SystemColors::Window;
-			this->splitContainer1->Panel1->Controls->Add(this->panel4);
+			this->splitContainer1->Panel1->Controls->Add(this->treeView1);
+			this->splitContainer1->Panel1->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			// 
 			// splitContainer1.Panel2
 			// 
 			this->splitContainer1->Panel2->BackColor = System::Drawing::SystemColors::Control;
-			this->splitContainer1->Panel2->Controls->Add(this->statusStrip1);
-			this->splitContainer1->Panel2->Controls->Add(this->splitContainer3);
 			this->splitContainer1->Panel2->Controls->Add(this->groupBox2);
+			this->splitContainer1->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->splitContainer1->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer1_Panel2_Paint);
-			this->splitContainer1->Size = System::Drawing::Size(788, 331);
-			this->splitContainer1->SplitterDistance = 229;
+			this->splitContainer1->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->splitContainer1->Size = System::Drawing::Size(836, 326);
+			this->splitContainer1->SplitterDistance = 231;
 			this->splitContainer1->TabIndex = 4;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->groupBox2->BackColor = System::Drawing::SystemColors::Control;
+			this->groupBox2->Controls->Add(this->splitContainer4);
+			this->groupBox2->Controls->Add(this->splitContainer3);
+			this->groupBox2->Location = System::Drawing::Point(3, 0);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(594, 324);
+			this->groupBox2->TabIndex = 5;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Sequência de Ordenação";
+			this->groupBox2->Enter += gcnew System::EventHandler(this, &Form1::groupBox2_Enter);
+			// 
+			// splitContainer4
+			// 
+			this->splitContainer4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->splitContainer4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->splitContainer4->FixedPanel = System::Windows::Forms::FixedPanel::Panel2;
+			this->splitContainer4->IsSplitterFixed = true;
+			this->splitContainer4->Location = System::Drawing::Point(3, 18);
+			this->splitContainer4->Name = L"splitContainer4";
+			this->splitContainer4->Orientation = System::Windows::Forms::Orientation::Horizontal;
+			// 
+			// splitContainer4.Panel1
+			// 
+			this->splitContainer4->Panel1->Controls->Add(this->panel1);
+			this->splitContainer4->Panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer4_Panel1_Paint);
+			// 
+			// splitContainer4.Panel2
+			// 
+			this->splitContainer4->Panel2->Controls->Add(this->label3);
+			this->splitContainer4->Size = System::Drawing::Size(584, 136);
+			this->splitContainer4->SplitterDistance = 97;
+			this->splitContainer4->TabIndex = 5;
+			// 
+			// panel1
+			// 
+			this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel1->AutoSize = true;
+			this->panel1->BackColor = System::Drawing::SystemColors::Window;
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel1->Location = System::Drawing::Point(-2, -2);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(584, 100);
+			this->panel1->TabIndex = 9;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(186, 3);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(208, 24);
+			this->label3->TabIndex = 0;
+			this->label3->Text = L"Ordem de Integração";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label3->Click += gcnew System::EventHandler(this, &Form1::label3_Click_1);
+			// 
+			// splitContainer3
+			// 
+			this->splitContainer3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->splitContainer3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->splitContainer3->IsSplitterFixed = true;
+			this->splitContainer3->Location = System::Drawing::Point(3, 160);
+			this->splitContainer3->Name = L"splitContainer3";
+			// 
+			// splitContainer3.Panel1
+			// 
+			this->splitContainer3->Panel1->BackColor = System::Drawing::SystemColors::Control;
+			this->splitContainer3->Panel1->Controls->Add(this->dataGridView1);
+			this->splitContainer3->Panel1->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->splitContainer3->Panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer3_Panel1_Paint);
+			// 
+			// splitContainer3.Panel2
+			// 
+			this->splitContainer3->Panel2->BackColor = System::Drawing::SystemColors::Control;
+			this->splitContainer3->Panel2->Controls->Add(this->button2);
+			this->splitContainer3->Panel2->Controls->Add(this->button1);
+			this->splitContainer3->Panel2->Controls->Add(this->groupBox3);
+			this->splitContainer3->Panel2->Controls->Add(this->groupBox1);
+			this->splitContainer3->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->splitContainer3->Size = System::Drawing::Size(584, 164);
+			this->splitContainer3->SplitterDistance = 414;
+			this->splitContainer3->TabIndex = 4;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Window;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(-2, -2);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(412, 162);
+			this->dataGridView1->TabIndex = 0;
+			// 
+			// button2
+			// 
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button2->Enabled = false;
+			this->button2->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"button2.Image")));
+			this->button2->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button2->Location = System::Drawing::Point(3, 135);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(158, 25);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"mover para baixo";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button1->Enabled = false;
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"button1.Image")));
+			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button1->Location = System::Drawing::Point(3, 109);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(158, 26);
+			this->button1->TabIndex = 2;
+			this->button1->Text = L"mover para cima";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->groupBox3->Controls->Add(this->panel3);
+			this->groupBox3->Location = System::Drawing::Point(3, 53);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(158, 54);
+			this->groupBox3->TabIndex = 1;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Ordem alterada";
+			// 
+			// panel3
+			// 
+			this->panel3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel3->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel3->Location = System::Drawing::Point(2, 14);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(153, 36);
+			this->panel3->TabIndex = 1;
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->groupBox1->Controls->Add(this->panel2);
+			this->groupBox1->Location = System::Drawing::Point(3, -1);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(158, 54);
+			this->groupBox1->TabIndex = 0;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Ordem original";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &Form1::groupBox1_Enter);
+			// 
+			// panel2
+			// 
+			this->panel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel2->Location = System::Drawing::Point(2, 14);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(153, 37);
+			this->panel2->TabIndex = 0;
 			// 
 			// openFileDialog1
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			this->openFileDialog1->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openFileDialog1_FileOk_1);
 			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(149, 6);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(217, 26);
-			this->label3->TabIndex = 1;
-			this->label3->Text = L"Ordem de Integração";
-			// 
-			// panel2
-			// 
-			this->panel2->BackColor = System::Drawing::SystemColors::Control;
-			this->panel2->Controls->Add(this->label3);
-			this->panel2->Location = System::Drawing::Point(3, 119);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(540, 42);
-			this->panel2->TabIndex = 2;
-			// 
-			// panel4
-			// 
-			this->panel4->AutoSize = true;
-			this->panel4->BackColor = System::Drawing::SystemColors::Control;
-			this->panel4->Location = System::Drawing::Point(0, 0);
-			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(788, 10);
-			this->panel4->TabIndex = 0;
-			// 
-			// splitContainer3
-			// 
-			this->splitContainer3->Location = System::Drawing::Point(0, 161);
-			this->splitContainer3->Name = L"splitContainer3";
-			// 
-			// splitContainer3.Panel1
-			// 
-			this->splitContainer3->Panel1->BackColor = System::Drawing::SystemColors::Control;
-			this->splitContainer3->Panel1->Controls->Add(this->panel3);
-			// 
-			// splitContainer3.Panel2
-			// 
-			this->splitContainer3->Panel2->BackColor = System::Drawing::SystemColors::Control;
-			this->splitContainer3->Panel2->Controls->Add(this->groupBox1);
-			this->splitContainer3->Size = System::Drawing::Size(552, 149);
-			this->splitContainer3->SplitterDistance = 392;
-			this->splitContainer3->TabIndex = 4;
-			// 
-			// groupBox1
-			// 
-			this->groupBox1->AutoSize = true;
-			this->groupBox1->Location = System::Drawing::Point(3, 3);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(153, 146);
-			this->groupBox1->TabIndex = 0;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Ordem Original";
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->BackColor = System::Drawing::SystemColors::Control;
-			this->groupBox2->Controls->Add(this->panel1);
-			this->groupBox2->Controls->Add(this->panel2);
-			this->groupBox2->Location = System::Drawing::Point(3, 3);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(549, 307);
-			this->groupBox2->TabIndex = 5;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Sequência de Ordenação";
-			this->groupBox2->Enter += gcnew System::EventHandler(this, &Form1::groupBox2_Enter);
-			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::Window;
-			this->panel1->Location = System::Drawing::Point(3, 16);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(540, 106);
-			this->panel1->TabIndex = 0;
-			// 
-			// panel3
-			// 
-			this->panel3->AutoSize = true;
-			this->panel3->BackColor = System::Drawing::SystemColors::Window;
-			this->panel3->Location = System::Drawing::Point(0, 0);
-			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(393, 149);
-			this->panel3->TabIndex = 0;
-			// 
 			// statusStrip1
 			// 
-			this->statusStrip1->Location = System::Drawing::Point(0, 309);
+			this->statusStrip1->Location = System::Drawing::Point(0, 430);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(555, 22);
-			this->statusStrip1->TabIndex = 6;
+			this->statusStrip1->Size = System::Drawing::Size(836, 22);
+			this->statusStrip1->TabIndex = 7;
 			this->statusStrip1->Text = L"statusStrip1";
+			// 
+			// treeView1
+			// 
+			this->treeView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->treeView1->Location = System::Drawing::Point(-2, -2);
+			this->treeView1->Name = L"treeView1";
+			this->treeView1->Size = System::Drawing::Size(230, 324);
+			this->treeView1->TabIndex = 0;
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(788, 433);
-			this->Controls->Add(this->splitContainer1);
+			this->ClientSize = System::Drawing::Size(836, 452);
+			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->splitContainer2);
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->splitContainer1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
 			this->Text = L"Farol Tool: Ordenador de Classes para Teste de Integração";
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->toolStrip1->ResumeLayout(false);
@@ -643,18 +788,20 @@ namespace Farol {
 			this->splitContainer2->Panel2->PerformLayout();
 			this->splitContainer2->ResumeLayout(false);
 			this->splitContainer1->Panel1->ResumeLayout(false);
-			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
-			this->splitContainer1->Panel2->PerformLayout();
 			this->splitContainer1->ResumeLayout(false);
-			this->panel2->ResumeLayout(false);
-			this->panel2->PerformLayout();
-			this->splitContainer3->Panel1->ResumeLayout(false);
-			this->splitContainer3->Panel1->PerformLayout();
-			this->splitContainer3->Panel2->ResumeLayout(false);
-			this->splitContainer3->Panel2->PerformLayout();
-			this->splitContainer3->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
+			this->splitContainer4->Panel1->ResumeLayout(false);
+			this->splitContainer4->Panel1->PerformLayout();
+			this->splitContainer4->Panel2->ResumeLayout(false);
+			this->splitContainer4->Panel2->PerformLayout();
+			this->splitContainer4->ResumeLayout(false);
+			this->splitContainer3->Panel1->ResumeLayout(false);
+			this->splitContainer3->Panel2->ResumeLayout(false);
+			this->splitContainer3->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -714,6 +861,25 @@ private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  
 private: System::Void splitContainer1_Panel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 		 }
 private: System::Void groupBox2_Enter(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void splitContainer3_Panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		 }
+
+private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void toolStrip1_ItemClicked(System::Object^  sender, System::Windows::Forms::ToolStripItemClickedEventArgs^  e) {
+		 }
+private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+
+
+private: System::Void label3_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void splitContainer4_Panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		 }
+private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void splitContainer2_SplitterMoved(System::Object^  sender, System::Windows::Forms::SplitterEventArgs^  e) {
 		 }
 };
 }

@@ -2,11 +2,11 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="Farol"
+	Name="Farol2.0"
 	ProjectGUID="{5C8D09EF-1674-4E0A-AC4F-F3A12C59EC3B}"
 	RootNamespace="Farol"
 	Keyword="ManagedCProj"
-	TargetFrameworkVersion="196613"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -65,6 +65,8 @@
 				AssemblyDebug="1"
 				SubSystem="2"
 				EntryPointSymbol="main"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -137,6 +139,8 @@
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				EntryPointSymbol="main"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
