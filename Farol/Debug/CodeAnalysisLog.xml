@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\arquivos de programas\microsoft visual studio 8\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.Xsl"?>
+<FxCopReport Version="8">
+ <Targets>
+  <Target Name="c:\Documents and Settings\renanrv\Meus documentos\Visual Studio 2005\Projects\Farol 2.0\Debug\Farol2.0.exe">
+   <Modules>
+    <Module Name="farol2.0.exe">
+     <Messages>
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+       <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Sign 'Farol2.0' with a strong name key.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="Farol">
+       <Types>
+        <Type Name="Form1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="button1_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="openFileDialog1" TypeName="VariableNamesShouldNotMatchFieldNames" Category="Microsoft.Maintainability" CheckId="CA1500" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Name="Local" Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="843">'openFileDialog1', a local declared in Form1.button1_Click(Object, EventArgs):Void, has the same name as an instance field on the type. Change the name of one of these items.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Dispose(System.Boolean):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error">Change parameter name '' of method Form1.Dispose(Boolean):Void to 'disposing' in order to match the identifier as it has been declared in Component.Dispose(Boolean):Void.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="InitializeComponent():System.Void" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="498">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Arquivo XMI'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="783">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Farol Tool: Ordenador de Classes para Teste de Integração'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="237">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'menuStrip1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="691">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'mover para baixo'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="705">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'mover para cima'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="718">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Ordem alterada'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="633">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Ordem de Integração'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="742">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Ordem original'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="585">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Sequência de Ordenação'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="768">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'statusStrip1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="381">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStrip1'</Issue>
+            </Message>
+            <Message Id="System.Windows.Forms.ToolStripItem.set_Text(System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="252">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Abrir Arquivo XMI '</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="347">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Ajuda'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="311">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Configurações'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="354">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Conteúdo'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="267">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Fechar Arquivo'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="245">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Funções'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="260">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Gerar Ordenação '</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="289">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Importar Resultado'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="302">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Imprimir Resultado'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="339">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Mudar Idioma'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="275">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Opções'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="319">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Painel de Modelo de Classes'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="327">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Painel de Sequência de Ordenação'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="368">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Sair'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="282">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Salvar Resultado'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="361">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'Sobre'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="392">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="405">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="417">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="434">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="445">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="457">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="473">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="484">Form1.InitializeComponent():Void passes a literal as parameter 1 of a call to ToolStripItem.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'toolStripButton1'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="sairToolStripMenuItem_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.MessageBox.Show(System.String,System.String,System.Windows.Forms.MessageBoxButtons)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="833">Form1.sairToolStripMenuItem_Click(Object, EventArgs):Void passes a literal as parameter 1 of a call to MessageBox.Show(String, String, MessageBoxButtons):DialogResult. Retrieve the following string argument from a resource table instead: 'Confirmar a saída do programa?'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="833">Form1.sairToolStripMenuItem_Click(Object, EventArgs):Void passes a literal as parameter 2 of a call to MessageBox.Show(String, String, MessageBoxButtons):DialogResult. Retrieve the following string argument from a resource table instead: 'Warning'</Issue>
+            </Message>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="833">Change Form1.sairToolStripMenuItem_Click(Object, EventArgs):Void to call the MessageBox.Show overload that specifies MessageBoxOptions, and make sure to set MessageBoxOptions.RightAlign and MessageBoxOptions.RtlReading if RightToLeft is set to RightToLeft.Yes on the parent control. If it is set to RightTolLeft.Inherit, check its parent until a value indicating Yes or No is found.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="saveFileDialog1" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Form1.saveFileDialog1' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="toolStripButton8_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.MessageBox.Show(System.String,System.String,System.Windows.Forms.MessageBoxButtons)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="826">Form1.toolStripButton8_Click(Object, EventArgs):Void passes a literal as parameter 1 of a call to MessageBox.Show(String, String, MessageBoxButtons):DialogResult. Retrieve the following string argument from a resource table instead: 'Confirmar a saída do programa?'</Issue>
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="826">Form1.toolStripButton8_Click(Object, EventArgs):Void passes a literal as parameter 2 of a call to MessageBox.Show(String, String, MessageBoxButtons):DialogResult. Retrieve the following string argument from a resource table instead: 'Warning'</Issue>
+            </Message>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="form1.h" Line="826">Change Form1.toolStripButton8_Click(Object, EventArgs):Void to call the MessageBox.Show overload that specifies MessageBoxOptions, and make sure to set MessageBoxOptions.RightAlign and MessageBoxOptions.RtlReading if RightToLeft is set to RightToLeft.Yes on the parent control. If it is set to RightTolLeft.Inherit, check its parent until a value indicating Yes or No is found.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="NSobre">
+       <Types>
+        <Type Name="FSobre" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="Dispose(System.Boolean):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error">Change parameter name '' of method FSobre.Dispose(Boolean):Void to 'disposing' in order to match the identifier as it has been declared in Component.Dispose(Boolean):Void.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="InitializeComponent():System.Void" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-11-17 18:08:06Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\documents and settings\renanrv\meus documentos\visual studio 2005\projects\farol 2.0\farol" File="fsobre.h" Line="84">FSobre.InitializeComponent():Void passes a literal as parameter 1 of a call to Control.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'FSobre'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+   <Name>Assemblies should have valid strong names</Name>
+   <Description>Either the assembly has no strong name, an invalid one, or the strong name is valid only because of the computer configuration. The assembly should not be deployed in this state. The most common causes of this are: 1) The assembly's contents were modified after it was signed. 2) The signing process failed. 3) The assembly was delay-signed. 4) A registry key existed that allowed the check to pass (where it would not have otherwise).</Description>
+   <Resolution Name="NoStrongName">Sign '{0}' with a strong name key.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Avoid unused private fields</Name>
+   <Description>Private fields were detected that do not appear to be accessed within the assembly. If this violation fires in error, please send a problem report to the FxCop team.</Description>
+   <Resolution Name="Default">It appears that field '{0}' is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Do not pass literals as localized parameters</Name>
+   <Description>String literals that are embedded in source code are difficult to localize. Avoid passing string literals as arguments in circumstances where a localized string is generally expected. Most localized applications, for example, should localize string arguments that are passed to exception constructors. When creating an Exception instance, therefore, a string argument retrieved from a string table is more appropriate than a string literal.</Description>
+   <Resolution Name="Default">{0} passes a literal as parameter {1} of a call to {2}. Retrieve the following string argument from a resource table instead: '{3}'</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725">
+   <Name>Parameter names should match base declaration</Name>
+   <Description>For usability reasons, parameter names in overridden methods should match those of the base declaration.</Description>
+   <Resolution Name="Default">Change parameter name '{0}' of method {1} to '{2}' in order to match the identifier as it has been declared in {3}.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300">
+   <Name>Specify MessageBoxOptions</Name>
+   <Description>In order to run correctly on right-to-left systems, all calls to MessageBox.Show should use the overload that specifies MessageBoxOptions as an argument. Programs should detect whether they are running on a right-to-left system at run-time and pass the appropriate MessageBoxOptions value in order to display correctly.</Description>
+   <Resolution Name="Default">Change {0} to call the MessageBox.Show overload that specifies MessageBoxOptions, and make sure to set MessageBoxOptions.RightAlign and MessageBoxOptions.RtlReading if RightToLeft is set to RightToLeft.Yes on the parent control. If it is set to RightTolLeft.Inherit, check its parent until a value indicating Yes or No is found.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="VariableNamesShouldNotMatchFieldNames" Category="Microsoft.Maintainability" CheckId="CA1500">
+   <Name>Variable names should not match field names</Name>
+   <Description>Instance field and variable names should not be identical within the same scope.</Description>
+   <Resolution Name="Local">'{0}', a local declared in {1}, has the same name as an instance field on the type. Change the name of one of these items.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="MaintainabilityRules.dll" Version="8.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="Line">Line</String>
+  <String Key="LocationNotStoredInPdb">&lt;Location not stored in Pdb&gt;</String>
+  <String Key="Project">Project</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Microsoft Visual Studio 2005 Code Analysis Report</String>
+ </Localized>
+</FxCopReport>
