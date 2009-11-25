@@ -1,0 +1,1030 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<!-- <!DOCTYPE XMI SYSTEM 'UMLX13-11.dtd' > -->
+<XMI xmi.version = '1.1' xmlns:UML='href://org.omg/UML/1.3' timestamp = 'Tue May 18 09:25:30 2004' >
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>Unisys.JCR.2</XMI.exporter>
+   <XMI.exporterVersion>1.3.6</XMI.exporterVersion>
+  </XMI.documentation>
+  <XMI.metamodel xmi.name = 'UML' xmi.version = '1.3'/>
+ </XMI.header>
+<XMI.content>
+<!-- ==================== Exemplo5a    [Model] ==================== -->
+<UML:Model xmi.id = 'G.0' 
+  name = 'Exemplo5a' visibility = 'public' isSpecification = 'false' 
+  isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+  <UML:Namespace.ownedElement>
+    <!-- ==================== Exemplo5a::{B-A}{40A9FEDE03B6}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.1' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{B-A}{40A9FEDE03B6}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.2' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.2' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.1' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{B-A}{40A9FEDE03B6}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.3' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.1' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.2' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{G-E}{40A9FEF9009E}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.4' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{G-E}{40A9FEF9009E}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.5' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.7' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.3' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{G-E}{40A9FEF9009E}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.6' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.6' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.4' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{D-E}{40A9FF0301E3}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.7' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{D-E}{40A9FF0301E3}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.8' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.8' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.5' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{D-E}{40A9FF0301E3}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.9' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.6' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.6' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{E-F}{40A9FF170386}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.10' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{E-F}{40A9FF170386}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.11' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.6' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.7' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{E-F}{40A9FF170386}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.12' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.5' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.8' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{F-N}{40A9FF1E005B}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.13' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{F-N}{40A9FF1E005B}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.14' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.5' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.9' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{F-N}{40A9FF1E005B}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.15' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.10' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{C-F}{40A9FF24028B}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.16' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{C-F}{40A9FF24028B}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.17' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.13' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.11' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{C-F}{40A9FF24028B}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.18' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.5' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.12' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{C-B}{40A9FF3B0067}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.19' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{C-B}{40A9FF3B0067}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.20' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.13' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.13' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{C-B}{40A9FF3B0067}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.21' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.2' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.14' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{N-A}{40A9FF4A011D}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.22' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{N-A}{40A9FF4A011D}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.23' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.15' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{N-A}{40A9FF4A011D}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.24' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.1' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.16' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{N-M}{40A9FF540398}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.25' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{N-M}{40A9FF540398}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.26' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.17' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{N-M}{40A9FF540398}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.27' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.3' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.18' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{N-K}{40A9FF600038}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.28' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{N-K}{40A9FF600038}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.29' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.19' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{N-K}{40A9FF600038}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.30' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.11' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.20' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{L-K}{40A9FF670129}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.31' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{L-K}{40A9FF670129}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.32' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.14' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.21' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{L-K}{40A9FF670129}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.33' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.11' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.22' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{J-N}{40A9FF72002A}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.34' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{J-N}{40A9FF72002A}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.35' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.10' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.23' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{J-N}{40A9FF72002A}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.36' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'aggregate' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.24' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{I-J}{40A9FF77003B}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.37' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{I-J}{40A9FF77003B}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.38' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.25' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{I-J}{40A9FF77003B}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.39' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.10' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.26' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{I-N}{40A9FF80021F}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.40' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{I-N}{40A9FF80021F}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.41' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.27' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{I-N}{40A9FF80021F}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.42' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.28' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{D-N}{40A9FF8B02F7}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.43' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{D-N}{40A9FF8B02F7}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.44' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.8' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.29' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{D-N}{40A9FF8B02F7}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.45' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.30' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{D-C}{40A9FF9301EA}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.46' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{D-C}{40A9FF9301EA}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.47' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.8' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.31' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{D-C}{40A9FF9301EA}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.48' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'aggregate' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.13' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.32' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{H-I}{40A9FF9C0337}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.49' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{H-I}{40A9FF9C0337}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.50' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.12' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.33' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{H-I}{40A9FF9C0337}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.51' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.34' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{C-H}{40A9FFA5011E}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.52' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{C-H}{40A9FFA5011E}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.53' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.13' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.35' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{C-H}{40A9FFA5011E}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.54' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.12' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.36' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::{C-L}{40A9FFBB0260}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.55' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Exemplo5a::{C-L}{40A9FFBB0260}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.56' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.13' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.37' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo5a::{C-L}{40A9FFBB0260}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.57' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.138.0925.26.14' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1391225.38' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo5a::A    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.1' 
+      name = 'A' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::B    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.2' 
+      name = 'B' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::M    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.3' 
+      name = 'M' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::N    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.4' 
+      name = 'N' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::F    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.5' 
+      name = 'F' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::E    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.6' 
+      name = 'E' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::G    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.7' 
+      name = 'G' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::D    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.8' 
+      name = 'D' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::I    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.9' 
+      name = 'I' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::J    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.10' 
+      name = 'J' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::K    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.11' 
+      name = 'K' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::H    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.12' 
+      name = 'H' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::C    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.13' 
+      name = 'C' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+    <!-- ==================== Exemplo5a::L    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.138.0925.26.14' 
+      name = 'L' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' />
+  </UML:Namespace.ownedElement>
+</UML:Model>
+<UML:TaggedValue xmi.id = 'XX.18.925.26.2' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.1' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.3' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.2' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.4' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.3' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.5' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.4' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.6' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.5' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.7' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.6' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.8' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.7' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.9' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.8' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.10' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.9' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.11' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.10' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.12' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.11' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.13' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.12' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.14' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.13' />
+<UML:TaggedValue xmi.id = 'XX.18.925.26.15' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.138.0925.26.14' />
+<UML:Diagram xmi.id = 'S.138.0925.27.0' 
+  name = 'Main' toolName = 'Rational Rose 98' diagramType = 'ClassDiagram' style = '' 
+  owner = 'G.0' >
+  <UML:Diagram.element>
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.16' 
+      geometry = ' 1840, 864, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.7' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.17' 
+      geometry = ' 288, 320, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.1' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.18' 
+      geometry = ' 288, 608, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.3' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.19' 
+      geometry = ' 1824, 592, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.6' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.20' 
+      geometry = ' 1831, 727, 63, 199,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.4' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.21' 
+      geometry = ' 1833, 763, 59, 127,' style = 'Role' 
+      subject = 'G.5' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.22' 
+      geometry = ' 1829, 691, 58, 126,' style = 'Role' 
+      subject = 'G.6' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.23' 
+      geometry = ' 880, 1152, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.10' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.24' 
+      geometry = ' 880, 624, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.4' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.25' 
+      geometry = ' 583, 471, 435, 250,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.22' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.26' 
+      geometry = ' 678, 520, 245, 152,' style = 'Role' 
+      subject = 'G.23' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.27' 
+      geometry = ' 488, 422, 244, 152,' style = 'Role' 
+      subject = 'G.24' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.28' 
+      geometry = ' 583, 615, 435, 65,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.25' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.29' 
+      geometry = ' 678, 618, 245, 60,' style = 'Role' 
+      subject = 'G.26' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.30' 
+      geometry = ' 488, 612, 244, 59,' style = 'Role' 
+      subject = 'G.27' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.31' 
+      geometry = ' 880, 887, 54, 455,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.34' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.32' 
+      geometry = ' 880, 987, 54, 255,' style = 'Role' 
+      subject = 'G.35' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.33' 
+      geometry = ' 880, 787, 54, 254,' style = 'Role' 
+      subject = 'G.36' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.34' 
+      geometry = ' 1328, 1168, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.9' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.35' 
+      geometry = ' 1103, 1159, 291, 63,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.37' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.36' 
+      geometry = ' 1162, 1161, 173, 59,' style = 'Role' 
+      subject = 'G.38' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.37' 
+      geometry = ' 1044, 1157, 172, 58,' style = 'Role' 
+      subject = 'G.39' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.38' 
+      geometry = ' 1103, 895, 397, 471,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.40' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.39' 
+      geometry = ' 1189, 999, 226, 263,' style = 'Role' 
+      subject = 'G.41' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.40' 
+      geometry = ' 1017, 791, 225, 262,' style = 'Role' 
+      subject = 'G.42' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.41' 
+      geometry = ' 256, 1008, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.11' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.42' 
+      geometry = ' 568, 815, 472, 311,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.28' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.43' 
+      geometry = ' 672, 751, 263, 182,' style = 'Role' 
+      subject = 'G.29' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.44' 
+      geometry = ' 463, 879, 263, 183,' style = 'Role' 
+      subject = 'G.30' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.45' 
+      geometry = ' 1328, 592, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.5' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.46' 
+      geometry = ' 1575, 592, 339, 54,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.10' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.47' 
+      geometry = ' 1646, 592, 197, 54,' style = 'Role' 
+      subject = 'G.11' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.48' 
+      geometry = ' 1504, 592, 196, 54,' style = 'Role' 
+      subject = 'G.12' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.49' 
+      geometry = ' 1103, 607, 291, 71,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.13' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.50' 
+      geometry = ' 1162, 603, 173, 62,' style = 'Role' 
+      subject = 'G.14' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.51' 
+      geometry = ' 1044, 611, 172, 63,' style = 'Role' 
+      subject = 'G.15' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.52' 
+      geometry = ' 864, 320, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.2' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.53' 
+      geometry = ' 575, 320, 419, 54,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.1' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.54' 
+      geometry = ' 666, 320, 237, 54,' style = 'Role' 
+      subject = 'G.2' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.55' 
+      geometry = ' 484, 320, 236, 54,' style = 'Role' 
+      subject = 'G.3' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.56' 
+      geometry = ' 1840, 1152, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.8' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.57' 
+      geometry = ' 1831, 871, 67, 487,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.7' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.58' 
+      geometry = ' 1834, 979, 61, 271,' style = 'Role' 
+      subject = 'G.8' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.59' 
+      geometry = ' 1828, 763, 60, 270,' style = 'Role' 
+      subject = 'G.9' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.60' 
+      geometry = ' 1359, 887, 803, 466,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.43' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.61' 
+      geometry = ' 1546, 990, 429, 260,' style = 'Role' 
+      subject = 'G.44' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.62' 
+      geometry = ' 1172, 784, 428, 260,' style = 'Role' 
+      subject = 'G.45' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.63' 
+      geometry = ' 880, 1424, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.12' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.64' 
+      geometry = ' 1103, 1296, 291, 190,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.49' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.65' 
+      geometry = ' 1044, 1330, 172, 122,' style = 'Role' 
+      subject = 'G.50' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.66' 
+      geometry = ' 1162, 1262, 173, 122,' style = 'Role' 
+      subject = 'G.51' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.67' 
+      geometry = ' 1840, 1456, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.13' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.68' 
+      geometry = ' 1687, 894, 767, 1049,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.16' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.69' 
+      geometry = ' 1983, 956, 176, 925,' style = 'Role' 
+      subject = 'G.17' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.70' 
+      geometry = ' 1685, 462, 762, 185,' style = 'Role' 
+      subject = 'G.18' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.71' 
+      geometry = ' 1577, 877, 1271, 1169,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.19' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.72' 
+      geometry = ' 2065, 911, 294, 1101,' style = 'Role' 
+      subject = 'G.20' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.73' 
+      geometry = ' 1577, 354, 1271, 122,' style = 'Role' 
+      subject = 'G.21' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.74' 
+      geometry = ' 1840, 1303, 54, 231,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.46' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.75' 
+      geometry = ' 1840, 1259, 54, 142,' style = 'Role' 
+      subject = 'G.47' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.76' 
+      geometry = ' 1840, 1347, 54, 143,' style = 'Role' 
+      subject = 'G.48' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.77' 
+      geometry = ' 1359, 1439, 803, 79,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.52' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.78' 
+      geometry = ' 1546, 1445, 429, 67,' style = 'Role' 
+      subject = 'G.53' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.79' 
+      geometry = ' 1172, 1433, 428, 66,' style = 'Role' 
+      subject = 'G.54' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.80' 
+      geometry = ' 256, 1440, 210, 126,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.138.0925.26.14' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.81' 
+      geometry = ' 244, 1223, 67, 359,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.31' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.82' 
+      geometry = ' 242, 1300, 63, 206,' style = 'Role' 
+      subject = 'G.32' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.83' 
+      geometry = ' 246, 1147, 63, 207,' style = 'Role' 
+      subject = 'G.33' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.84' 
+      geometry = ' 1028, 1539, 1465, 131,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.55' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.85' 
+      geometry = ' 1379, 1536, 764, 125,' style = 'Role' 
+      subject = 'G.56' />
+    <UML:DiagramElement xmi.id = 'XX.18.925.27.86' 
+      geometry = ' 673, 1540, 755, 129,' style = 'Role' 
+      subject = 'G.57' />
+  </UML:Diagram.element>
+</UML:Diagram>
+</XMI.content>
+</XMI>

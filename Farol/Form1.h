@@ -139,6 +139,7 @@ namespace Farol {
 
 
 
+
 	protected: 
 
 	private:
@@ -241,14 +242,14 @@ namespace Farol {
 			this->funçõesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->abrirArquivoXMIToolStripMenuItem, 
 				this->gerarOrdenaçãoCtrlGToolStripMenuItem, this->fecharArquivoCtrlFToolStripMenuItem});
 			this->funçõesToolStripMenuItem->Name = L"funçõesToolStripMenuItem";
-			this->funçõesToolStripMenuItem->Size = System::Drawing::Size(59, 20);
+			this->funçõesToolStripMenuItem->Size = System::Drawing::Size(63, 20);
 			this->funçõesToolStripMenuItem->Text = L"Funções";
 			// 
 			// abrirArquivoXMIToolStripMenuItem
 			// 
 			this->abrirArquivoXMIToolStripMenuItem->Name = L"abrirArquivoXMIToolStripMenuItem";
 			this->abrirArquivoXMIToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::A));
-			this->abrirArquivoXMIToolStripMenuItem->Size = System::Drawing::Size(211, 22);
+			this->abrirArquivoXMIToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			this->abrirArquivoXMIToolStripMenuItem->Text = L"Abrir Arquivo XMI ";
 			this->abrirArquivoXMIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
@@ -256,14 +257,14 @@ namespace Farol {
 			// 
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Name = L"gerarOrdenaçãoCtrlGToolStripMenuItem";
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::G));
-			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Size = System::Drawing::Size(211, 22);
+			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = L"Gerar Ordenação ";
 			// 
 			// fecharArquivoCtrlFToolStripMenuItem
 			// 
 			this->fecharArquivoCtrlFToolStripMenuItem->Name = L"fecharArquivoCtrlFToolStripMenuItem";
 			this->fecharArquivoCtrlFToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
-			this->fecharArquivoCtrlFToolStripMenuItem->Size = System::Drawing::Size(211, 22);
+			this->fecharArquivoCtrlFToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			this->fecharArquivoCtrlFToolStripMenuItem->Text = L"Fechar Arquivo";
 			// 
 			// opçõesToolStripMenuItem
@@ -271,34 +272,34 @@ namespace Farol {
 			this->opçõesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->slavarResultadoCtrlBToolStripMenuItem, 
 				this->importarResultadoCtrlIToolStripMenuItem, this->toolStripSeparator1, this->imprimirResultadoCtrlToolStripMenuItem});
 			this->opçõesToolStripMenuItem->Name = L"opçõesToolStripMenuItem";
-			this->opçõesToolStripMenuItem->Size = System::Drawing::Size(55, 20);
+			this->opçõesToolStripMenuItem->Size = System::Drawing::Size(59, 20);
 			this->opçõesToolStripMenuItem->Text = L"Opções";
 			// 
 			// slavarResultadoCtrlBToolStripMenuItem
 			// 
 			this->slavarResultadoCtrlBToolStripMenuItem->Name = L"slavarResultadoCtrlBToolStripMenuItem";
 			this->slavarResultadoCtrlBToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::B));
-			this->slavarResultadoCtrlBToolStripMenuItem->Size = System::Drawing::Size(214, 22);
+			this->slavarResultadoCtrlBToolStripMenuItem->Size = System::Drawing::Size(216, 22);
 			this->slavarResultadoCtrlBToolStripMenuItem->Text = L"Salvar Resultado";
 			// 
 			// importarResultadoCtrlIToolStripMenuItem
 			// 
 			this->importarResultadoCtrlIToolStripMenuItem->Name = L"importarResultadoCtrlIToolStripMenuItem";
 			this->importarResultadoCtrlIToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::I));
-			this->importarResultadoCtrlIToolStripMenuItem->Size = System::Drawing::Size(214, 22);
+			this->importarResultadoCtrlIToolStripMenuItem->Size = System::Drawing::Size(216, 22);
 			this->importarResultadoCtrlIToolStripMenuItem->Text = L"Importar Resultado";
 			this->importarResultadoCtrlIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::importarResultadoCtrlIToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this->toolStripSeparator1->Name = L"toolStripSeparator1";
-			this->toolStripSeparator1->Size = System::Drawing::Size(211, 6);
+			this->toolStripSeparator1->Size = System::Drawing::Size(213, 6);
 			// 
 			// imprimirResultadoCtrlToolStripMenuItem
 			// 
 			this->imprimirResultadoCtrlToolStripMenuItem->Name = L"imprimirResultadoCtrlToolStripMenuItem";
 			this->imprimirResultadoCtrlToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::P));
-			this->imprimirResultadoCtrlToolStripMenuItem->Size = System::Drawing::Size(214, 22);
+			this->imprimirResultadoCtrlToolStripMenuItem->Size = System::Drawing::Size(216, 22);
 			this->imprimirResultadoCtrlToolStripMenuItem->Text = L"Imprimir Resultado";
 			// 
 			// configuraçõesToolStripMenuItem
@@ -307,7 +308,7 @@ namespace Farol {
 				this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem, this->toolStripSeparator2, this->mudarIdiomaToolStripMenuItem});
 			this->configuraçõesToolStripMenuItem->Name = L"configuraçõesToolStripMenuItem";
 			this->configuraçõesToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
-			this->configuraçõesToolStripMenuItem->Size = System::Drawing::Size(88, 20);
+			this->configuraçõesToolStripMenuItem->Size = System::Drawing::Size(96, 20);
 			this->configuraçõesToolStripMenuItem->Text = L"Configurações";
 			// 
 			// painelDeModeloDeClasseToolStripMenuItem
@@ -315,7 +316,7 @@ namespace Farol {
 			this->painelDeModeloDeClasseToolStripMenuItem->Checked = true;
 			this->painelDeModeloDeClasseToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->painelDeModeloDeClasseToolStripMenuItem->Name = L"painelDeModeloDeClasseToolStripMenuItem";
-			this->painelDeModeloDeClasseToolStripMenuItem->Size = System::Drawing::Size(251, 22);
+			this->painelDeModeloDeClasseToolStripMenuItem->Size = System::Drawing::Size(256, 22);
 			this->painelDeModeloDeClasseToolStripMenuItem->Text = L"Painel de Modelo de Classes";
 			// 
 			// painelDeSequênciaDeOrdenaçãoToolStripMenuItem
@@ -323,19 +324,19 @@ namespace Farol {
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Checked = true;
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Name = L"painelDeSequênciaDeOrdenaçãoToolStripMenuItem";
-			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Size = System::Drawing::Size(251, 22);
+			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Size = System::Drawing::Size(256, 22);
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = L"Painel de Sequência de Ordenação";
 			// 
 			// toolStripSeparator2
 			// 
 			this->toolStripSeparator2->Name = L"toolStripSeparator2";
-			this->toolStripSeparator2->Size = System::Drawing::Size(248, 6);
+			this->toolStripSeparator2->Size = System::Drawing::Size(253, 6);
 			// 
 			// mudarIdiomaToolStripMenuItem
 			// 
 			this->mudarIdiomaToolStripMenuItem->Name = L"mudarIdiomaToolStripMenuItem";
 			this->mudarIdiomaToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
-			this->mudarIdiomaToolStripMenuItem->Size = System::Drawing::Size(251, 22);
+			this->mudarIdiomaToolStripMenuItem->Size = System::Drawing::Size(256, 22);
 			this->mudarIdiomaToolStripMenuItem->Text = L"Mudar Idioma";
 			// 
 			// ajudaToolStripMenuItem
@@ -343,28 +344,28 @@ namespace Farol {
 			this->ajudaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->conteúdoToolStripMenuItem, 
 				this->sobreToolStripMenuItem});
 			this->ajudaToolStripMenuItem->Name = L"ajudaToolStripMenuItem";
-			this->ajudaToolStripMenuItem->Size = System::Drawing::Size(47, 20);
+			this->ajudaToolStripMenuItem->Size = System::Drawing::Size(50, 20);
 			this->ajudaToolStripMenuItem->Text = L"Ajuda";
 			// 
 			// conteúdoToolStripMenuItem
 			// 
 			this->conteúdoToolStripMenuItem->Name = L"conteúdoToolStripMenuItem";
 			this->conteúdoToolStripMenuItem->ShortcutKeys = System::Windows::Forms::Keys::F1;
-			this->conteúdoToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->conteúdoToolStripMenuItem->Size = System::Drawing::Size(146, 22);
 			this->conteúdoToolStripMenuItem->Text = L"Conteúdo";
 			// 
 			// sobreToolStripMenuItem
 			// 
 			this->sobreToolStripMenuItem->Name = L"sobreToolStripMenuItem";
 			this->sobreToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::S));
-			this->sobreToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->sobreToolStripMenuItem->Size = System::Drawing::Size(146, 22);
 			this->sobreToolStripMenuItem->Text = L"Sobre";
 			this->sobreToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::sobreToolStripMenuItem_Click);
 			// 
 			// sairToolStripMenuItem
 			// 
 			this->sairToolStripMenuItem->Name = L"sairToolStripMenuItem";
-			this->sairToolStripMenuItem->Size = System::Drawing::Size(37, 20);
+			this->sairToolStripMenuItem->Size = System::Drawing::Size(38, 20);
 			this->sairToolStripMenuItem->Text = L"Sair";
 			this->sairToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::sairToolStripMenuItem_Click);
 			// 
@@ -823,41 +824,94 @@ private: System::Void openFileDialog1_FileOk(System::Object^  sender, System::Co
 private: System::Void toolStripButton8_Click(System::Object^  sender, System::EventArgs^  e) {
 			 String^ msg("Confirmar a saída do programa?");
 
-			 if (MessageBox::Show(msg,"Warning",MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
+			 if (MessageBox::Show(msg,"Saída do Programa",MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
 				 Application::Exit();
 			 }
 		 }
 private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 String^ msg("Confirmar a saída do programa?");
 
-			 if (MessageBox::Show(msg,"Warning",MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
+			 if (MessageBox::Show(msg,"Saída do Programa",MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
 				 Application::Exit();
 			 }
 		 }
 private: System::Void openFileDialog1_FileOk_1(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 }
 
-private:
-   void button1_Click(System::Object ^ sender,
-      System::EventArgs ^ e)
+private: System::Void AddNode(System::Xml::XmlNode^ inXmlNode, Windows::Forms::TreeNode^ inTreeNode)
    {
+	  System::Xml::XmlNode ^xNode;
+      System::Windows::Forms::TreeNode ^tNode;
+	  System::Xml::XmlNodeList ^nodeList;
+      int i;
+
+      // Loop through the XML nodes until the leaf is reached.
+      // Add the nodes to the TreeView during the looping process.
+	  if (inXmlNode->HasChildNodes)
+      {
+		 nodeList = inXmlNode->ChildNodes;
+         for(i = 0; i<=nodeList->Count - 1; i++)
+         {
+            xNode = inXmlNode->ChildNodes[i];
+			System::Windows::Forms::TreeNode ^NewNode = gcnew TreeNode (xNode->Name);
+
+            inTreeNode->Nodes->Add(NewNode);
+            tNode = inTreeNode->Nodes[i];
+            AddNode(xNode, tNode);
+         }
+      }
+      else
+      {
+         // Here you need to pull the data from the XmlNode based on the
+         // type of node, whether attribute values are required, and so forth.
+         inTreeNode->Text = (inXmlNode->OuterXml)->Trim();
+      }
+
+		 }
+private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
+   {            
+	  
+	  // Abre a caixa para selecionar arquivo
       // Displays an OpenFileDialog so the user can select a Cursor.
       OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog();
       openFileDialog1->Filter = "XML Files|*.xml";
       openFileDialog1->Title = "Selecione o arquivo XMI";
+	  System::String ^filename;
 
       // Show the Dialog.
       // If the user clicked OK in the dialog and
-      // a .CUR file was selected, open it.
+      // a .XML file was selected, open it.
       if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
       {
          // Assign the cursor in the Stream to
          // the Form's Cursor property.
-         this->Cursor = gcnew
-            System::Windows::Forms::Cursor(
-            openFileDialog1->OpenFile());
-      }
-   }
+		  filename = openFileDialog1->FileName::get();
+		  try 
+         {
+            // SECTION 1. Create a DOM Document and load the XML data into it.
+			System::Xml::XmlDocument ^dom = gcnew System::Xml::XmlDocument();
+			dom->Load(filename);
+
+            // SECTION 2. Initialize the TreeView control.
+			treeView1->Nodes->Clear();
+			treeView1->Nodes->Add(gcnew System::Windows::Forms::TreeNode(dom->DocumentElement->Name));
+            System::Windows::Forms::TreeNode ^tNode = gcnew TreeNode();
+			tNode = treeView1->Nodes[0];
+
+            // SECTION 3. Populate the TreeView with the DOM nodes.
+            AddNode(dom->DocumentElement, tNode);
+            treeView1->ExpandAll();
+         }
+		  catch(System::Xml::XmlException ^xmlEx)
+         {
+			 MessageBox::Show(xmlEx->Message);
+         }
+		  catch(System::Exception ^ex)
+         {
+			 MessageBox::Show(ex->Message);
+         }
+      }	
+}
 
 
 private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -889,6 +943,7 @@ private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, Syst
 			 FSobre ^ F = gcnew FSobre();
 			 F->Show();
 		 }
+
 };
 }
 

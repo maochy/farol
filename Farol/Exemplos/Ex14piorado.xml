@@ -1,0 +1,52 @@
+<XMI xmi.version='1.1' xmlns:UML='href://org.omg/UML/1.3'>
+<UML:Model name='Exemplo14a'><UML:Class xmi.id='S.159.1253.27.1' name='A' isAbstract='false'>
+</UML:Class>
+<UML:Class xmi.id='S.159.1253.27.2' name='B' isAbstract='false'>
+</UML:Class>
+<UML:Class xmi.id='S.159.1253.27.3' name='C' isAbstract='false'>
+<UML:Attribute xmi.id='' />
+<UML:Attribute xmi.id='' />
+</UML:Class>
+<UML:Class xmi.id='S.159.1253.27.6' name='D' isAbstract='false'>
+</UML:Class>
+<UML:Class xmi.id='S.159.1253.27.7' name='E' isAbstract='false'>
+<UML:Attribute xmi.id='' />
+</UML:Class>
+<UML:Class xmi.id='S.159.1253.27.9' name='F' isAbstract='false'>
+</UML:Class>
+<UML:Generalization xmi.id='G.17' name='(null)' child='S.159.1253.27.3' parent='S.159.1253.27.1'/>
+<UML:Generalization xmi.id='G.18' name='(null)' child='S.159.1253.27.6' parent='S.159.1253.27.2'/>
+<UML:Association xmi.id='G.1' name='(null)'>
+<UML:AssociationEnd isNavigable='true' aggregation='none' type='S.159.1253.27.1'/>
+<UML:AssociationEnd isNavigable='true' aggregation='aggregate' type='S.159.1253.27.2'/>
+</UML:Association>
+<UML:Association xmi.id='G.4' name='(null)'>
+<UML:AssociationEnd isNavigable='false' aggregation='none' type='S.159.1253.27.7'/>
+<UML:AssociationEnd isNavigable='false' aggregation='none' type='S.159.1253.27.2'/>
+</UML:Association>
+<UML:Association xmi.id='G.7' name='(null)'>
+<UML:AssociationEnd isNavigable='false' aggregation='none' type='S.159.1253.27.9'/>
+<UML:AssociationEnd isNavigable='false' aggregation='none' type='S.159.1253.27.7'/>
+</UML:Association>
+<UML:Association xmi.id='G.10' name='(null)'>
+<UML:AssociationEnd isNavigable='true' aggregation='none' type='S.159.1253.27.9'/>
+<UML:AssociationEnd isNavigable='true' aggregation='aggregate' type='S.159.1253.27.3'/>
+</UML:Association>
+<UML:Association xmi.id='G.13' name='(null)'>
+<UML:AssociationEnd isNavigable='false' aggregation='none' type='S.159.1253.27.3'/>
+<UML:AssociationEnd isNavigable='false' aggregation='none' type='S.159.1253.27.2'/>
+</UML:Association>
+</UML:Model>
+<Results>
+<Stubs_original value='3'/>
+<Stubs_final value='7'/>
+<Ordem>
+<Classe value='2'/>
+<Classe value='5'/>
+<Classe value='4'/>
+<Classe value='3'/>
+<Classe value='1'/>
+<Classe value='0'/>
+</Ordem>
+</Results>
+</XMI>

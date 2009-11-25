@@ -1,0 +1,1855 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<!-- <!DOCTYPE XMI SYSTEM 'UMLX13-11.dtd' > -->
+<XMI xmi.version = '1.1' xmlns:UML='href://org.omg/UML/1.3' timestamp = 'Thu Jun 24 13:15:23 2004' >
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>Unisys.JCR.2</XMI.exporter>
+   <XMI.exporterVersion>1.3.6</XMI.exporterVersion>
+  </XMI.documentation>
+  <XMI.metamodel xmi.name = 'UML' xmi.version = '1.3'/>
+ </XMI.header>
+<XMI.content>
+<!-- ==================== BancoExemploSimples2    [Model] ==================== -->
+<UML:Model xmi.id = 'G.0' 
+  name = 'BancoExemploSimples2' visibility = 'public' isSpecification = 'false' 
+  isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+  <UML:Namespace.ownedElement>
+    <!-- ==================== BancoExemploSimples2::{B-A}{40DAE78801B0}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.1' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{B-A}{40DAE78801B0}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.2' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.1' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{B-A}{40DAE78801B0}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.3' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.46.1' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.2' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{N-A}{40DAE7930116}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.4' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{N-A}{40DAE7930116}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.5' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.3' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{N-A}{40DAE7930116}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.6' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.46.1' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.4' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{N-M}{40DAE79B0095}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.7' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{N-M}{40DAE79B0095}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.8' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.5' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{N-M}{40DAE79B0095}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.9' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.6' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.6' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{N-K}{40DAE7A4011A}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.10' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{N-K}{40DAE7A4011A}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.11' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.7' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{N-K}{40DAE7A4011A}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.12' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.47' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.8' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{L-K}{40DAE7AA0263}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.13' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{L-K}{40DAE7AA0263}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.14' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.50' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.9' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{L-K}{40DAE7AA0263}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.15' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.47' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.10' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{J-N}{40DAE7B4013B}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.16' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{J-N}{40DAE7B4013B}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.17' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.37' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.11' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{J-N}{40DAE7B4013B}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.18' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'aggregate' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.12' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{I-J}{40DAE7BC036D}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.19' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{I-J}{40DAE7BC036D}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.20' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.33' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.13' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{I-J}{40DAE7BC036D}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.21' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.37' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.14' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{I-N}{40DAE7C303AA}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.22' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{I-N}{40DAE7C303AA}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.23' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.33' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.15' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{I-N}{40DAE7C303AA}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.24' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.16' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{D-N}{40DAE7CC00A9}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.25' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{D-N}{40DAE7CC00A9}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.26' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.30' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.17' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{D-N}{40DAE7CC00A9}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.27' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.18' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{I-H}{40DAE7D70330}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.28' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{I-H}{40DAE7D70330}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.29' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.33' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.19' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{I-H}{40DAE7D70330}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.30' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.39' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.20' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{C-H}{40DAE7E00076}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.31' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{C-H}{40DAE7E00076}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.32' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.44' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.21' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{C-H}{40DAE7E00076}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.33' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.39' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.22' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{C-L}{40DAE7E90278}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.34' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{C-L}{40DAE7E90278}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.35' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.44' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.23' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{C-L}{40DAE7E90278}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.36' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.50' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.24' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{G-E}{40DAE7F302EA}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.37' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{G-E}{40DAE7F302EA}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.38' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.27' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.25' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{G-E}{40DAE7F302EA}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.39' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.23' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.26' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{E-F}{40DAE7F90307}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.40' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{E-F}{40DAE7F90307}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.41' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.23' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.27' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{E-F}{40DAE7F90307}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.42' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.21' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.28' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{F-N}{40DAE8020043}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.43' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{F-N}{40DAE8020043}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.44' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.21' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.29' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{F-N}{40DAE8020043}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.45' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.9' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.30' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{D-E}{40DAE8090382}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.46' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{D-E}{40DAE8090382}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.47' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.30' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.31' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{D-E}{40DAE8090382}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.48' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.23' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.32' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{D-C}{40DAE815022B}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.49' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{D-C}{40DAE815022B}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.50' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.30' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.33' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{D-C}{40DAE815022B}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.51' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'aggregate' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.44' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.34' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{C-F}{40DAE8200118}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.52' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{C-F}{40DAE8200118}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.53' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.44' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.35' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{C-F}{40DAE8200118}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.54' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.21' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.36' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::{C-B}{40DAE82E019B}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.55' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== BancoExemploSimples2::{C-B}{40DAE82E019B}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.56' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.44' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.37' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== BancoExemploSimples2::{C-B}{40DAE82E019B}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.57' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.175.1314.47.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.38' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== BancoExemploSimples2::A    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.46.1' 
+      name = 'A' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::A.nome    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.0' 
+          name = 'nome' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.39' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::A.matricula    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.1' 
+          name = 'matricula' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.40' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::A.gerenciaTecnica    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.2' 
+          name = 'gerenciaTecnica' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.41' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::A.podeSerSupervisor    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.3' 
+          name = 'podeSerSupervisor' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.42' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== <undefined>    [DataType] ==================== -->
+    <UML:DataType xmi.id = 'G.58' 
+      name = '&lt;undefined&gt;' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' />
+    <!-- ==================== BancoExemploSimples2::B    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.4' 
+      name = 'B' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::B.nome    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.5' 
+          name = 'nome' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.43' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::M    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.6' 
+      name = 'M' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::M.codigo    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.7' 
+          name = 'codigo' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.44' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::M.nome    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.8' 
+          name = 'nome' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.45' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::N    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.9' 
+      name = 'N' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::N.dataInclusao    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.10' 
+          name = 'dataInclusao' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.46' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.codigoOp    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.11' 
+          name = 'codigoOp' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.47' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.cedulasV    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.12' 
+          name = 'cedulasV' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.48' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.cedulasR    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.13' 
+          name = 'cedulasR' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.49' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.cedulasD    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.14' 
+          name = 'cedulasD' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.50' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.cedulasU    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.15' 
+          name = 'cedulasU' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.51' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.cedulas    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.16' 
+          name = 'cedulas' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.52' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.cedulasF    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.17' 
+          name = 'cedulasF' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.53' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.difMaior    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.18' 
+          name = 'difMaior' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.54' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.difMenor    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.19' 
+          name = 'difMenor' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.55' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::N.tempo    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.20' 
+          name = 'tempo' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.56' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::F    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.21' 
+      name = 'F' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::F.numeroMaquina    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.22' 
+          name = 'numeroMaquina' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.57' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::E    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.23' 
+      name = 'E' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::E.data    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.24' 
+          name = 'data' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.58' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::E.duraçao    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.25' 
+          name = 'dura&#x00e7;ao' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.59' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::E.observacoes    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.26' 
+          name = 'observacoes' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.60' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::G    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.27' 
+      name = 'G' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::G.codigo    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.28' 
+          name = 'codigo' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.61' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::G.descricao    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.29' 
+          name = 'descricao' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.62' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::D    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.30' 
+      name = 'D' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::D.nome    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.31' 
+          name = 'nome' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.63' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::D.duracao    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.32' 
+          name = 'duracao' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.64' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::I    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.33' 
+      name = 'I' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::I.padraoMonetario    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.34' 
+          name = 'padraoMonetario' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.65' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::I.categoria    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.35' 
+          name = 'categoria' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.66' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::I.denominacao    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.36' 
+          name = 'denominacao' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.67' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::J    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.37' 
+      name = 'J' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::J.quantidade    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.38' 
+          name = 'quantidade' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.68' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::H    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.39' 
+      name = 'H' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::H.dataL    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.40' 
+          name = 'dataL' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.69' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::H.total1    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.41' 
+          name = 'total1' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.70' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::H.total2    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.42' 
+          name = 'total2' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.71' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::H.total3    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.43' 
+          name = 'total3' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.72' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::C    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.44' 
+      name = 'C' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::C.codigo    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.45' 
+          name = 'codigo' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.73' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::C.nome    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.46' 
+          name = 'nome' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.74' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::K    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.47' 
+      name = 'K' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::K.nome    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.48' 
+          name = 'nome' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.75' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::K.cnpjParcial    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.49' 
+          name = 'cnpjParcial' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.76' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== BancoExemploSimples2::L    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.175.1314.47.50' 
+      name = 'L' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== BancoExemploSimples2::L.dataL    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.51' 
+          name = 'dataL' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.77' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::L.valorMaior    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.52' 
+          name = 'valorMaior' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.78' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== BancoExemploSimples2::L.valorMenor    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.175.1314.47.53' 
+          name = 'valorMenor' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.58' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1761614.79' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+  </UML:Namespace.ownedElement>
+</UML:Model>
+<UML:TaggedValue xmi.id = 'XX.24.1314.58.2' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.46.1' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.9.3' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.4' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.10.4' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.6' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.11.5' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.9' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.13.6' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.21' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.13.7' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.23' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.8' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.27' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.9' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.30' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.10' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.33' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.11' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.37' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.12' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.39' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.13' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.44' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.14' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.47' />
+<UML:TaggedValue xmi.id = 'XX.24.1315.14.15' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.175.1314.47.50' />
+<UML:Diagram xmi.id = 'S.175.1315.14.0' 
+  name = 'Main' toolName = 'Rational Rose 98' diagramType = 'ClassDiagram' style = '' 
+  owner = 'G.0' >
+  <UML:Diagram.element>
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.16' 
+      geometry = ' 256, 544, 222, 236,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.6' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.17' 
+      geometry = ' 240, 912, 316, 236,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.47' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.18' 
+      geometry = ' 960, 1088, 312, 186,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.37' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.19' 
+      geometry = ' 1408, 1152, 434, 286,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.33' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.20' 
+      geometry = ' 1153, 1115, 128, 64,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.19' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.21' 
+      geometry = ' 1171, 1117, 91, 59,' style = 'Role' 
+      subject = 'G.20' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.22' 
+      geometry = ' 1134, 1112, 91, 59,' style = 'Role' 
+      subject = 'G.21' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.23' 
+      geometry = ' 2048, 800, 286, 236,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.27' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.24' 
+      geometry = ' 2080, 496, 346, 286,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.23' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.25' 
+      geometry = ' 2064, 648, 86, 358,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.37' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.26' 
+      geometry = ' 2056, 724, 70, 206,' style = 'Role' 
+      subject = 'G.38' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.27' 
+      geometry = ' 2072, 572, 70, 206,' style = 'Role' 
+      subject = 'G.39' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.28' 
+      geometry = ' 944, 544, 348, 686,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.9' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.29' 
+      geometry = ' 568, 544, 456, 54,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.7' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.30' 
+      geometry = ' 668, 544, 255, 54,' style = 'Role' 
+      subject = 'G.8' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.31' 
+      geometry = ' 467, 544, 255, 54,' style = 'Role' 
+      subject = 'G.9' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.32' 
+      geometry = ' 583, 731, 425, 247,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.10' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.33' 
+      geometry = ' 676, 683, 240, 150,' style = 'Role' 
+      subject = 'G.11' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.34' 
+      geometry = ' 490, 779, 239, 151,' style = 'Role' 
+      subject = 'G.12' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.35' 
+      geometry = ' 955, 940, 57, 161,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.16' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.36' 
+      geometry = ' 956, 967, 56, 108,' style = 'Role' 
+      subject = 'G.17' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.37' 
+      geometry = ' 954, 913, 55, 107,' style = 'Role' 
+      subject = 'G.18' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.38' 
+      geometry = ' 1208, 890, 234, 290,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.22' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.39' 
+      geometry = ' 1253, 949, 144, 172,' style = 'Role' 
+      subject = 'G.23' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.40' 
+      geometry = ' 1163, 831, 144, 172,' style = 'Role' 
+      subject = 'G.24' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.41' 
+      geometry = ' 256, 224, 476, 336,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.46.1' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.42' 
+      geometry = ' 631, 398, 329, 181,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.4' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.43' 
+      geometry = ' 700, 430, 192, 118,' style = 'Role' 
+      subject = 'G.5' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.44' 
+      geometry = ' 562, 366, 191, 117,' style = 'Role' 
+      subject = 'G.6' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.45' 
+      geometry = ' 992, 1376, 210, 336,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.39' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.46' 
+      geometry = ' 1143, 1294, 147, 104,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.28' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.47' 
+      geometry = ' 1166, 1281, 101, 79,' style = 'Role' 
+      subject = 'G.29' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.48' 
+      geometry = ' 1120, 1306, 100, 79,' style = 'Role' 
+      subject = 'G.30' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.49' 
+      geometry = ' 272, 1376, 310, 286,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.50' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.50' 
+      geometry = ' 255, 1131, 68, 256,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.13' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.51' 
+      geometry = ' 258, 1181, 61, 155,' style = 'Role' 
+      subject = 'G.14' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.52' 
+      geometry = ' 251, 1080, 61, 155,' style = 'Role' 
+      subject = 'G.15' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.14.53' 
+      geometry = ' 2016, 1152, 250, 236,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.30' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.54' 
+      geometry = ' 1504, 861, 826, 492,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.25' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.55' 
+      geometry = ' 1697, 970, 440, 273,' style = 'Role' 
+      subject = 'G.26' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.56' 
+      geometry = ' 1311, 751, 440, 273,' style = 'Role' 
+      subject = 'G.27' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.57' 
+      geometry = ' 2182, 892, 186, 560,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.46' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.58' 
+      geometry = ' 2194, 1043, 161, 257,' style = 'Role' 
+      subject = 'G.47' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.59' 
+      geometry = ' 2156, 790, 134, 357,' style = 'Role' 
+      subject = 'G.48' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.60' 
+      geometry = ' 1472, 496, 418, 186,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.21' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.61' 
+      geometry = ' 1793, 496, 279, 54,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.40' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.62' 
+      geometry = ' 1849, 496, 167, 54,' style = 'Role' 
+      subject = 'G.41' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.63' 
+      geometry = ' 1737, 496, 166, 54,' style = 'Role' 
+      subject = 'G.42' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.64' 
+      geometry = ' 1190, 520, 198, 67,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.43' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.65' 
+      geometry = ' 1226, 517, 126, 60,' style = 'Role' 
+      subject = 'G.44' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.66' 
+      geometry = ' 1154, 523, 126, 61,' style = 'Role' 
+      subject = 'G.45' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.67' 
+      geometry = ' 2000, 1376, 222, 236,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.44' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.68' 
+      geometry = ' 1492, 1376, 845, 54,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.31' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.69' 
+      geometry = ' 1690, 1376, 450, 54,' style = 'Role' 
+      subject = 'G.32' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.70' 
+      geometry = ' 1294, 1376, 449, 54,' style = 'Role' 
+      subject = 'G.33' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.71' 
+      geometry = ' 1091, 1524, 1648, 187,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.34' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.72' 
+      geometry = ' 1482, 1514, 865, 167,' style = 'Role' 
+      subject = 'G.35' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.73' 
+      geometry = ' 685, 1555, 837, 126,' style = 'Role' 
+      subject = 'G.36' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.74' 
+      geometry = ' 2008, 1264, 70, 278,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.49' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.75' 
+      geometry = ' 2012, 1208, 62, 166,' style = 'Role' 
+      subject = 'G.50' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.76' 
+      geometry = ' 2004, 1320, 62, 166,' style = 'Role' 
+      subject = 'G.51' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.77' 
+      geometry = ' 1892, 830, 950, 1106,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.52' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.78' 
+      geometry = ' 2225, 911, 283, 943,' style = 'Role' 
+      subject = 'G.53' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.79' 
+      geometry = ' 1873, 385, 913, 217,' style = 'Role' 
+      subject = 'G.54' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.80' 
+      geometry = ' 960, 224, 210, 186,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.175.1314.47.4' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.81' 
+      geometry = ' 674, 224, 414, 54,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.1' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.82' 
+      geometry = ' 764, 224, 234, 54,' style = 'Role' 
+      subject = 'G.2' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.83' 
+      geometry = ' 584, 224, 234, 54,' style = 'Role' 
+      subject = 'G.3' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.84' 
+      geometry = ' 1747, 793, 1418, 1193,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.55' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.85' 
+      geometry = ' 2270, 829, 372, 1121,' style = 'Role' 
+      subject = 'G.56' />
+    <UML:DiagramElement xmi.id = 'XX.24.1315.15.86' 
+      geometry = ' 1711, 260, 1347, 126,' style = 'Role' 
+      subject = 'G.57' />
+  </UML:Diagram.element>
+</UML:Diagram>
+</XMI.content>
+</XMI>

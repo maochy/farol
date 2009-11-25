@@ -1,0 +1,224 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<!-- <!DOCTYPE XMI SYSTEM 'UMLX13-11.dtd' > -->
+<XMI xmi.version = '1.1' xmlns:UML='href://org.omg/UML/1.3' timestamp = 'Thu Apr 29 14:57:47 2004' >
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>Unisys.JCR.2</XMI.exporter>
+   <XMI.exporterVersion>1.3.6</XMI.exporterVersion>
+  </XMI.documentation>
+  <XMI.metamodel xmi.name = 'UML' xmi.version = '1.3'/>
+ </XMI.header>
+<XMI.content>
+<!-- ==================== Segundo    [Model] ==================== -->
+<UML:Model xmi.id = 'G.0' 
+  name = 'Segundo' visibility = 'public' isSpecification = 'false' 
+  isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+  <UML:Namespace.ownedElement>
+    <!-- ==================== Segundo::{Classe2-Teste}{408E4540031F}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.1' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Segundo::{Classe2-Teste}{408E4540031F}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.2' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.119.1457.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1201757.1' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Segundo::{Classe2-Teste}{408E4540031F}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.3' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'false' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.119.1457.26.1' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1201757.2' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Segundo::{Classe 3-Classe2}{409141D50013}    [Association] ==================== -->
+    <UML:Association xmi.id = 'G.4' 
+      name = '' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' >
+      <UML:Association.connection>
+        <!-- ==================== Segundo::{Classe 3-Classe2}{409141D50013}.(Role1)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.5' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'none' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.119.1457.26.6' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1201757.3' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+        <!-- ==================== Segundo::{Classe 3-Classe2}{409141D50013}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.6' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          isNavigable = 'true' ordering = 'unordered' aggregation = 'aggregate' targetScope = 'instance' changeability = 'changeable' 
+          type = 'S.119.1457.26.4' >
+          <UML:AssociationEnd.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1201757.4' 
+                  lower = '0' upper = '-1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:AssociationEnd.multiplicity>
+        </UML:AssociationEnd>
+      </UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Segundo::Teste    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.119.1457.26.1' 
+      name = 'Teste' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'false' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' 
+      specialization = 'G.8' >
+      <UML:Classifier.feature>
+        <!-- ==================== Segundo::Teste.Att1    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.119.1457.26.2' 
+          name = 'Att1' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.7' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1201757.5' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+        <!-- ==================== Segundo::Teste::Meth1    [Operation] ==================== -->
+        <UML:Operation xmi.id = 'S.119.1457.26.3' 
+          name = 'Meth1' visibility = 'public' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          isQuery = 'false' 
+          concurrency = 'sequential' isRoot = 'false' isLeaf = 'false' isAbstract = 'false' specification = '' />
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== <undefined>    [DataType] ==================== -->
+    <UML:DataType xmi.id = 'G.7' 
+      name = '&lt;undefined&gt;' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'false' isAbstract = 'false' />
+    <!-- ==================== Segundo::Classe2    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.119.1457.26.4' 
+      name = 'Classe2' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'true' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' >
+      <UML:Classifier.feature>
+        <!-- ==================== Segundo::Classe2.Att2    [Attribute] ==================== -->
+        <UML:Attribute xmi.id = 'S.119.1457.26.5' 
+          name = 'Att2' visibility = 'private' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          changeability = 'changeable' targetScope = 'instance' 
+          type = 'G.7' >
+          <UML:StructuralFeature.multiplicity>
+            <UML:Multiplicity >
+              <UML:Multiplicity.range>
+                <UML:MultiplicityRange xmi.id = 'id.1201757.6' 
+                  lower = '1' upper = '1' />
+              </UML:Multiplicity.range>
+            </UML:Multiplicity>
+          </UML:StructuralFeature.multiplicity>
+          <UML:Attribute.initialValue>
+            <UML:Expression 
+              language = '' body = '' />
+          </UML:Attribute.initialValue>
+        </UML:Attribute>
+      </UML:Classifier.feature>
+    </UML:Class>
+    <!-- ==================== Segundo::Classe 3    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.119.1457.26.6' 
+      name = 'Classe 3' visibility = 'public' isSpecification = 'false' 
+      isRoot = 'false' isLeaf = 'true' isAbstract = 'false' 
+      isActive = 'false' 
+      namespace = 'G.0' 
+      generalization = 'G.8' >
+      <UML:Namespace.ownedElement>
+        <UML:Generalization xmi.id = 'G.8' 
+          name = '' visibility = 'public' isSpecification = 'false' 
+          discriminator = '' 
+          child = 'S.119.1457.26.6' parent = 'S.119.1457.26.1' />
+      </UML:Namespace.ownedElement>
+      <UML:Classifier.feature>
+        <!-- ==================== Segundo::Classe 3::Meth2    [Operation] ==================== -->
+        <UML:Operation xmi.id = 'S.119.1457.26.7' 
+          name = 'Meth2' visibility = 'public' isSpecification = 'false' 
+          ownerScope = 'instance' 
+          isQuery = 'false' 
+          concurrency = 'sequential' isRoot = 'false' isLeaf = 'false' isAbstract = 'false' specification = '' />
+      </UML:Classifier.feature>
+    </UML:Class>
+  </UML:Namespace.ownedElement>
+</UML:Model>
+<UML:TaggedValue xmi.id = 'XX.29.1457.29.2' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.119.1457.26.1' />
+<UML:TaggedValue xmi.id = 'XX.29.1457.33.3' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.119.1457.26.4' />
+<UML:TaggedValue xmi.id = 'XX.29.1457.37.4' 
+  tag = 'persistence' value = 'transient' 
+  modelElement = 'S.119.1457.26.6' />
+<UML:Diagram xmi.id = 'S.119.1457.37.0' 
+  name = 'Main' toolName = 'Rational Rose 98' diagramType = 'ClassDiagram' style = '' 
+  owner = 'G.0' >
+  <UML:Diagram.element>
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.5' 
+      geometry = ' 528, 208, 244, 236,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.119.1457.26.1' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.6' 
+      geometry = ' 624, 624, 230, 186,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.119.1457.26.4' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.7' 
+      geometry = ' 578, 428, 101, 258,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.1' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.8' 
+      geometry = ' 590, 479, 78, 156,' style = 'Role' 
+      subject = 'G.2' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.9' 
+      geometry = ' 566, 377, 77, 156,' style = 'Role' 
+      subject = 'G.3' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.10' 
+      geometry = ' 1120, 320, 244, 186,' style = 'Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,' 
+      subject = 'S.119.1457.26.6' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.11' 
+      geometry = ' 823, 263, 401, 120,' style = 'Inheritance' 
+      subject = 'G.8' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.12' 
+      geometry = ' 868, 473, 312, 212,' style = 'Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,' 
+      subject = 'G.4' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.13' 
+      geometry = ' 932, 433, 183, 133,' style = 'Role' 
+      subject = 'G.5' />
+    <UML:DiagramElement xmi.id = 'XX.29.1457.37.14' 
+      geometry = ' 803, 512, 183, 133,' style = 'Role' 
+      subject = 'G.6' />
+  </UML:Diagram.element>
+</UML:Diagram>
+</XMI.content>
+</XMI>
