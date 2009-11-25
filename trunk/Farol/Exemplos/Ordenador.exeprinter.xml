@@ -1,0 +1,85 @@
+<?xml version='1.0'?>
+<?xml-stylesheet type='text/xsl' href='relatorio.xsl'?>
+<XMI xmi.version='1.1' xmlns:UML='href://org.omg/UML/1.3'>
+<Model name='BancoExemploSimples2'>
+<Class name='A' size='4' fit='2'>
+</Class>
+<Class name='B' size='1' fit='2'>
+</Class>
+<Class name='M' size='2' fit='1'>
+</Class>
+<Class name='N' size='11' fit='6'>
+</Class>
+<Class name='F' size='1' fit='3'>
+</Class>
+<Class name='E' size='3' fit='3'>
+</Class>
+<Class name='G' size='2' fit='1'>
+</Class>
+<Class name='D' size='2' fit='3'>
+</Class>
+<Class name='I' size='3' fit='3'>
+</Class>
+<Class name='J' size='1' fit='2'>
+</Class>
+<Class name='H' size='4' fit='2'>
+</Class>
+<Class name='C' size='2' fit='4'>
+</Class>
+<Class name='K' size='2' fit='2'>
+</Class>
+<Class name='L' size='3' fit='2'>
+</Class>
+</Model>
+<Resultado>
+<Stubs_original value='17'/>
+<Stubs_final value='17'/>
+<Ordem>
+<Classe name='J' stubs='1'>
+<Stubs name='I'/>
+</Classe>
+<Classe name='G' stubs='1'>
+<Stubs name='E'/>
+</Classe>
+<Classe name='M' stubs='1'>
+<Stubs name='N'/>
+</Classe>
+<Classe name='B' stubs='2'>
+<Stubs name='A'/>
+<Stubs name='C'/>
+</Classe>
+<Classe name='E' stubs='2'>
+<Stubs name='F'/>
+<Stubs name='D'/>
+</Classe>
+<Classe name='L' stubs='2'>
+<Stubs name='C'/>
+<Stubs name='K'/>
+</Classe>
+<Classe name='D' stubs='1'>
+<Stubs name='N'/>
+</Classe>
+<Classe name='K' stubs='1'>
+<Stubs name='N'/>
+</Classe>
+<Classe name='A' stubs='1'>
+<Stubs name='N'/>
+</Classe>
+<Classe name='C' stubs='2'>
+<Stubs name='F'/>
+<Stubs name='H'/>
+</Classe>
+<Classe name='H' stubs='1'>
+<Stubs name='I'/>
+</Classe>
+<Classe name='F' stubs='1'>
+<Stubs name='N'/>
+</Classe>
+<Classe name='I' stubs='1'>
+<Stubs name='N'/>
+</Classe>
+<Classe name='N' stubs='0'>
+</Classe>
+</Ordem>
+</Resultado>
+</XMI>

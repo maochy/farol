@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<XMI xmi.version = '1.1' xmlns:UML='href://org.omg/UML/1.3' timestamp = 'Mon May 24 13:45:50 2004' >
+<XMI.content>
+<!-- ==================== Exemplo6d    [Model] ==================== -->
+<UML:Model xmi.id = 'G.0' name = 'Exemplo6d'>
+    <!-- ==================== Exemplo6d::{B-A}{40B226750378}    [Association] ==================== -->
+<UML:Namespace.ownedElement>
+    <UML:Association xmi.id = 'G.1' name = '' visibility = 'public' isSpecification = 'false' isAbstract = 'false' >
+        <!-- ==================== Exemplo6d::{B-A}{40B226750378}.(Role1)    [AssociationEnd] ==================== -->
+	<UML:Association.connection>
+        <UML:AssociationEnd xmi.id = 'G.2' name = '' visibility = 'public' 
+		isSpecification = 'false' isNavigable = 'true' aggregation = 'none' type = 'S.144.1345.40.2' >
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo6d::{B-A}{40B226750378}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.3' name = '' visibility = 'public' 
+		isSpecification = 'false' isNavigable = 'false' aggregation = 'none' type = 'S.144.1345.40.1' >
+        </UML:AssociationEnd>
+	</UML:Association.connection>
+    </UML:Association>
+    <UML:Association xmi.id = 'G.1' name = '' visibility = 'public' isSpecification = 'false' isAbstract = 'false' >
+        <!-- ==================== Exemplo6d::{B-A}{40B226750378}.(Role1)    [AssociationEnd] ==================== -->
+	<UML:Association.connection>
+        <UML:AssociationEnd xmi.id = 'G.2' name = '' visibility = 'public' 
+		isSpecification = 'false' isNavigable = 'true' aggregation = 'none' type = 'S.144.1345.40.2' >
+        </UML:AssociationEnd>
+        <!-- ==================== Exemplo6d::{B-A}{40B226750378}.(Role2)    [AssociationEnd] ==================== -->
+        <UML:AssociationEnd xmi.id = 'G.3' name = '' visibility = 'public' 
+		isSpecification = 'false' isNavigable = 'false' aggregation = 'none' type = 'S.144.1345.40.1' >
+        </UML:AssociationEnd>
+	</UML:Association.connection>
+    </UML:Association>
+    <!-- ==================== Exemplo6d::B    [Class] ==================== -->
+    <UML:Class xmi.id = 'S.144.1345.40.2' name = 'B' visibility = 'public' isSpecification = 'false' isAbstract = 'false' isActive = 'false'>
+	<UML:Namespace.ownedElement>
+		<UML:Generalization xmi.id="G.10" name="" visibility="public" isSpecification="false" discriminator="" child="S.127.1157.46.2" parent="S.127.1157.46.3" /> 
+		<UML:Generalization xmi.id="G.10" name="" visibility="public" isSpecification="false" discriminator="" child="S.127.1157.46.2" parent="S.127.1157.46.3" /> 
+	</UML:Namespace.ownedElement>
+        <!-- ==================== Exemplo6d::B.a1    [Attribute] ==================== -->
+      <UML:Classifier.feature>
+        <UML:Attribute xmi.id = 'S.144.1345.40.3' name = 'a1' visibility = 'private' type = 'G.7' >
+        </UML:Attribute>
+        <UML:Attribute xmi.id = 'S.144.1345.40.3' name = 'a1' visibility = 'private' type = 'G.7' >
+        </UML:Attribute>
+	  <UML:Operation xmi.id="S.179.1056.28.3" name="sdfsdf" visibility="public" isSpecification="false"/> 
+	  <UML:Operation xmi.id="S.179.1056.28.3" name="sdfsdf" visibility="public" isSpecification="false"/> 
+     </UML:Classifier.feature>
+    </UML:Class>
+    <UML:Class xmi.id = 'S.144.1345.40.2' name = 'B' visibility = 'public' isSpecification = 'false' isAbstract = 'false' isActive = 'false'>
+	<UML:Namespace.ownedElement>
+		<UML:Generalization xmi.id="G.10" name="" visibility="public" isSpecification="false" discriminator="" child="S.127.1157.46.2" parent="S.127.1157.46.3" /> 
+		<UML:Generalization xmi.id="G.10" name="" visibility="public" isSpecification="false" discriminator="" child="S.127.1157.46.2" parent="S.127.1157.46.3" /> 
+	</UML:Namespace.ownedElement>
+        <!-- ==================== Exemplo6d::B.a1    [Attribute] ==================== -->
+     <UML:Classifier.feature>
+        <UML:Attribute xmi.id = 'S.144.1345.40.3' name = 'a1' visibility = 'private' type = 'G.7' 
+>
+        </UML:Attribute>
+        <UML:Attribute xmi.id = 'S.144.1345.40.3' name = 'a1' visibility = 'private' type = 'G.7' >
+        </UML:Attribute>
+	  <UML:Operation xmi.id="S.179.1056.28.3" name="sdfsdf" visibility="public" isSpecification="false"/> 
+	  <UML:Operation xmi.id="S.179.1056.28.3" name="sdfsdf" visibility="public" isSpecification="false"/> 
+   </UML:Classifier.feature>
+    </UML:Class>
+    <!--  ==================== Dependencia::{A?B}{409F8B440013}    [Dependency] ==================== --> 
+    <UML:Dependency xmi.id="G.1" name="" visibility="public" isSpecification="false" client="S.130.1102.05.1" supplier="S.130.1102.05.2" />
+    <UML:Dependency xmi.id="G.1" name="" visibility="public" isSpecification="false" client="S.130.1102.05.1" supplier="S.130.1102.05.2" />
+</UML:Namespace.ownedElement>
+</UML:Model>
+</XMI.content>
+<Result>
+	<Source stubs='0' complexity="0"/>
+	<Final stubs='0' complexity="0"/>
+	<Order>
+		<Class value='2'/>
+		<Class value='1'/>
+		<Class value='0'/>
+	</Order>
+</Result>
+</XMI>
+
