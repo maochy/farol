@@ -569,6 +569,7 @@ namespace Farol {
 			this->treeView1->Name = L"treeView1";
 			this->treeView1->Size = System::Drawing::Size(230, 324);
 			this->treeView1->TabIndex = 0;
+			this->treeView1->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &Form1::treeView1_AfterSelect);
 			// 
 			// groupBox2
 			// 
@@ -894,12 +895,69 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
             // SECTION 2. Initialize the TreeView control.
 			treeView1->Nodes->Clear();
-			treeView1->Nodes->Add(gcnew System::Windows::Forms::TreeNode(dom->DocumentElement->Name));
-            System::Windows::Forms::TreeNode ^tNode = gcnew TreeNode();
-			tNode = treeView1->Nodes[0];
+
+			ImageList^ myImageList = gcnew ImageList;
+			myImageList->Images->Add(Image::FromFile("icons/xml.bmp"));
+			myImageList->Images->Add(Image::FromFile("icons/classe.bmp"));
+			myImageList->Images->Add(Image::FromFile("icons/associacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("icons/agregacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("icons/heranca.bmp"));
+			myImageList->Images->Add(Image::FromFile("icons/dependencia.bmp"));
+
+			treeView1->ImageList = myImageList;
+			// Set the TreeView control's default image and selected image indexes.
+			treeView1->ImageIndex = 0;
+
+			System::Windows::Forms::TreeNode ^root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
+			root->ImageIndex = 0;
+			root->SelectedImageIndex = 0;
+			treeView1->Nodes->Add("Modelo: "+root->Text);
+            int nclass = 0;
+			//Classes
+			System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]->ChildNodes->Count;i++)
+			{
+				classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));				
+			
+				classes = treeView1->Nodes[0]->Nodes->Add("Classes "+classes->Text);
+							
+			}
+			//System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+			//classes = treeView1->Nodes[0]->Nodes->Add("Classes "+classes->Text);
+
+			classes->ImageIndex = 1;
+			classes->SelectedImageIndex = 1;
+
+			//Associações
+			System::Windows::Forms::TreeNode ^assoc = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
+			assoc = treeView1->Nodes[0]->Nodes->Add("Associações: ");
+			
+			assoc->ImageIndex = 2;
+			assoc->SelectedImageIndex = 2;
+
+			//Composição/Agregação
+			System::Windows::Forms::TreeNode ^agreg = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
+			agreg = treeView1->Nodes[0]->Nodes->Add("Composição/Agregação: ");
+			
+			agreg->ImageIndex = 3;
+			agreg->SelectedImageIndex = 3;
+
+			//Heranças
+			System::Windows::Forms::TreeNode ^her = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
+			her = treeView1->Nodes[0]->Nodes->Add("Heranças: ");
+			
+			her->ImageIndex = 4;
+			her->SelectedImageIndex = 4;
+
+			//Dependência
+			System::Windows::Forms::TreeNode ^depend = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
+			depend = treeView1->Nodes[0]->Nodes->Add("Dependência: ");
+			
+			depend->ImageIndex = 5;
+			depend->SelectedImageIndex = 5;
 
             // SECTION 3. Populate the TreeView with the DOM nodes.
-            AddNode(dom->DocumentElement, tNode);
+            //AddNode(dom->DocumentElement, tNode);
             treeView1->ExpandAll();
          }
 		  catch(System::Xml::XmlException ^xmlEx)
@@ -944,6 +1002,8 @@ private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, Syst
 			 F->Show();
 		 }
 
+private: System::Void treeView1_AfterSelect(System::Object^  sender, System::Windows::Forms::TreeViewEventArgs^  e) {
+		 }
 };
 }
 
