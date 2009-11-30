@@ -208,6 +208,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FSobre.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -239,6 +243,16 @@
 				>
 				<File
 					RelativePath=".\Form1.resX"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
+				RelativePath=".\FSobre.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\FSobre.resx"
 					SubType="Designer"
 					>
 				</File>

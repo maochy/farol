@@ -895,14 +895,17 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
             // SECTION 2. Initialize the TreeView control.
 			treeView1->Nodes->Clear();
+			//To do
+			//tNode->Name("Olá");
 
 			ImageList^ myImageList = gcnew ImageList;
-			myImageList->Images->Add(Image::FromFile("icons/xml.bmp"));
-			myImageList->Images->Add(Image::FromFile("icons/classe.bmp"));
-			myImageList->Images->Add(Image::FromFile("icons/associacao.bmp"));
-			myImageList->Images->Add(Image::FromFile("icons/agregacao.bmp"));
-			myImageList->Images->Add(Image::FromFile("icons/heranca.bmp"));
-			myImageList->Images->Add(Image::FromFile("icons/dependencia.bmp"));
+			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/xml.bmp"));
+			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/classe.bmp"));
+			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/associacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/agregacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/heranca.bmp"));
+			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/dependencia.bmp"));
+						myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/atributo.bmp"));
 
 			treeView1->ImageList = myImageList;
 			// Set the TreeView control's default image and selected image indexes.
@@ -911,22 +914,40 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			System::Windows::Forms::TreeNode ^root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
 			root->ImageIndex = 0;
 			root->SelectedImageIndex = 0;
+
 			treeView1->Nodes->Add("Modelo: "+root->Text);
-            int nclass = 0;
+			
+            String ^cname = "";
 			//Classes
 			System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+			classes = treeView1->Nodes[0]->Nodes->Add("Classes");
+			classes->ImageIndex = 1;
+			classes->SelectedImageIndex = 1;
+
+			System::Windows::Forms::TreeNode ^classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+
+			//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]->ChildNodes->Count;i++)
-			{
-				classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));				
-			
-				classes = treeView1->Nodes[0]->Nodes->Add("Classes "+classes->Text);
-							
+			{				
+				if(classe->Text!=cname)
+				{
+					classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+					classe = classes->Nodes->Add("Classe: "+classe->Text);
+					classe->ImageIndex = 6;
+					classe->SelectedImageIndex = 6;
+					cname = classe->Text;
+					//TO DO: reconhecer todas as classes
+					
+				}
 			}
-			//System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
-			//classes = treeView1->Nodes[0]->Nodes->Add("Classes "+classes->Text);
+			//System::Windows::Forms::TreeNode ^classesf = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+			//classesf = treeView1->Nodes[0]->Nodes->Add("Classes "+classesf->Text);
 
 			classes->ImageIndex = 1;
 			classes->SelectedImageIndex = 1;
+
+			//classes->Expand();
 
 			//Associações
 			System::Windows::Forms::TreeNode ^assoc = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
@@ -957,8 +978,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			depend->SelectedImageIndex = 5;
 
             // SECTION 3. Populate the TreeView with the DOM nodes.
-            //AddNode(dom->DocumentElement, tNode);
-            treeView1->ExpandAll();
+			//treeView1->ExpandAll();
          }
 		  catch(System::Xml::XmlException ^xmlEx)
          {
