@@ -899,19 +899,19 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			//tNode->Name("Olá");
 
 			ImageList^ myImageList = gcnew ImageList;
-			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/xml.bmp"));
-			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/classe.bmp"));
-			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/associacao.bmp"));
-			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/agregacao.bmp"));
-			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/heranca.bmp"));
-			myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/dependencia.bmp"));
-						myImageList->Images->Add(Image::FromFile("C:/Documents and Settings/renanrv/Meus documentos/Visual Studio 2005/Projects/Farol 2.0/Farol/icons/atributo.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/xml.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/classe.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/associacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/agregacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/heranca.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/dependencia.bmp"));
+						myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/atributo.bmp"));
 
 			treeView1->ImageList = myImageList;
 			// Set the TreeView control's default image and selected image indexes.
 			treeView1->ImageIndex = 0;
 
-			System::Windows::Forms::TreeNode ^root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
+			System::Windows::Forms::TreeNode ^root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Collaboration"]["UML:Namespace.ownedElement"]["UML:ClassifierRole"]->GetAttribute("name"));
 			root->ImageIndex = 0;
 			root->SelectedImageIndex = 0;
 
@@ -924,22 +924,28 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			classes->ImageIndex = 1;
 			classes->SelectedImageIndex = 1;
 
-			System::Windows::Forms::TreeNode ^classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+			System::Windows::Forms::TreeNode ^classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+
+			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
 
 			//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 
-			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]->ChildNodes->Count;i++)
+			//for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->ChildNodes->Count-1;i++)
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
 			{				
-				if(classe->Text!=cname)
-				{
-					classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
-					classe = classes->Nodes->Add("Classe: "+classe->Text);
+				
+					//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+					//classe = gcnew System::Windows::Forms::TreeNode(lclasses[i]->ChildNodes->Item(0)->OwnerDocument::get());
+					//classe = classes->Nodes->Add("Classe: "+classe->Text);
+					int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
+					int end = lclasses[i]->OuterXml::get()->IndexOf("xmi.id")-19;
+					classe = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
 					classe->ImageIndex = 6;
 					classe->SelectedImageIndex = 6;
-					cname = classe->Text;
+					//cname = classe->Text;
 					//TO DO: reconhecer todas as classes
 					
-				}
+				
 			}
 			//System::Windows::Forms::TreeNode ^classesf = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 			//classesf = treeView1->Nodes[0]->Nodes->Add("Classes "+classesf->Text);
