@@ -116,6 +116,8 @@ namespace Farol {
 	private: System::Windows::Forms::Panel^  panel3;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::TreeView^  treeView1;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::String ^path;
 
 
 
@@ -188,6 +190,7 @@ namespace Farol {
 			this->toolStripButton8 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->treeView1 = (gcnew System::Windows::Forms::TreeView());
@@ -488,6 +491,7 @@ namespace Farol {
 			// 
 			// label1
 			// 
+			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
@@ -516,12 +520,29 @@ namespace Farol {
 			// splitContainer2.Panel2
 			// 
 			this->splitContainer2->Panel2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->splitContainer2->Panel2->Controls->Add(this->label4);
 			this->splitContainer2->Panel2->Controls->Add(this->label2);
 			this->splitContainer2->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->splitContainer2->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer2_Panel2_Paint);
 			this->splitContainer2->Size = System::Drawing::Size(836, 27);
 			this->splitContainer2->SplitterDistance = 132;
 			this->splitContainer2->TabIndex = 3;
 			this->splitContainer2->SplitterMoved += gcnew System::Windows::Forms::SplitterEventHandler(this, &Form1::splitContainer2_SplitterMoved);
+			// 
+			// label4
+			// 
+			this->label4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left));
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(3, 2);
+			this->label4->Name = L"label4";
+			this->label4->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->label4->Size = System::Drawing::Size(0, 19);
+			this->label4->TabIndex = 1;
+			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label4->Click += gcnew System::EventHandler(this, &Form1::label4_Click_1);
 			// 
 			// label2
 			// 
@@ -892,6 +913,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
             // SECTION 1. Create a DOM Document and load the XML data into it.
 			System::Xml::XmlDocument ^dom = gcnew System::Xml::XmlDocument();
 			dom->Load(filename);
+			path = System::IO::Path::GetFullPath(filename);
+			this->label4->Text = path;
 
             // SECTION 2. Initialize the TreeView control.
 			treeView1->Nodes->Clear();
@@ -905,7 +928,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/agregacao.bmp"));
 			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/heranca.bmp"));
 			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/dependencia.bmp"));
-						myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/atributo.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/atributo.bmp"));
+			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/objeto.bmp"));
 
 			treeView1->ImageList = myImageList;
 			// Set the TreeView control's default image and selected image indexes.
@@ -925,27 +949,59 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			classes->SelectedImageIndex = 1;
 
 			System::Windows::Forms::TreeNode ^classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+			System::Windows::Forms::TreeNode ^classe1 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^classe2 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^classe3 = gcnew System::Windows::Forms::TreeNode;
+
+			System::Windows::Forms::TreeNode ^depend1 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^depend11 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^depend12 = gcnew System::Windows::Forms::TreeNode;
 
 			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
 
+			//array<String^>^classArr = gcnew array<String^>(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count);
+			//array<String^>^classArrAdd = gcnew array<String^>();
+
 			//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 
+			//String ^classname = "";
 			//for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->ChildNodes->Count-1;i++)
+			array< String^, 2 >^ MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 2);
+			//Matriz de classes: [Class_name, xmi.id]
+
+
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
 			{				
+				//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+				//classe = gcnew System::Windows::Forms::TreeNode(lclasses[i]->ChildNodes->Item(0)->OwnerDocument::get());
+				//classe = classes->Nodes->Add("Classe: "+classe->Text);
+				int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
+				int end = lclasses[i]->OuterXml::get()->IndexOf("xmi.id")-19;
+				classe = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
+				//classArr[i] = lclasses[i]->OuterXml::get()->Substring(start,end);
+				classe->ImageIndex = 6;
+				classe->SelectedImageIndex = 6;
 				
-					//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
-					//classe = gcnew System::Windows::Forms::TreeNode(lclasses[i]->ChildNodes->Item(0)->OwnerDocument::get());
-					//classe = classes->Nodes->Add("Classe: "+classe->Text);
-					int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
-					int end = lclasses[i]->OuterXml::get()->IndexOf("xmi.id")-19;
-					classe = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
-					classe->ImageIndex = 6;
-					classe->SelectedImageIndex = 6;
-					//cname = classe->Text;
-					//TO DO: reconhecer todas as classes
-					
-				
+				//Insere o nome de cada classe na matriz de classes
+				MatClass[i,0] = lclasses[i]->OuterXml::get()->Substring(start,end);
+
+				start = lclasses[i]->OuterXml::get()->IndexOf("xmi.id=")+8;
+				end = lclasses[i]->OuterXml::get()->IndexOf("visibility")-30;
+				//Insere a ID de cada classe na matriz de classes
+				MatClass[i,1] = lclasses[i]->OuterXml::get()->Substring(start,end);
+
+				classe1 = classe->Nodes->Add("Fator de Influência:");
+				classe1->ImageIndex = 7;
+				classe1->SelectedImageIndex = 7;
+
+				classe2 = classe->Nodes->Add("Tamanho:");
+				classe2->ImageIndex = 7;
+				classe2->SelectedImageIndex = 7;
+
+				classe3 = classe->Nodes->Add("Número de Conectores:");
+				classe3->ImageIndex = 7;
+				classe3->SelectedImageIndex = 7;
+
 			}
 			//System::Windows::Forms::TreeNode ^classesf = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 			//classesf = treeView1->Nodes[0]->Nodes->Add("Classes "+classesf->Text);
@@ -982,6 +1038,30 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			
 			depend->ImageIndex = 5;
 			depend->SelectedImageIndex = 5;
+
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
+			{
+				//TO DO: Verificar dependências, ligando id ao nome da classe
+				/*
+				int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
+				int end = lclasses[i]->OuterXml::get()->IndexOf("suppli")-19;
+				depend1 = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
+				*/					
+				
+			}
+
+			depend1 = depend->Nodes->Add("Dependência: ");
+			depend1->ImageIndex = 6;
+			depend1->SelectedImageIndex = 6;
+
+			depend11 = depend1->Nodes->Add("Cliente: ");
+			depend11->ImageIndex = 7;
+			depend11->SelectedImageIndex = 7;
+
+			depend12 = depend1->Nodes->Add("Fornecedor: ");
+			depend12->ImageIndex = 7;
+			depend12->SelectedImageIndex = 7;
+
 
             // SECTION 3. Populate the TreeView with the DOM nodes.
 			//treeView1->ExpandAll();
@@ -1029,6 +1109,10 @@ private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, Syst
 		 }
 
 private: System::Void treeView1_AfterSelect(System::Object^  sender, System::Windows::Forms::TreeViewEventArgs^  e) {
+		 }
+private: System::Void splitContainer2_Panel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		 }
+private: System::Void label4_Click_1(System::Object^  sender, System::EventArgs^  e) {
 		 }
 };
 }
