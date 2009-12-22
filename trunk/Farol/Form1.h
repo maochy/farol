@@ -888,8 +888,24 @@ private: System::Void AddNode(System::Xml::XmlNode^ inXmlNode, Windows::Forms::T
          // type of node, whether attribute values are required, and so forth.
          inTreeNode->Text = (inXmlNode->OuterXml)->Trim();
       }
+   }
 
-		 }
+
+//Retorna o nome da classe a partir do ID da classe fornecido
+private : System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^ id){
+
+			  for(int i=0; i<Mat->Length; i++)
+			  {
+				  if(Mat[i,1]==id)
+				  {
+					  return Mat[i,0];
+				  }
+			  }
+			  //TO DO: Adicionar uma exceção
+}
+
+
+
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
    {            
 	  
@@ -899,6 +915,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
       openFileDialog1->Filter = "XML Files|*.xml";
       openFileDialog1->Title = "Selecione o arquivo XMI";
 	  System::String ^filename;
+	  bool ^Association = false;
+	  array< String^, 2 >^ MatAssoc = gcnew array< String^, 2 >(2, 17);
 
       // Show the Dialog.
       // If the user clicked OK in the dialog and
@@ -918,8 +936,6 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
             // SECTION 2. Initialize the TreeView control.
 			treeView1->Nodes->Clear();
-			//To do
-			//tNode->Name("Olá");
 
 			ImageList^ myImageList = gcnew ImageList;
 			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/xml.bmp"));
@@ -953,32 +969,67 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			System::Windows::Forms::TreeNode ^classe2 = gcnew System::Windows::Forms::TreeNode;
 			System::Windows::Forms::TreeNode ^classe3 = gcnew System::Windows::Forms::TreeNode;
 
+			System::Windows::Forms::TreeNode ^assoc1 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^assoc2 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^assoc3 = gcnew System::Windows::Forms::TreeNode;
+
+			System::Windows::Forms::TreeNode ^agreg1 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^agreg2 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^agreg3 = gcnew System::Windows::Forms::TreeNode;
+
+			System::Windows::Forms::TreeNode ^her1 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^her2 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^her3 = gcnew System::Windows::Forms::TreeNode;
+
 			System::Windows::Forms::TreeNode ^depend1 = gcnew System::Windows::Forms::TreeNode;
 			System::Windows::Forms::TreeNode ^depend11 = gcnew System::Windows::Forms::TreeNode;
 			System::Windows::Forms::TreeNode ^depend12 = gcnew System::Windows::Forms::TreeNode;
 
+			//Lista de tags de classes
 			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
 
-			//array<String^>^classArr = gcnew array<String^>(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count);
-			//array<String^>^classArrAdd = gcnew array<String^>();
+			array< String^, 2 >^ MatAssoc = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count, 3);
+			
+			try{
+				//Lista de tags de associações
+				System::Xml::XmlNodeList ^lassoc = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association");
 
-			//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+				int j = 0;
 
-			//String ^classname = "";
-			//for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->ChildNodes->Count-1;i++)
-			array< String^, 2 >^ MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 2);
+				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count; i++)
+				{
+					int dir = lassoc[i]->OuterXml::get()->IndexOf("direction");
+					int dirEnd = lassoc[i]->OuterXml::get()->IndexOf("linemode");
+					int source = lassoc[i]->OuterXml::get()->IndexOf("ea_sourceName");
+					int target = lassoc[i]->OuterXml::get()->IndexOf("ea_targetName");
+					int targetEnd = lassoc[i]->OuterXml::get()->IndexOf("ea_sourceType");
+
+					MatAssoc[j,0]=lassoc[i]->OuterXml->Substring(dir+18,dirEnd-dir-44);
+					MatAssoc[j,1]=lassoc[i]->OuterXml::get()->Substring(source+22,target-source-48);
+					MatAssoc[j,2]=lassoc[i]->OuterXml::get()->Substring(target+22,targetEnd-target-48);
+					
+					j++;
+				}
+				Association = true;
+			}
+			catch(Exception ^e){
+			}
+
+			//Lista de tags de dependências
+			System::Xml::XmlNodeList ^ldepend = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency");
+			
 			//Matriz de classes: [Class_name, xmi.id]
+			array< String^, 2 >^ MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 2);
 
-
+			//Matriz de dependências: [client_id, supplier_id]
+			array< String^, 2 >^ MatDepend = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count, 2);
+			
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
 			{				
-				//classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
-				//classe = gcnew System::Windows::Forms::TreeNode(lclasses[i]->ChildNodes->Item(0)->OwnerDocument::get());
-				//classe = classes->Nodes->Add("Classe: "+classe->Text);
 				int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
 				int end = lclasses[i]->OuterXml::get()->IndexOf("xmi.id")-19;
 				classe = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
-				//classArr[i] = lclasses[i]->OuterXml::get()->Substring(start,end);
+				
 				classe->ImageIndex = 6;
 				classe->SelectedImageIndex = 6;
 				
@@ -987,8 +1038,11 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 				start = lclasses[i]->OuterXml::get()->IndexOf("xmi.id=")+8;
 				end = lclasses[i]->OuterXml::get()->IndexOf("visibility")-30;
+				
 				//Insere a ID de cada classe na matriz de classes
 				MatClass[i,1] = lclasses[i]->OuterXml::get()->Substring(start,end);
+
+				//TO DO: Reconhecer Fator de Influência, Tamanho e Número de Conectores para cada classe
 
 				classe1 = classe->Nodes->Add("Fator de Influência:");
 				classe1->ImageIndex = 7;
@@ -1001,15 +1055,10 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				classe3 = classe->Nodes->Add("Número de Conectores:");
 				classe3->ImageIndex = 7;
 				classe3->SelectedImageIndex = 7;
-
 			}
-			//System::Windows::Forms::TreeNode ^classesf = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
-			//classesf = treeView1->Nodes[0]->Nodes->Add("Classes "+classesf->Text);
-
+			
 			classes->ImageIndex = 1;
 			classes->SelectedImageIndex = 1;
-
-			//classes->Expand();
 
 			//Associações
 			System::Windows::Forms::TreeNode ^assoc = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
@@ -1018,6 +1067,30 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			assoc->ImageIndex = 2;
 			assoc->SelectedImageIndex = 2;
 
+			if(Association)
+			{
+				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
+				{
+					if(MatAssoc[i,0]!="Bi-Directional")
+					{
+						assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,1]+" -- "+MatAssoc[i,2]);
+						assoc1->ImageIndex = 6;
+						assoc1->SelectedImageIndex = 6;
+
+						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]);
+						assoc2->ImageIndex = 7;
+						assoc2->SelectedImageIndex = 7;
+
+						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]);
+						assoc3->ImageIndex = 7;
+						assoc3->SelectedImageIndex = 7;
+
+						//TO DO: Adicionar a visão de navegabilidade de cada classe
+					}
+				}
+			}
+
+
 			//Composição/Agregação
 			System::Windows::Forms::TreeNode ^agreg = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
 			agreg = treeView1->Nodes[0]->Nodes->Add("Composição/Agregação: ");
@@ -1025,12 +1098,60 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			agreg->ImageIndex = 3;
 			agreg->SelectedImageIndex = 3;
 
+			if(Association)
+			{
+				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
+				{
+					if(MatAssoc[i,0]=="Bi-Directional")
+					{
+						agreg1 = agreg->Nodes->Add("Associação: "+MatAssoc[i,1]+" <>-- "+MatAssoc[i,2]);
+						agreg1->ImageIndex = 6;
+						agreg1->SelectedImageIndex = 6;
+
+						agreg2 = agreg1->Nodes->Add("Parte: "+MatAssoc[i,2]);
+						agreg2->ImageIndex = 7;
+						agreg2->SelectedImageIndex = 7;
+
+						agreg3 = agreg1->Nodes->Add("Todo: "+MatAssoc[i,1]);
+						agreg3->ImageIndex = 7;
+						agreg3->SelectedImageIndex = 7;
+					}
+				}
+			}
+
 			//Heranças
+			System::Xml::XmlNodeList ^lher = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization");
+
 			System::Windows::Forms::TreeNode ^her = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
-			her = treeView1->Nodes[0]->Nodes->Add("Heranças: ");
 			
+			her = treeView1->Nodes[0]->Nodes->Add("Heranças: ");
 			her->ImageIndex = 4;
 			her->SelectedImageIndex = 4;
+
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
+			{
+				int subt = lher[i]->OuterXml::get()->IndexOf("subtype");
+				int supert = lher[i]->OuterXml::get()->IndexOf("supertype");
+				int supertEnd = lher[i]->OuterXml::get()->IndexOf("xmi.id");
+				
+				String ^sub_id = lher[i]->OuterXml::get()->Substring(subt+9,supert-subt-11);
+				String ^super_id = lher[i]->OuterXml::get()->Substring(supert+11,supertEnd-supert-13);
+
+				String ^sub = getClassName(MatClass,sub_id);
+				String ^super = getClassName(MatClass,super_id);
+
+				her1 = her->Nodes->Add("Herança: "+super+" <|-- "+sub+":");
+				her1->ImageIndex = 6;
+				her1->SelectedImageIndex = 6;
+
+				her2 = her1->Nodes->Add("Pai: "+super);
+				her2->ImageIndex = 7;
+				her2->SelectedImageIndex = 7;
+
+				her3 = her1->Nodes->Add("Filho: "+sub);
+				her3->ImageIndex = 7;
+				her3->SelectedImageIndex = 7;
+			}
 
 			//Dependência
 			System::Windows::Forms::TreeNode ^depend = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
@@ -1040,31 +1161,30 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			depend->SelectedImageIndex = 5;
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
-			{
-				//TO DO: Verificar dependências, ligando id ao nome da classe
-				/*
-				int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
-				int end = lclasses[i]->OuterXml::get()->IndexOf("suppli")-19;
-				depend1 = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
-				*/					
+			{	
+				int cStart = ldepend[i]->OuterXml::get()->IndexOf("=")+2;
+				int cEnd = ldepend[i]->OuterXml::get()->IndexOf("supplier")-26;
 				
+				int sStart = ldepend[i]->OuterXml::get()->IndexOf("supplier=")+10;
+				int sEnd = ldepend[i]->OuterXml::get()->IndexOf("xmi.id")-79;
+				
+				String ^client = getClassName(MatClass,ldepend[i]->OuterXml::get()->Substring(cStart,cEnd));
+				String ^supplier = getClassName(MatClass,ldepend[i]->OuterXml::get()->Substring(sStart,sEnd));
+
+				depend1 = depend->Nodes->Add("Dependência: "+supplier+" <-- "+client+":");
+				depend1->ImageIndex = 6;
+				depend1->SelectedImageIndex = 6;					
+				
+				depend11 = depend1->Nodes->Add("Cliente: "+client);
+				depend11->ImageIndex = 7;
+				depend11->SelectedImageIndex = 7;
+				
+				depend12 = depend1->Nodes->Add("Fornecedor: "+supplier);
+				depend12->ImageIndex = 7;
+				depend12->SelectedImageIndex = 7;
 			}
 
-			depend1 = depend->Nodes->Add("Dependência: ");
-			depend1->ImageIndex = 6;
-			depend1->SelectedImageIndex = 6;
-
-			depend11 = depend1->Nodes->Add("Cliente: ");
-			depend11->ImageIndex = 7;
-			depend11->SelectedImageIndex = 7;
-
-			depend12 = depend1->Nodes->Add("Fornecedor: ");
-			depend12->ImageIndex = 7;
-			depend12->SelectedImageIndex = 7;
-
-
-            // SECTION 3. Populate the TreeView with the DOM nodes.
-			//treeView1->ExpandAll();
+			treeView1->Nodes[0]->Expand();
          }
 		  catch(System::Xml::XmlException ^xmlEx)
          {
@@ -1076,7 +1196,6 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
          }
       }	
 }
-
 
 private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
