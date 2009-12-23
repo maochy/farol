@@ -420,6 +420,7 @@ namespace Farol {
 			this->toolStripButton2->Size = System::Drawing::Size(39, 43);
 			this->toolStripButton2->Text = L"toolStripButton1";
 			this->toolStripButton2->ToolTipText = L"Fechar Arquivo";
+			this->toolStripButton2->Click += gcnew System::EventHandler(this, &Form1::toolStripButton2_Click);
 			// 
 			// toolStripSeparator4
 			// 
@@ -957,7 +958,6 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			treeView1->Nodes->Add("Modelo: "+root->Text);
 			
-            String ^cname = "";
 			//Classes
 			System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 			classes = treeView1->Nodes[0]->Nodes->Add("Classes");
@@ -998,15 +998,9 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count; i++)
 				{
-					int dir = lassoc[i]->OuterXml::get()->IndexOf("direction");
-					int dirEnd = lassoc[i]->OuterXml::get()->IndexOf("linemode");
-					int source = lassoc[i]->OuterXml::get()->IndexOf("ea_sourceName");
-					int target = lassoc[i]->OuterXml::get()->IndexOf("ea_targetName");
-					int targetEnd = lassoc[i]->OuterXml::get()->IndexOf("ea_sourceType");
-
-					MatAssoc[j,0]=lassoc[i]->OuterXml->Substring(dir+18,dirEnd-dir-44);
-					MatAssoc[j,1]=lassoc[i]->OuterXml::get()->Substring(source+22,target-source-48);
-					MatAssoc[j,2]=lassoc[i]->OuterXml::get()->Substring(target+22,targetEnd-target-48);
+					MatAssoc[j,0]=lassoc[i]->FirstChild->ChildNodes[2]->Attributes->Item(1)->InnerText;
+					MatAssoc[j,1]=lassoc[i]->FirstChild->ChildNodes[10]->Attributes->Item(1)->InnerText;
+					MatAssoc[j,2]=lassoc[i]->FirstChild->ChildNodes[11]->Attributes->Item(1)->InnerText;
 					
 					j++;
 				}
@@ -1026,35 +1020,33 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
 			{				
-				int start = lclasses[i]->OuterXml::get()->IndexOf("=")+2;
-				int end = lclasses[i]->OuterXml::get()->IndexOf("xmi.id")-19;
-				classe = classes->Nodes->Add("Classe: "+lclasses[i]->OuterXml::get()->Substring(start,end));
-				
-				classe->ImageIndex = 6;
-				classe->SelectedImageIndex = 6;
-				
-				//Insere o nome de cada classe na matriz de classes
-				MatClass[i,0] = lclasses[i]->OuterXml::get()->Substring(start,end);
+				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				{
+					classe = classes->Nodes->Add("Classe: "+lclasses[i]->Attributes->Item(0)->InnerText);
+					classe->ImageIndex = 6;
+					classe->SelectedImageIndex = 6;
 
-				start = lclasses[i]->OuterXml::get()->IndexOf("xmi.id=")+8;
-				end = lclasses[i]->OuterXml::get()->IndexOf("visibility")-30;
-				
-				//Insere a ID de cada classe na matriz de classes
-				MatClass[i,1] = lclasses[i]->OuterXml::get()->Substring(start,end);
+					//Insere o nome de cada classe na matriz de classes
+					MatClass[i,0] = lclasses[i]->Attributes->Item(0)->InnerText;
+					
+					//Insere a ID de cada classe na matriz de classes
+					MatClass[i,1] = lclasses[i]->Attributes->Item(1)->InnerText;
 
+					classe1 = classe->Nodes->Add("Fator de Influência:");
+					classe1->ImageIndex = 7;
+					classe1->SelectedImageIndex = 7;
+
+					classe2 = classe->Nodes->Add("Tamanho:");
+					classe2->ImageIndex = 7;
+					classe2->SelectedImageIndex = 7;
+
+					classe3 = classe->Nodes->Add("Número de Conectores:");
+					classe3->ImageIndex = 7;
+					classe3->SelectedImageIndex = 7;
+				}
+					
 				//TO DO: Reconhecer Fator de Influência, Tamanho e Número de Conectores para cada classe
-
-				classe1 = classe->Nodes->Add("Fator de Influência:");
-				classe1->ImageIndex = 7;
-				classe1->SelectedImageIndex = 7;
-
-				classe2 = classe->Nodes->Add("Tamanho:");
-				classe2->ImageIndex = 7;
-				classe2->SelectedImageIndex = 7;
-
-				classe3 = classe->Nodes->Add("Número de Conectores:");
-				classe3->ImageIndex = 7;
-				classe3->SelectedImageIndex = 7;
+				
 			}
 			
 			classes->ImageIndex = 1;
@@ -1129,13 +1121,9 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			her->SelectedImageIndex = 4;
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
-			{
-				int subt = lher[i]->OuterXml::get()->IndexOf("subtype");
-				int supert = lher[i]->OuterXml::get()->IndexOf("supertype");
-				int supertEnd = lher[i]->OuterXml::get()->IndexOf("xmi.id");
-				
-				String ^sub_id = lher[i]->OuterXml::get()->Substring(subt+9,supert-subt-11);
-				String ^super_id = lher[i]->OuterXml::get()->Substring(supert+11,supertEnd-supert-13);
+			{				
+				String ^sub_id = lher[i]->Attributes->Item(0)->InnerText;
+				String ^super_id = lher[i]->Attributes->Item(1)->InnerText;
 
 				String ^sub = getClassName(MatClass,sub_id);
 				String ^super = getClassName(MatClass,super_id);
@@ -1162,14 +1150,24 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
 			{	
-				int cStart = ldepend[i]->OuterXml::get()->IndexOf("=")+2;
-				int cEnd = ldepend[i]->OuterXml::get()->IndexOf("supplier")-26;
-				
-				int sStart = ldepend[i]->OuterXml::get()->IndexOf("supplier=")+10;
-				int sEnd = ldepend[i]->OuterXml::get()->IndexOf("xmi.id")-79;
-				
-				String ^client = getClassName(MatClass,ldepend[i]->OuterXml::get()->Substring(cStart,cEnd));
-				String ^supplier = getClassName(MatClass,ldepend[i]->OuterXml::get()->Substring(sStart,sEnd));
+				String ^client;
+				String ^supplier;
+
+				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
+				{
+				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(0)->InnerText)
+				  {
+					  client = MatClass[j,0];
+				  }
+				}
+
+				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
+				{
+				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(1)->InnerText)
+				  {
+					  supplier = MatClass[j,0];
+				  }
+				}
 
 				depend1 = depend->Nodes->Add("Dependência: "+supplier+" <-- "+client+":");
 				depend1->ImageIndex = 6;
@@ -1232,6 +1230,9 @@ private: System::Void treeView1_AfterSelect(System::Object^  sender, System::Win
 private: System::Void splitContainer2_Panel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 		 }
 private: System::Void label4_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 
 		 }
 };
 }
