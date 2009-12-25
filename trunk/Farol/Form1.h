@@ -31,6 +31,10 @@ namespace Farol {
 			//TODO: Add the constructor code here
 			//
 		}
+		array< String^, 2 >^ MatClass;
+		array< String^, 2 >^ MatAssoc;
+		array< String^, 2 >^ MatHer;
+		array< String^, 2 >^ MatDepend;
 
 	protected:
 		/// <summary>
@@ -906,6 +910,12 @@ private : System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^
 }
 
 
+//Retorna um valor booleano indicando se a classe é navegável ou não
+private : System::Boolean ^ isNavigable(System::String ^ nav){
+
+			  return nav->Contains("Navigable=Navigable");
+}
+
 
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
    {            
@@ -917,7 +927,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
       openFileDialog1->Title = "Selecione o arquivo XMI";
 	  System::String ^filename;
 	  bool ^Association = false;
-	  array< String^, 2 >^ MatAssoc = gcnew array< String^, 2 >(2, 17);
+	  //array< String^, 2 >^ MatAssoc = gcnew array< String^, 2 >(2, 17);
+	  //MatAssoc = gcnew array< String^, 2 >(2, 17);
 
       // Show the Dialog.
       // If the user clicked OK in the dialog and
@@ -983,13 +994,31 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			System::Windows::Forms::TreeNode ^depend1 = gcnew System::Windows::Forms::TreeNode;
 			System::Windows::Forms::TreeNode ^depend11 = gcnew System::Windows::Forms::TreeNode;
-			System::Windows::Forms::TreeNode ^depend12 = gcnew System::Windows::Forms::TreeNode;
+			System::Windows::Forms::TreeNode ^depend12 = gcnew System::Windows::Forms::TreeNode;			
+			
+			//Matriz de Classes
+			//[Class_name, xmi.id]
+			MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 2);
 
 			//Lista de tags de classes
 			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
 
-			array< String^, 2 >^ MatAssoc = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count, 3);
-			
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
+			{				
+				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				{
+					//Insere o nome de cada classe na matriz de classes
+					MatClass[i,0] = lclasses[i]->Attributes->Item(0)->InnerText;
+					
+					//Insere a ID de cada classe na matriz de classes
+					MatClass[i,1] = lclasses[i]->Attributes->Item(1)->InnerText;
+				}
+			}
+
+			//Matriz de Associações e Composição/Agregação
+			//[direction, source, target, src_isNavigable, tgt_isNavigable]
+			MatAssoc = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count, 5);
+
 			try{
 				//Lista de tags de associações
 				System::Xml::XmlNodeList ^lassoc = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association");
@@ -1001,6 +1030,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 					MatAssoc[j,0]=lassoc[i]->FirstChild->ChildNodes[2]->Attributes->Item(1)->InnerText;
 					MatAssoc[j,1]=lassoc[i]->FirstChild->ChildNodes[10]->Attributes->Item(1)->InnerText;
 					MatAssoc[j,2]=lassoc[i]->FirstChild->ChildNodes[11]->Attributes->Item(1)->InnerText;
+					MatAssoc[j,3]=lassoc[i]->ChildNodes[1]->FirstChild->FirstChild->FirstChild->Attributes->Item(1)->InnerText;
+					MatAssoc[j,4]=lassoc[i]->ChildNodes[1]->ChildNodes[1]->FirstChild->FirstChild->Attributes->Item(1)->InnerText;
 					
 					j++;
 				}
@@ -1009,28 +1040,68 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			catch(Exception ^e){
 			}
 
+			//Matriz de Heranças
+			MatHer = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count, 2);
+
+			//Lista de tags de Herança
+			System::Xml::XmlNodeList ^lher = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization");
+
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
+			{				
+				String ^sub_id = lher[i]->Attributes->Item(0)->InnerText;
+				String ^super_id = lher[i]->Attributes->Item(1)->InnerText;
+
+				String ^sub = getClassName(MatClass,sub_id);
+				String ^super = getClassName(MatClass,super_id);
+
+				MatHer[i,0] = super;
+				MatHer[i,1] = sub;
+			}
+
+			//Matriz de Dependências
+			//[supplier, client]
+			MatDepend = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count, 2);
+
 			//Lista de tags de dependências
 			System::Xml::XmlNodeList ^ldepend = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency");
-			
-			//Matriz de classes: [Class_name, xmi.id]
-			array< String^, 2 >^ MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 2);
 
-			//Matriz de dependências: [client_id, supplier_id]
-			array< String^, 2 >^ MatDepend = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count, 2);
-			
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
+			{	
+				String ^client;
+				String ^supplier;
+
+				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
+				{
+				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(0)->InnerText)
+				  {
+					  client = MatClass[j,0];
+				  }
+				}
+
+				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
+				{
+				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(1)->InnerText)
+				  {
+					  supplier = MatClass[j,0];
+				  }
+				}
+
+				MatDepend[i,0] = supplier;
+				MatDepend[i,1] = client;
+			}
+
+			//#####################################################################################
+			//TODO: Reconhecer Fator de Influência, Tamanho e Número de Conectores para cada classe
+			//#####################################################################################
+
+			//Classes
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
 			{				
 				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
 				{
-					classe = classes->Nodes->Add("Classe: "+lclasses[i]->Attributes->Item(0)->InnerText);
+					classe = classes->Nodes->Add("Classe: "+MatClass[i,0]);
 					classe->ImageIndex = 6;
 					classe->SelectedImageIndex = 6;
-
-					//Insere o nome de cada classe na matriz de classes
-					MatClass[i,0] = lclasses[i]->Attributes->Item(0)->InnerText;
-					
-					//Insere a ID de cada classe na matriz de classes
-					MatClass[i,1] = lclasses[i]->Attributes->Item(1)->InnerText;
 
 					classe1 = classe->Nodes->Add("Fator de Influência:");
 					classe1->ImageIndex = 7;
@@ -1063,21 +1134,33 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			{
 				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
 				{
-					if(MatAssoc[i,0]!="Bi-Directional")
+					if(MatAssoc[i,0]=="Unspecified")
 					{
 						assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,1]+" -- "+MatAssoc[i,2]);
 						assoc1->ImageIndex = 6;
 						assoc1->SelectedImageIndex = 6;
 
-						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]);
+						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]+" - Navegável: "+isNavigable(MatAssoc[i,3])->ToString());
 						assoc2->ImageIndex = 7;
 						assoc2->SelectedImageIndex = 7;
 
-						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]);
+						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]+" - Navegável: "+isNavigable(MatAssoc[i,4])->ToString());
 						assoc3->ImageIndex = 7;
 						assoc3->SelectedImageIndex = 7;
+					}
+					else if(MatAssoc[i,0]=="Source -> Destination")
+					{
+						assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,2]+" --> "+MatAssoc[i,1]);
+						assoc1->ImageIndex = 6;
+						assoc1->SelectedImageIndex = 6;
 
-						//TO DO: Adicionar a visão de navegabilidade de cada classe
+						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]+" - Navegável: "+isNavigable(MatAssoc[i,3])->ToString());
+						assoc2->ImageIndex = 7;
+						assoc2->SelectedImageIndex = 7;
+
+						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]+" - Navegável: "+isNavigable(MatAssoc[i,4])->ToString());
+						assoc3->ImageIndex = 7;
+						assoc3->SelectedImageIndex = 7;
 					}
 				}
 			}
@@ -1112,8 +1195,6 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			}
 
 			//Heranças
-			System::Xml::XmlNodeList ^lher = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization");
-
 			System::Windows::Forms::TreeNode ^her = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
 			
 			her = treeView1->Nodes[0]->Nodes->Add("Heranças: ");
@@ -1122,21 +1203,15 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
 			{				
-				String ^sub_id = lher[i]->Attributes->Item(0)->InnerText;
-				String ^super_id = lher[i]->Attributes->Item(1)->InnerText;
-
-				String ^sub = getClassName(MatClass,sub_id);
-				String ^super = getClassName(MatClass,super_id);
-
-				her1 = her->Nodes->Add("Herança: "+super+" <|-- "+sub+":");
+				her1 = her->Nodes->Add("Herança: "+MatHer[i,0]+" <|-- "+MatHer[i,1]+":");
 				her1->ImageIndex = 6;
 				her1->SelectedImageIndex = 6;
 
-				her2 = her1->Nodes->Add("Pai: "+super);
+				her2 = her1->Nodes->Add("Pai: "+MatHer[i,0]);
 				her2->ImageIndex = 7;
 				her2->SelectedImageIndex = 7;
 
-				her3 = her1->Nodes->Add("Filho: "+sub);
+				her3 = her1->Nodes->Add("Filho: "+MatHer[i,1]);
 				her3->ImageIndex = 7;
 				her3->SelectedImageIndex = 7;
 			}
@@ -1150,34 +1225,15 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
 			{	
-				String ^client;
-				String ^supplier;
-
-				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
-				{
-				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(0)->InnerText)
-				  {
-					  client = MatClass[j,0];
-				  }
-				}
-
-				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
-				{
-				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(1)->InnerText)
-				  {
-					  supplier = MatClass[j,0];
-				  }
-				}
-
-				depend1 = depend->Nodes->Add("Dependência: "+supplier+" <-- "+client+":");
+				depend1 = depend->Nodes->Add("Dependência: "+MatDepend[i,0]+" <-- "+MatDepend[i,1]+":");
 				depend1->ImageIndex = 6;
 				depend1->SelectedImageIndex = 6;					
 				
-				depend11 = depend1->Nodes->Add("Cliente: "+client);
+				depend11 = depend1->Nodes->Add("Cliente: "+MatDepend[i,1]);
 				depend11->ImageIndex = 7;
 				depend11->SelectedImageIndex = 7;
 				
-				depend12 = depend1->Nodes->Add("Fornecedor: "+supplier);
+				depend12 = depend1->Nodes->Add("Fornecedor: "+MatDepend[i,0]);
 				depend12->ImageIndex = 7;
 				depend12->SelectedImageIndex = 7;
 			}
