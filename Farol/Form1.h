@@ -35,6 +35,7 @@ namespace Farol {
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
 		array< String^, 2 >^ MatDepend;
+		array< int, 2 >^ MatrizInfluencia;
 
 	protected:
 		/// <summary>
@@ -865,41 +866,10 @@ private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, Syste
 private: System::Void openFileDialog1_FileOk_1(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 }
 
-private: System::Void AddNode(System::Xml::XmlNode^ inXmlNode, Windows::Forms::TreeNode^ inTreeNode)
-   {
-	  System::Xml::XmlNode ^xNode;
-      System::Windows::Forms::TreeNode ^tNode;
-	  System::Xml::XmlNodeList ^nodeList;
-      int i;
-
-      // Loop through the XML nodes until the leaf is reached.
-      // Add the nodes to the TreeView during the looping process.
-	  if (inXmlNode->HasChildNodes)
-      {
-		 nodeList = inXmlNode->ChildNodes;
-         for(i = 0; i<=nodeList->Count - 1; i++)
-         {
-            xNode = inXmlNode->ChildNodes[i];
-			System::Windows::Forms::TreeNode ^NewNode = gcnew TreeNode (xNode->Name);
-
-            inTreeNode->Nodes->Add(NewNode);
-            tNode = inTreeNode->Nodes[i];
-            AddNode(xNode, tNode);
-         }
-      }
-      else
-      {
-         // Here you need to pull the data from the XmlNode based on the
-         // type of node, whether attribute values are required, and so forth.
-         inTreeNode->Text = (inXmlNode->OuterXml)->Trim();
-      }
-   }
-
-
 //Retorna o nome da classe a partir do ID da classe fornecido
-private : System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^ id){
+private: System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^ id){
 
-			  for(int i=0; i<Mat->Length; i++)
+			  for(int i=0; i<Mat->Length/2; i++)
 			  {
 				  if(Mat[i,1]==id)
 				  {
@@ -909,17 +879,81 @@ private : System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^
 			  //TO DO: Adicionar uma exceção
 }
 
+//Retorna o número de conectores de uma classe c
+private: System::Int32 ^ getConectorsNumber(System::String ^ c)
+{
+	int conectN = 0;
+
+	for(int i=0;i<MatAssoc->Length/5;i++)
+	{
+		if(MatAssoc[i,1]==c)
+		{
+			conectN++;
+		}
+		if(MatAssoc[i,2]==c)
+		{
+			conectN++;
+		}
+	}
+
+	for(int i=0;i<MatHer->Length/2;i++)
+	{
+		if(MatHer[i,0]==c)
+		{
+			conectN++;
+		}
+		if(MatHer[i,1]==c)
+		{
+			conectN++;
+		}
+	}
+
+	for(int i=0;i<MatDepend->Length/2;i++)
+	{
+		if(MatDepend[i,0]==c)
+		{
+			conectN++;
+		}
+		if(MatDepend[i,1]==c)
+		{
+			conectN++;
+		}
+	}
+
+	return conectN;
+}
+
+private: int getContador(System::String ^classe)
+{
+	for(int i=0;i<MatClass->Length/5;i++)
+	{
+		if(MatClass[i,0]==classe)
+		{
+			return i;
+		}
+	}
+}
 
 //Retorna um valor booleano indicando se a classe é navegável ou não
-private : System::Boolean ^ isNavigable(System::String ^ nav){
+private: System::Boolean ^ isNavigable(System::String ^ nav){
 
 			  return nav->Contains("Navigable=Navigable");
 }
 
+private: int calcularFI(int i)
+{
+	int FI = 0;
+
+	for(int j=0;j<MatClass->Length/5;j++)
+	{
+		FI+=MatrizInfluencia[i,j];
+	}
+
+	return FI;
+}
 
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
-   {            
-	  
+   {  
 	  // Abre a caixa para selecionar arquivo
       // Displays an OpenFileDialog so the user can select a Cursor.
       OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog();
@@ -927,16 +961,15 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
       openFileDialog1->Title = "Selecione o arquivo XMI";
 	  System::String ^filename;
 	  bool ^Association = false;
-	  //array< String^, 2 >^ MatAssoc = gcnew array< String^, 2 >(2, 17);
-	  //MatAssoc = gcnew array< String^, 2 >(2, 17);
 
       // Show the Dialog.
       // If the user clicked OK in the dialog and
       // a .XML file was selected, open it.
       if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
       {
-         // Assign the cursor in the Stream to
-         // the Form's Cursor property.
+		  this->toolStripButton1->Enabled = false;
+
+         // Assign the cursor in the Stream to the Form's Cursor property.
 		  filename = openFileDialog1->FileName::get();
 		  try 
          {
@@ -945,6 +978,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			dom->Load(filename);
 			path = System::IO::Path::GetFullPath(filename);
 			this->label4->Text = path;
+			this->toolStripButton2->Enabled = true;
 
             // SECTION 2. Initialize the TreeView control.
 			treeView1->Nodes->Clear();
@@ -997,8 +1031,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			System::Windows::Forms::TreeNode ^depend12 = gcnew System::Windows::Forms::TreeNode;			
 			
 			//Matriz de Classes
-			//[Class_name, xmi.id]
-			MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 2);
+			//[Class_name, xmi.id, FI, tamanho, No conectores]
+			MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 5);
 
 			//Lista de tags de classes
 			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
@@ -1012,6 +1046,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 					
 					//Insere a ID de cada classe na matriz de classes
 					MatClass[i,1] = lclasses[i]->Attributes->Item(1)->InnerText;
+
+					MatClass[i,2] = (0).ToString();
 				}
 			}
 
@@ -1090,38 +1126,38 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				MatDepend[i,1] = client;
 			}
 
-			//#####################################################################################
-			//TODO: Reconhecer Fator de Influência, Tamanho e Número de Conectores para cada classe
-			//#####################################################################################
 
-			//Classes
+
+			//Reconhece Fator de Influência, Tamanho e Número de Conectores para cada classe
+
+			MatrizInfluencia = gcnew array< int, 2 >(MatClass->Length/5, MatClass->Length/5);
+
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
 			{				
-				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				int classSize = 0;
+				
+				try
 				{
-					classe = classes->Nodes->Add("Classe: "+MatClass[i,0]);
-					classe->ImageIndex = 6;
-					classe->SelectedImageIndex = 6;
-
-					classe1 = classe->Nodes->Add("Fator de Influência:");
-					classe1->ImageIndex = 7;
-					classe1->SelectedImageIndex = 7;
-
-					classe2 = classe->Nodes->Add("Tamanho:");
-					classe2->ImageIndex = 7;
-					classe2->SelectedImageIndex = 7;
-
-					classe3 = classe->Nodes->Add("Número de Conectores:");
-					classe3->ImageIndex = 7;
-					classe3->SelectedImageIndex = 7;
+					classSize = lclasses[i]->ChildNodes[1]->ChildNodes->Count;
 				}
-					
-				//TO DO: Reconhecer Fator de Influência, Tamanho e Número de Conectores para cada classe
+				catch(Exception ^e){
+				}
+
+				//Insere o tamanho de cada classe na matriz de classes
+				MatClass[i,3] = classSize.ToString(); 
+				
+				//Insere o número de conectores de cada classe na matriz de classes
+				MatClass[i,4] = getConectorsNumber(MatClass[i,0])->ToString();
 				
 			}
-			
-			classes->ImageIndex = 1;
-			classes->SelectedImageIndex = 1;
+
+			for(int i=0;i<MatClass->Length/5;i++)
+			{
+				for(int j=0;j<MatClass->Length/5;j++)
+				{
+					MatrizInfluencia[i,j] = 0;
+				}
+			}
 
 			//Associações
 			System::Windows::Forms::TreeNode ^assoc = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
@@ -1134,11 +1170,20 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			{
 				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
 				{
+					int c1 = getContador(MatAssoc[i,1]);
+					int c2 = getContador(MatAssoc[i,2]);
+
 					if(MatAssoc[i,0]=="Unspecified")
 					{
 						assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,1]+" -- "+MatAssoc[i,2]);
 						assoc1->ImageIndex = 6;
 						assoc1->SelectedImageIndex = 6;
+
+						MatClass[c1,2] = (Convert::ToInt32(MatClass[c1,2])+1-MatrizInfluencia[c1,c2]).ToString();
+						MatClass[c2,2] = (Convert::ToInt32(MatClass[c2,2])+1-MatrizInfluencia[c2,c1]).ToString();
+
+						MatrizInfluencia[c1,c2] = 1;
+						MatrizInfluencia[c2,c1] = 1;
 
 						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]+" - Navegável: "+isNavigable(MatAssoc[i,3])->ToString());
 						assoc2->ImageIndex = 7;
@@ -1150,9 +1195,26 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 					}
 					else if(MatAssoc[i,0]=="Source -> Destination")
 					{
-						assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,2]+" --> "+MatAssoc[i,1]);
-						assoc1->ImageIndex = 6;
-						assoc1->SelectedImageIndex = 6;
+						if(isNavigable(MatAssoc[i,3])->ToString()=="True")
+						{
+							assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,2]+" --> "+MatAssoc[i,1]);
+							assoc1->ImageIndex = 6;
+							assoc1->SelectedImageIndex = 6;
+
+							MatClass[c1,2] = (Convert::ToInt32(MatClass[c1,2])+1-MatrizInfluencia[c1,c2]).ToString();
+
+							MatrizInfluencia[c1,c2] = 1;
+						}
+						else
+						{
+							assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,1]+" --> "+MatAssoc[i,2]);
+							assoc1->ImageIndex = 6;
+							assoc1->SelectedImageIndex = 6;
+
+							MatClass[c2,2] = (Convert::ToInt32(MatClass[c2,2])+1-MatrizInfluencia[c2,c1]).ToString();
+
+							MatrizInfluencia[c2,c1] = 1;
+						}
 
 						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]+" - Navegável: "+isNavigable(MatAssoc[i,3])->ToString());
 						assoc2->ImageIndex = 7;
@@ -1161,7 +1223,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]+" - Navegável: "+isNavigable(MatAssoc[i,4])->ToString());
 						assoc3->ImageIndex = 7;
 						assoc3->SelectedImageIndex = 7;
-					}
+					}					
 				}
 			}
 
@@ -1177,6 +1239,9 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			{
 				for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
 				{
+					int c1 = getContador(MatAssoc[i,1]);
+					int c2 = getContador(MatAssoc[i,2]);
+
 					if(MatAssoc[i,0]=="Bi-Directional")
 					{
 						agreg1 = agreg->Nodes->Add("Associação: "+MatAssoc[i,1]+" <>-- "+MatAssoc[i,2]);
@@ -1190,6 +1255,10 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 						agreg3 = agreg1->Nodes->Add("Todo: "+MatAssoc[i,1]);
 						agreg3->ImageIndex = 7;
 						agreg3->SelectedImageIndex = 7;
+
+						MatClass[c2,2] = (Convert::ToInt32(MatClass[c2,2])+1-MatrizInfluencia[c2,c1]).ToString();
+
+						MatrizInfluencia[c2,c1] = 1;
 					}
 				}
 			}
@@ -1202,8 +1271,11 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			her->SelectedImageIndex = 4;
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
-			{				
-				her1 = her->Nodes->Add("Herança: "+MatHer[i,0]+" <|-- "+MatHer[i,1]+":");
+			{
+				int c0 = getContador(MatHer[i,0]);
+				int c1 = getContador(MatHer[i,1]);
+
+				her1 = her->Nodes->Add("Herança: "+MatHer[i,0]+" <|-- "+MatHer[i,1]);
 				her1->ImageIndex = 6;
 				her1->SelectedImageIndex = 6;
 
@@ -1214,6 +1286,10 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				her3 = her1->Nodes->Add("Filho: "+MatHer[i,1]);
 				her3->ImageIndex = 7;
 				her3->SelectedImageIndex = 7;
+
+				MatClass[c0,2] = (Convert::ToInt32(MatClass[c0,2])+1-MatrizInfluencia[c0,c1]).ToString();
+
+				MatrizInfluencia[c0,c1] = 1;
 			}
 
 			//Dependência
@@ -1225,7 +1301,10 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
 			{	
-				depend1 = depend->Nodes->Add("Dependência: "+MatDepend[i,0]+" <-- "+MatDepend[i,1]+":");
+				int c0 = getContador(MatDepend[i,0]);
+				int c1 = getContador(MatDepend[i,1]);
+
+				depend1 = depend->Nodes->Add("Dependência: "+MatDepend[i,0]+" <-- "+MatDepend[i,1]);
 				depend1->ImageIndex = 6;
 				depend1->SelectedImageIndex = 6;					
 				
@@ -1236,7 +1315,37 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				depend12 = depend1->Nodes->Add("Fornecedor: "+MatDepend[i,0]);
 				depend12->ImageIndex = 7;
 				depend12->SelectedImageIndex = 7;
+
+				MatClass[c0,2] = (Convert::ToInt32(MatClass[c0,2])+1-MatrizInfluencia[c0,c1]).ToString();
+
+				MatrizInfluencia[c0,c1] = 1;
 			}
+
+			//Classes
+			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
+			{				
+				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				{
+					classe = classes->Nodes->Add("Classe: "+MatClass[i,0]);
+					classe->ImageIndex = 6;
+					classe->SelectedImageIndex = 6;
+
+					classe1 = classe->Nodes->Add("Fator de Influência: "+ MatClass[i,2]);
+					classe1->ImageIndex = 7;
+					classe1->SelectedImageIndex = 7;
+
+					classe2 = classe->Nodes->Add("Tamanho: "+MatClass[i,3]);
+					classe2->ImageIndex = 7;
+					classe2->SelectedImageIndex = 7;
+
+					classe3 = classe->Nodes->Add("Número de Conectores: "+MatClass[i,4]);
+					classe3->ImageIndex = 7;
+					classe3->SelectedImageIndex = 7;
+				}
+			}
+			
+			classes->ImageIndex = 1;
+			classes->SelectedImageIndex = 1;
 
 			treeView1->Nodes[0]->Expand();
          }
@@ -1248,7 +1357,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
          {
 			 MessageBox::Show(ex->Message);
          }
-      }	
+      }
+	  
 }
 
 private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1287,8 +1397,14 @@ private: System::Void splitContainer2_Panel2_Paint(System::Object^  sender, Syst
 		 }
 private: System::Void label4_Click_1(System::Object^  sender, System::EventArgs^  e) {
 		 }
+
+//Procedimento que inicializa a tela para um novo modelo, ou seja, limpa os campos existentes na tela e remove objetos
 private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
+
+			 treeView1->Nodes->Clear();
+			 this->label4->Text = "";
+			 this->toolStripButton1->Enabled = true;
+			 this->toolStripButton2->Enabled = false;
 		 }
 };
 }
