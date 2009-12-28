@@ -35,6 +35,25 @@ namespace Farol {
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
 		array< String^, 2 >^ MatDepend;
+	private: System::Windows::Forms::DataGridView^  dataGridView2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column0;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public: 
 		array< int, 2 >^ MatrizInfluencia;
 
 	protected:
@@ -163,6 +182,8 @@ namespace Farol {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->funçõesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->abrirArquivoXMIToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -202,6 +223,9 @@ namespace Farol {
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->splitContainer4 = (gcnew System::Windows::Forms::SplitContainer());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column0 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->splitContainer3 = (gcnew System::Windows::Forms::SplitContainer());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
@@ -226,6 +250,8 @@ namespace Farol {
 			this->splitContainer4->Panel1->SuspendLayout();
 			this->splitContainer4->Panel2->SuspendLayout();
 			this->splitContainer4->SuspendLayout();
+			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView2))->BeginInit();
 			this->splitContainer3->Panel1->SuspendLayout();
 			this->splitContainer3->Panel2->SuspendLayout();
 			this->splitContainer3->SuspendLayout();
@@ -241,7 +267,7 @@ namespace Farol {
 				this->opçõesToolStripMenuItem, this->configuraçõesToolStripMenuItem, this->ajudaToolStripMenuItem, this->sairToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(836, 24);
+			this->menuStrip1->Size = System::Drawing::Size(853, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -385,7 +411,7 @@ namespace Farol {
 				this->toolStripSeparator5, this->toolStripButton7, this->toolStripButton8});
 			this->toolStrip1->Location = System::Drawing::Point(0, 24);
 			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(836, 46);
+			this->toolStrip1->Size = System::Drawing::Size(853, 46);
 			this->toolStrip1->TabIndex = 1;
 			this->toolStrip1->Text = L"toolStrip1";
 			this->toolStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &Form1::toolStrip1_ItemClicked);
@@ -413,6 +439,7 @@ namespace Farol {
 			this->toolStripButton3->Size = System::Drawing::Size(39, 43);
 			this->toolStripButton3->Text = L"toolStripButton1";
 			this->toolStripButton3->ToolTipText = L"Gerar Ordenação";
+			this->toolStripButton3->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
 			// 
 			// toolStripButton2
 			// 
@@ -497,11 +524,11 @@ namespace Farol {
 			// 
 			// label1
 			// 
-			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(15, 2);
+			this->label1->Location = System::Drawing::Point(16, 2);
 			this->label1->Name = L"label1";
 			this->label1->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->label1->Size = System::Drawing::Size(99, 19);
@@ -530,8 +557,8 @@ namespace Farol {
 			this->splitContainer2->Panel2->Controls->Add(this->label2);
 			this->splitContainer2->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->splitContainer2->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer2_Panel2_Paint);
-			this->splitContainer2->Size = System::Drawing::Size(836, 27);
-			this->splitContainer2->SplitterDistance = 132;
+			this->splitContainer2->Size = System::Drawing::Size(853, 27);
+			this->splitContainer2->SplitterDistance = 134;
 			this->splitContainer2->TabIndex = 3;
 			this->splitContainer2->SplitterMoved += gcnew System::Windows::Forms::SplitterEventHandler(this, &Form1::splitContainer2_SplitterMoved);
 			// 
@@ -566,7 +593,6 @@ namespace Farol {
 				| System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->splitContainer1->IsSplitterFixed = true;
 			this->splitContainer1->Location = System::Drawing::Point(0, 101);
 			this->splitContainer1->Name = L"splitContainer1";
 			// 
@@ -583,8 +609,8 @@ namespace Farol {
 			this->splitContainer1->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->splitContainer1->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer1_Panel2_Paint);
 			this->splitContainer1->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->splitContainer1->Size = System::Drawing::Size(836, 326);
-			this->splitContainer1->SplitterDistance = 231;
+			this->splitContainer1->Size = System::Drawing::Size(853, 413);
+			this->splitContainer1->SplitterDistance = 238;
 			this->splitContainer1->TabIndex = 4;
 			// 
 			// treeView1
@@ -594,7 +620,7 @@ namespace Farol {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->treeView1->Location = System::Drawing::Point(-2, -2);
 			this->treeView1->Name = L"treeView1";
-			this->treeView1->Size = System::Drawing::Size(230, 324);
+			this->treeView1->Size = System::Drawing::Size(237, 411);
 			this->treeView1->TabIndex = 0;
 			this->treeView1->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &Form1::treeView1_AfterSelect);
 			// 
@@ -606,9 +632,9 @@ namespace Farol {
 			this->groupBox2->BackColor = System::Drawing::SystemColors::Control;
 			this->groupBox2->Controls->Add(this->splitContainer4);
 			this->groupBox2->Controls->Add(this->splitContainer3);
-			this->groupBox2->Location = System::Drawing::Point(3, 0);
+			this->groupBox2->Location = System::Drawing::Point(-1, 0);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(594, 324);
+			this->groupBox2->Size = System::Drawing::Size(608, 411);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Sequência de Ordenação";
@@ -633,8 +659,8 @@ namespace Farol {
 			// splitContainer4.Panel2
 			// 
 			this->splitContainer4->Panel2->Controls->Add(this->label3);
-			this->splitContainer4->Size = System::Drawing::Size(584, 136);
-			this->splitContainer4->SplitterDistance = 97;
+			this->splitContainer4->Size = System::Drawing::Size(605, 218);
+			this->splitContainer4->SplitterDistance = 179;
 			this->splitContainer4->TabIndex = 5;
 			// 
 			// panel1
@@ -645,17 +671,77 @@ namespace Farol {
 			this->panel1->AutoSize = true;
 			this->panel1->BackColor = System::Drawing::SystemColors::Window;
 			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel1->Controls->Add(this->dataGridView2);
 			this->panel1->Location = System::Drawing::Point(-2, -2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(584, 100);
+			this->panel1->Size = System::Drawing::Size(605, 182);
 			this->panel1->TabIndex = 9;
+			// 
+			// dataGridView2
+			// 
+			this->dataGridView2->AllowUserToDeleteRows = false;
+			this->dataGridView2->AllowUserToResizeColumns = false;
+			this->dataGridView2->AllowUserToResizeRows = false;
+			this->dataGridView2->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {this->Column0, 
+				this->Column1});
+			this->dataGridView2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView2->Location = System::Drawing::Point(0, 0);
+			this->dataGridView2->Name = L"dataGridView2";
+			this->dataGridView2->ReadOnly = true;
+			this->dataGridView2->RowHeadersVisible = false;
+			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
+			this->dataGridView2->RowTemplate->ReadOnly = true;
+			this->dataGridView2->Size = System::Drawing::Size(601, 178);
+			this->dataGridView2->TabIndex = 0;
+			this->dataGridView2->Visible = false;
+			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Form1::dataGridView2_CellContentClick);
+			// 
+			// Column0
+			// 
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::Silver;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Yellow;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Silver;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::Yellow;
+			this->Column0->DefaultCellStyle = dataGridViewCellStyle1;
+			this->Column0->Frozen = true;
+			this->Column0->HeaderText = L"Classe / Iteração";
+			this->Column0->Name = L"Column0";
+			this->Column0->ReadOnly = true;
+			this->Column0->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column0->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Programmatic;
+			this->Column0->Width = 115;
+			// 
+			// Column1
+			// 
+			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::ColumnHeader;
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::LightYellow;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::LightYellow;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle2;
+			this->Column1->HeaderText = L"Valor de FI";
+			this->Column1->MinimumWidth = 83;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+			this->Column1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Programmatic;
+			this->Column1->Width = 83;
 			// 
 			// label3
 			// 
+			this->label3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(186, 3);
+			this->label3->Location = System::Drawing::Point(185, 3);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(208, 24);
 			this->label3->TabIndex = 0;
@@ -670,7 +756,7 @@ namespace Farol {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->splitContainer3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->splitContainer3->IsSplitterFixed = true;
-			this->splitContainer3->Location = System::Drawing::Point(3, 160);
+			this->splitContainer3->Location = System::Drawing::Point(3, 241);
 			this->splitContainer3->Name = L"splitContainer3";
 			// 
 			// splitContainer3.Panel1
@@ -688,22 +774,20 @@ namespace Farol {
 			this->splitContainer3->Panel2->Controls->Add(this->groupBox3);
 			this->splitContainer3->Panel2->Controls->Add(this->groupBox1);
 			this->splitContainer3->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->splitContainer3->Size = System::Drawing::Size(584, 164);
-			this->splitContainer3->SplitterDistance = 414;
+			this->splitContainer3->Size = System::Drawing::Size(605, 170);
+			this->splitContainer3->SplitterDistance = 419;
 			this->splitContainer3->TabIndex = 4;
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Window;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(-2, -2);
+			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView1->Location = System::Drawing::Point(0, 0);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(412, 162);
+			this->dataGridView1->Size = System::Drawing::Size(415, 166);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// button2
@@ -715,7 +799,7 @@ namespace Farol {
 			this->button2->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button2->Location = System::Drawing::Point(3, 135);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(158, 25);
+			this->button2->Size = System::Drawing::Size(175, 25);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"mover para baixo";
 			this->button2->UseVisualStyleBackColor = true;
@@ -729,7 +813,7 @@ namespace Farol {
 			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button1->Location = System::Drawing::Point(3, 109);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(158, 26);
+			this->button1->Size = System::Drawing::Size(175, 26);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"mover para cima";
 			this->button1->UseVisualStyleBackColor = true;
@@ -741,21 +825,19 @@ namespace Farol {
 			this->groupBox3->Controls->Add(this->panel3);
 			this->groupBox3->Location = System::Drawing::Point(3, 53);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(158, 54);
+			this->groupBox3->Size = System::Drawing::Size(175, 54);
 			this->groupBox3->TabIndex = 1;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Ordem alterada";
 			// 
 			// panel3
 			// 
-			this->panel3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
 			this->panel3->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->panel3->Location = System::Drawing::Point(2, 14);
+			this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel3->Location = System::Drawing::Point(3, 16);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(153, 36);
+			this->panel3->Size = System::Drawing::Size(169, 35);
 			this->panel3->TabIndex = 1;
 			// 
 			// groupBox1
@@ -765,7 +847,7 @@ namespace Farol {
 			this->groupBox1->Controls->Add(this->panel2);
 			this->groupBox1->Location = System::Drawing::Point(3, -1);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(158, 54);
+			this->groupBox1->Size = System::Drawing::Size(175, 54);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Ordem original";
@@ -773,14 +855,12 @@ namespace Farol {
 			// 
 			// panel2
 			// 
-			this->panel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
 			this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->panel2->Location = System::Drawing::Point(2, 14);
+			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel2->Location = System::Drawing::Point(3, 16);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(153, 37);
+			this->panel2->Size = System::Drawing::Size(169, 35);
 			this->panel2->TabIndex = 0;
 			// 
 			// openFileDialog1
@@ -790,9 +870,9 @@ namespace Farol {
 			// 
 			// statusStrip1
 			// 
-			this->statusStrip1->Location = System::Drawing::Point(0, 430);
+			this->statusStrip1->Location = System::Drawing::Point(0, 517);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(836, 22);
+			this->statusStrip1->Size = System::Drawing::Size(853, 22);
 			this->statusStrip1->TabIndex = 7;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -800,7 +880,7 @@ namespace Farol {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(836, 452);
+			this->ClientSize = System::Drawing::Size(853, 539);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->splitContainer2);
 			this->Controls->Add(this->toolStrip1);
@@ -829,6 +909,8 @@ namespace Farol {
 			this->splitContainer4->Panel2->ResumeLayout(false);
 			this->splitContainer4->Panel2->PerformLayout();
 			this->splitContainer4->ResumeLayout(false);
+			this->panel1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView2))->EndInit();
 			this->splitContainer3->Panel1->ResumeLayout(false);
 			this->splitContainer3->Panel2->ResumeLayout(false);
 			this->splitContainer3->ResumeLayout(false);
@@ -952,6 +1034,68 @@ private: int calcularFI(int i)
 	return FI;
 }
 
+private: int undefinedClasses()
+{
+	int n = 0;
+	int numClass = MatClass->Length/5;
+
+	for(int i=0;i<numClass;i++)
+	{
+		if(MatClass[i,0]->IsNullOrEmpty(MatClass[i,0]))
+		{
+			n++;
+		}
+	}
+	return n;
+}
+
+private: System::Void setFICol()
+{
+	int numClass = MatClass->Length/5;
+	int j = 0;
+
+	for(int i=0;i<numClass;i++)
+	{
+		if(j<numClass)
+		{
+			if(MatClass[j,0]->IsNullOrEmpty(MatClass[j,0]))
+			{
+				j=i+1;
+			}
+			dataGridView2->Rows[i]->Cells[1]->Value = MatClass[j,2];
+			j++;
+		}		
+	}
+
+}
+private: System::Void createTable()
+{
+	dataGridView2->Visible = true;
+	
+	int numClass = MatClass->Length/5;
+	int j = 0;
+
+	for(int n=0;n<(numClass-undefinedClasses()-1);n++)
+	{
+		dataGridView2->Rows->Add();
+	}
+
+	for(int i=0;i<numClass;i++)
+	{
+		if(j<numClass)
+		{
+			if(MatClass[j,0]->IsNullOrEmpty(MatClass[j,0]))
+			{
+				j=i+1;
+			}
+			dataGridView2->Rows[i]->Cells[0]->Value = MatClass[j,0];
+			j++;
+		}		
+	}
+
+	setFICol();
+}
+
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
    {  
 	  // Abre a caixa para selecionar arquivo
@@ -978,20 +1122,19 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			dom->Load(filename);
 			path = System::IO::Path::GetFullPath(filename);
 			this->label4->Text = path;
-			this->toolStripButton2->Enabled = true;
 
             // SECTION 2. Initialize the TreeView control.
 			treeView1->Nodes->Clear();
 
 			ImageList^ myImageList = gcnew ImageList;
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/xml.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/classe.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/associacao.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/agregacao.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/heranca.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/dependencia.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/atributo.bmp"));
-			myImageList->Images->Add(Image::FromFile("E:/Documents/Visual Studio 2008/Projects/Farol 2.0/Farol/icons/objeto.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/xml.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/classe.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/associacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/agregacao.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/heranca.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/dependencia.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/atributo.bmp"));
+			myImageList->Images->Add(Image::FromFile("./icons/objeto.bmp"));
 
 			treeView1->ImageList = myImageList;
 			// Set the TreeView control's default image and selected image indexes.
@@ -1357,6 +1500,9 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
          {
 			 MessageBox::Show(ex->Message);
          }
+
+		  this->toolStripButton2->Enabled = true;
+		  this->toolStripButton3->Enabled = true;
       }
 	  
 }
@@ -1403,8 +1549,21 @@ private: System::Void toolStripButton2_Click(System::Object^  sender, System::Ev
 
 			 treeView1->Nodes->Clear();
 			 this->label4->Text = "";
+			 this->dataGridView2->ColumnCount::set(2);
+			 this->dataGridView2->RowCount::set(1);
+			 this->dataGridView2->Rows[0]->Cells[0]->Value = "";
+			 this->dataGridView2->Rows[0]->Cells[1]->Value = "";
+			 this->dataGridView2->Visible = false;
 			 this->toolStripButton1->Enabled = true;
 			 this->toolStripButton2->Enabled = false;
+			 this->toolStripButton3->Enabled = false;
+		 }
+private: System::Void dataGridView2_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		 }
+private: System::Void toolStripButton3_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 createTable();
+			 this->toolStripButton3->Enabled = false;
 		 }
 };
 }
