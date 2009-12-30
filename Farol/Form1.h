@@ -35,6 +35,9 @@ namespace Farol {
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
 		array< String^, 2 >^ MatDepend;
+		array< int, 1 >^ FI;
+		array< int, 1 >^ LCOTI;
+		int classInt;
 	private: System::Windows::Forms::DataGridView^  dataGridView2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column0;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
@@ -920,6 +923,8 @@ namespace Farol {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+
+
 		}
 #pragma endregion
 	private: System::Void toolStripComboBox1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1005,6 +1010,17 @@ private: System::Int32 ^ getConectorsNumber(System::String ^ c)
 	return conectN;
 }
 
+private: int getTamanho(System::String ^classe)
+{
+	for(int i=0;i<MatClass->Length/5;i++)
+	{
+		if(MatClass[i,0]==classe)
+		{
+			return Convert::ToInt32(MatClass[i,3]);
+		}
+	}
+}
+
 private: int getContador(System::String ^classe)
 {
 	for(int i=0;i<MatClass->Length/5;i++)
@@ -1022,6 +1038,7 @@ private: System::Boolean ^ isNavigable(System::String ^ nav){
 			  return nav->Contains("Navigable=Navigable");
 }
 
+/*
 private: int calcularFI(int i)
 {
 	int FI = 0;
@@ -1033,7 +1050,7 @@ private: int calcularFI(int i)
 
 	return FI;
 }
-
+*/
 private: int undefinedClasses()
 {
 	int n = 0;
@@ -1062,12 +1079,326 @@ private: System::Void setFICol()
 			{
 				j=i+1;
 			}
-			dataGridView2->Rows[i]->Cells[1]->Value = MatClass[j,2];
-			j++;
-		}		
+			if(j<numClass)
+			{
+				dataGridView2->Rows[i]->Cells[1]->Value = MatClass[j,2];
+				j++;
+			}
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+private: System::Void calcularFI()
+{
+	int numClass = MatClass->Length/5;
+	FI = gcnew array< int, 1 >(numClass);
+	for(int i=0;i<numClass;i++)
+	{
+		FI[i]=0;
+		for(int j=0;j<numClass;j++)
+		{
+			FI[i]+=MatrizInfluencia[i,j];
+		}
+	//FOrdenador->Iteracao->Cells[1][i+1]=IntToStr(FI[i]);
+	}
+}
+
+private: System::String ^buscaContClasse(int ID, array< String^, 1 >^lista, int nElem){
+        bool achou=false;
+        int cont=0;
+        while(cont<nElem && !achou){
+                if(ID==getContador(lista[cont]))
+                        achou=true;
+                cont++;
+        }
+        return lista[cont-1];
+}
+
+/*************************** Procedimento que busca resolver Deadlock ***************************/
+private: System::Void deadLockCaso3(int Num, array< int, 1 >^ Classes)
+{
+	array< int, 1 >^ Tamanho = gcnew array< int, 1 >(Num);
+	int numClass = MatClass->Length/5;
+	array< String^, 1 >^lstClass = gcnew array< String^, 1 >(numClass);
+
+	for(int i=0;i<numClass;i++)
+	{
+		lstClass[i] = MatClass[i,0]; 
 	}
 
+	for(int i=0;i<Num;i++)
+	{
+		//TODO
+		//Tamanho[i]=buscaContClasse(Classes[i],lstClass,numClass)->getTamanho();
+		Tamanho[i]=getTamanho(buscaContClasse(Classes[i],lstClass,numClass));
+	}
+
+	for(int i=0;i<Num-1;i++)
+	{
+		for(int j=i+1;j<Num;j++)
+		{
+			if(Tamanho[i]>Tamanho[j])
+			{
+				int aux=Tamanho[i];
+				Tamanho[i]=Tamanho[j];
+				Tamanho[j]=aux;
+				aux=Classes[i];
+				Classes[i]=Classes[j];
+				Classes[j]=aux;
+			}
+		}
+	}
+
+	for(int i=0;i<Num;i++)
+	{
+		LCOTI[classInt]=Classes[i];
+		classInt++;
+	}
 }
+
+/*************************** Procedimento que busca resolver Deadlock ***************************/
+private: int deadLockCaso2(int Num,int numStubs,array< int, 1 >^ Classes, array< int, 1 >^ Integradas)
+{
+	array< int, 1 >^ LCD = gcnew array< int, 1 >(Num); //LCD - Lista de Classes Dependentes
+	int deadlock,menor;
+	menor=(numStubs*Num)+1;
+	deadlock=0;
+	int numClass = MatClass->Length/5;
+
+	for(int x=0;x<Num;x++)
+	{
+		if(!Integradas[Classes[x]])
+		{
+			int total=0;
+			for(int i=0;i<Num;i++)
+			{
+				if(!Integradas[Classes[i]] && i!=x)
+				{
+					for(int j=0;j<numClass;j++)
+					{
+						if(!Integradas[j] && Classes[x]!=j)
+						{
+							total+=MatrizInfluencia[j, Classes[i]];
+						}
+					}
+
+				}
+			}
+			if(total<menor)
+			{
+				menor=total;
+				deadlock=0;
+				LCD[deadlock]=Classes[x];
+			}
+			else if(total==menor)
+			{
+				deadlock++;
+    			LCD[deadlock]=Classes[x];
+			}
+		}
+	}
+	if(deadlock==0)
+	{
+		LCOTI[classInt]=LCD[0];
+		//Integradas[classInt]=LCD[0];
+		Integradas[LCD[0]]=1;
+		classInt++;
+	}
+	else
+	{
+		deadLockCaso3(deadlock+1,LCD);
+		for(int x=0;x<=deadlock;x++)
+		{
+			Integradas[LCD[x]]=1;
+		}
+	}
+	return (deadlock+1); //nova linha
+}
+
+/*************************** Procedimento que busca resolver Deadlock ***************************/
+private: System::Void resolverDeadlock(int Num,array< int, 1 >^ Classes, array< int, 1 >^ Integradas)
+{
+	array< int, 1 >^ NumStubs = gcnew array< int, 1 >(Num);
+	array< int, 1 >^ LCD = gcnew array< int, 1 >(Num); //LCD - Lista de Classes Dependentes
+	int menor, deadlock, tot;
+	int numClass = MatClass->Length/5;
+	
+
+	for(int i=0;i<Num;i++)
+	{
+		NumStubs[i]=0;
+	}
+	tot=0;
+	while(tot<Num)
+	{
+		menor = numClass*numClass;
+		deadlock=0;
+
+		for(int i=0;i<Num;i++)
+		{
+			if(!Integradas[Classes[i]])
+			{
+				for(int j=0;j<numClass;j++)
+				{
+					if(!Integradas[j])
+					{
+						NumStubs[i]+=MatrizInfluencia[j, Classes[i]];
+					}
+				}
+
+				if(NumStubs[i]<menor)
+				{
+					menor=NumStubs[i];
+					deadlock=0;
+					LCD[deadlock]=Classes[i];
+				}
+				else if(NumStubs[i]==menor)
+				{
+					deadlock++;
+    				LCD[deadlock]=Classes[i];
+				}
+			}
+		}
+		if(deadlock==0)
+		{
+			LCOTI[classInt]=LCD[0];
+			//Integradas[classInt]=LCD[0];
+			Integradas[LCD[0]]=1;
+			classInt++;
+			tot++;
+		}
+		else
+		{
+			int clas = deadLockCaso2(deadlock+1,menor,LCD,Integradas);
+			tot+=clas;
+		}
+	}
+}
+
+/************************ Funcao que marca as classes que possuem FI nulo ***********************/
+private: int marcarFInulo(array< int, 1 >^ LCOTI, array< int, 1 >^ ListaUltimos)
+{
+	int numClass = MatClass->Length/5;
+	FI = gcnew array< int, 1 >(numClass);
+
+	for(int i=0;i<numClass;i++)
+	{
+		FI[i]=0;
+		for(int j=0;j<numClass;j++)
+		{
+			FI[i]+=MatrizInfluencia[i,j];
+		}
+	//FOrdenador->Iteracao->Cells[1][i+1]=IntToStr(FI[i]);
+	}
+	int cont=0;
+	//int numClass = MatClass->Length/5;
+	//LCOTI = Lista de Classes Ordenadas Integradas
+	for(int i=0;i<numClass;i++)
+	{
+		if(!FI[i])
+		{
+			LCOTI[i] = 1;
+			ListaUltimos[cont] = i;
+			cont++;
+		}
+	}
+	return cont;
+}
+
+private: System::Void ordemIntegrar()
+{
+	classInt = 0;
+	int numClass = MatClass->Length/5;
+	array< int, 1 >^ ListaClassesIntegradas = gcnew array< int, 1 >(numClass);
+	array< int, 1 >^ ListaUltimos = gcnew array< int, 1 >(numClass);
+	array< int, 1 >^ ListaDeadLock = gcnew array< int, 1 >(numClass);
+	int menor,total,classeMenor,NumClasInteg,deadlock,totUltimos;
+
+	for(int i=0;i<numClass;i++)
+	{
+		ListaClassesIntegradas[i]=0;
+	}
+
+	totUltimos = marcarFInulo(ListaClassesIntegradas,ListaUltimos);
+
+	NumClasInteg = totUltimos;
+	int it=1;
+
+	while(NumClasInteg<numClass)
+	{
+		it++;
+		if(dataGridView2->Columns->Count<=it)
+		{
+			dataGridView2->ColumnCount = it + 1;
+			dataGridView2->Columns[it]->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridView2->Columns[it]->DefaultCellStyle->BackColor = System::Drawing::Color::LightYellow;
+		}
+
+		dataGridView2->Columns[it]->HeaderText = "FIT Iteração "+Convert::ToString(it-1);
+		menor=numClass*numClass;
+		deadlock=0;
+		for(int i=0;i<(numClass-undefinedClasses()); i++)
+		{
+			if(!ListaClassesIntegradas[i])
+			{
+				total=0;
+				for(int j=0; j<numClass; j++)
+				{
+					if(!ListaClassesIntegradas[j])
+					{
+						total+=MatrizInfluencia[j,i]*FI[j];
+					}
+				}
+				dataGridView2->Rows[i]->Cells[it]->Value = Convert::ToString(total);
+					
+				if(total<menor)
+				{
+					menor=total;
+					deadlock=0;
+					ListaDeadLock[deadlock]=i;
+				}
+				else if(total==menor)
+				{
+					deadlock++;
+					ListaDeadLock[deadlock]=i;
+				}
+			}
+		   else
+		   {
+			   //FOrdenador->Iteracao->Cells[it][i+1]="-";
+			   dataGridView2->Rows[i]->Cells[it]->Value = "-"; 
+		   }
+		}
+		if(NumClasInteg<numClass)
+		{
+			if(deadlock==0)
+			{
+				LCOTI[classInt] = ListaDeadLock[0];
+				//ListaClassesIntegradas[classInt] = ListaDeadLock[0];
+				classInt++;
+				ListaClassesIntegradas[ListaDeadLock[0]]=1;
+			}
+			else
+			{
+				resolverDeadlock(deadlock+1,ListaDeadLock,ListaClassesIntegradas);
+			}
+			 NumClasInteg+=deadlock+1;
+		}
+
+	}
+
+	for(int i=0;i<totUltimos; i++)
+	{
+		LCOTI[classInt]=ListaUltimos[i];
+		//ListaClassesIntegradas[classInt]=ListaUltimos[i];
+		classInt++;
+	}
+}
+
 private: System::Void createTable()
 {
 	dataGridView2->Visible = true;
@@ -1088,12 +1419,22 @@ private: System::Void createTable()
 			{
 				j=i+1;
 			}
-			dataGridView2->Rows[i]->Cells[0]->Value = MatClass[j,0];
-			j++;
-		}		
+			if(j<numClass)
+			{
+				dataGridView2->Rows[i]->Cells[0]->Value = MatClass[j,0];
+				j++;
+			}
+		}
+		else
+		{
+			break;
+		}
 	}
 
+	LCOTI = gcnew array< int, 1 >(numClass);
 	setFICol();
+	calcularFI();
+	ordemIntegrar();
 }
 
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
@@ -1178,6 +1519,9 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 5);
 
 			//Lista de tags de classes
+			//System::Xml::XmlNamespaceManager^ nsmgr = gcnew System::Xml::XmlNamespaceManager(dom->NameTable);
+			//nsmgr->AddNamespace("", "omg.org/UML1.3");
+			//System::Xml::XmlNodeList ^lclasses = dom->SelectNodes("/XMI/XMI.content/'UML:Model'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Class'",nsmgr);
 			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
 
 			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
