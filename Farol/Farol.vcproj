@@ -239,14 +239,6 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\..\Farol\Class.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Farol\Conector.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Form1.h"
 				FileType="3"
 				>
@@ -265,10 +257,6 @@
 					SubType="Designer"
 					>
 				</File>
-			</File>
-			<File
-				RelativePath=".\Modelo.h"
-				>
 			</File>
 			<File
 				RelativePath=".\resource.h"
