@@ -35,12 +35,28 @@ namespace Farol {
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
 		array< String^, 2 >^ MatDepend;
+		array< String^, 1 >^ lstClass;
 		array< int, 1 >^ FI;
 		array< int, 1 >^ LCOTI;
+		int numClass;
 		int classInt;
+		int NumStubsOriginal;
+		int NumStubsAtual;
+		int ComplexidadeOriginal;
+		int ComplexidadeAtual;
 	private: System::Windows::Forms::DataGridView^  dataGridView2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column0;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+
+
+
+
+	private: System::Windows::Forms::Panel^  panel3;
+	private: System::Windows::Forms::DataGridView^  dataGridView3;
+	private: System::Windows::Forms::Panel^  panel2;
+	private: System::Windows::Forms::DataGridView^  dataGridView4;
+
+
 
 
 
@@ -139,8 +155,8 @@ namespace Farol {
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::GroupBox^  groupBox3;
-	private: System::Windows::Forms::Panel^  panel2;
-	private: System::Windows::Forms::Panel^  panel3;
+
+
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::TreeView^  treeView1;
 	private: System::Windows::Forms::Label^  label4;
@@ -187,6 +203,8 @@ namespace Farol {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->funçõesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->abrirArquivoXMIToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -236,8 +254,10 @@ namespace Farol {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView4 = (gcnew System::Windows::Forms::DataGridView());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
@@ -260,7 +280,11 @@ namespace Farol {
 			this->splitContainer3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
 			this->groupBox3->SuspendLayout();
+			this->panel3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView3))->BeginInit();
 			this->groupBox1->SuspendLayout();
+			this->panel2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView4))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -270,7 +294,7 @@ namespace Farol {
 				this->opçõesToolStripMenuItem, this->configuraçõesToolStripMenuItem, this->ajudaToolStripMenuItem, this->sairToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(853, 24);
+			this->menuStrip1->Size = System::Drawing::Size(874, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -414,7 +438,7 @@ namespace Farol {
 				this->toolStripSeparator5, this->toolStripButton7, this->toolStripButton8});
 			this->toolStrip1->Location = System::Drawing::Point(0, 24);
 			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(853, 46);
+			this->toolStrip1->Size = System::Drawing::Size(874, 46);
 			this->toolStrip1->TabIndex = 1;
 			this->toolStrip1->Text = L"toolStrip1";
 			this->toolStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &Form1::toolStrip1_ItemClicked);
@@ -531,7 +555,7 @@ namespace Farol {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(16, 2);
+			this->label1->Location = System::Drawing::Point(17, 2);
 			this->label1->Name = L"label1";
 			this->label1->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->label1->Size = System::Drawing::Size(99, 19);
@@ -560,8 +584,8 @@ namespace Farol {
 			this->splitContainer2->Panel2->Controls->Add(this->label2);
 			this->splitContainer2->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->splitContainer2->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer2_Panel2_Paint);
-			this->splitContainer2->Size = System::Drawing::Size(853, 27);
-			this->splitContainer2->SplitterDistance = 134;
+			this->splitContainer2->Size = System::Drawing::Size(874, 27);
+			this->splitContainer2->SplitterDistance = 137;
 			this->splitContainer2->TabIndex = 3;
 			this->splitContainer2->SplitterMoved += gcnew System::Windows::Forms::SplitterEventHandler(this, &Form1::splitContainer2_SplitterMoved);
 			// 
@@ -612,8 +636,8 @@ namespace Farol {
 			this->splitContainer1->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->splitContainer1->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer1_Panel2_Paint);
 			this->splitContainer1->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->splitContainer1->Size = System::Drawing::Size(853, 413);
-			this->splitContainer1->SplitterDistance = 238;
+			this->splitContainer1->Size = System::Drawing::Size(874, 439);
+			this->splitContainer1->SplitterDistance = 243;
 			this->splitContainer1->TabIndex = 4;
 			// 
 			// treeView1
@@ -623,7 +647,7 @@ namespace Farol {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->treeView1->Location = System::Drawing::Point(-2, -2);
 			this->treeView1->Name = L"treeView1";
-			this->treeView1->Size = System::Drawing::Size(237, 411);
+			this->treeView1->Size = System::Drawing::Size(242, 437);
 			this->treeView1->TabIndex = 0;
 			this->treeView1->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &Form1::treeView1_AfterSelect);
 			// 
@@ -637,7 +661,7 @@ namespace Farol {
 			this->groupBox2->Controls->Add(this->splitContainer3);
 			this->groupBox2->Location = System::Drawing::Point(-1, 0);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(608, 411);
+			this->groupBox2->Size = System::Drawing::Size(624, 437);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Sequência de Ordenação";
@@ -662,7 +686,7 @@ namespace Farol {
 			// splitContainer4.Panel2
 			// 
 			this->splitContainer4->Panel2->Controls->Add(this->label3);
-			this->splitContainer4->Size = System::Drawing::Size(605, 218);
+			this->splitContainer4->Size = System::Drawing::Size(621, 218);
 			this->splitContainer4->SplitterDistance = 179;
 			this->splitContainer4->TabIndex = 5;
 			// 
@@ -677,12 +701,13 @@ namespace Farol {
 			this->panel1->Controls->Add(this->dataGridView2);
 			this->panel1->Location = System::Drawing::Point(-2, -2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(605, 182);
+			this->panel1->Size = System::Drawing::Size(621, 182);
 			this->panel1->TabIndex = 9;
 			// 
 			// dataGridView2
 			// 
 			this->dataGridView2->AllowUserToDeleteRows = false;
+			this->dataGridView2->AllowUserToOrderColumns = true;
 			this->dataGridView2->AllowUserToResizeColumns = false;
 			this->dataGridView2->AllowUserToResizeRows = false;
 			this->dataGridView2->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -696,7 +721,7 @@ namespace Farol {
 			this->dataGridView2->RowHeadersVisible = false;
 			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
 			this->dataGridView2->RowTemplate->ReadOnly = true;
-			this->dataGridView2->Size = System::Drawing::Size(601, 178);
+			this->dataGridView2->Size = System::Drawing::Size(617, 178);
 			this->dataGridView2->TabIndex = 0;
 			this->dataGridView2->Visible = false;
 			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Form1::dataGridView2_CellContentClick);
@@ -716,7 +741,6 @@ namespace Farol {
 			this->Column0->Name = L"Column0";
 			this->Column0->ReadOnly = true;
 			this->Column0->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->Column0->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Programmatic;
 			this->Column0->Width = 115;
 			// 
 			// Column1
@@ -735,7 +759,6 @@ namespace Farol {
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
 			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
-			this->Column1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Programmatic;
 			this->Column1->Width = 83;
 			// 
 			// label3
@@ -744,7 +767,7 @@ namespace Farol {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(185, 3);
+			this->label3->Location = System::Drawing::Point(193, 3);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(208, 24);
 			this->label3->TabIndex = 0;
@@ -777,20 +800,22 @@ namespace Farol {
 			this->splitContainer3->Panel2->Controls->Add(this->groupBox3);
 			this->splitContainer3->Panel2->Controls->Add(this->groupBox1);
 			this->splitContainer3->Panel2->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->splitContainer3->Size = System::Drawing::Size(605, 170);
-			this->splitContainer3->SplitterDistance = 419;
+			this->splitContainer3->Size = System::Drawing::Size(621, 196);
+			this->splitContainer3->SplitterDistance = 430;
 			this->splitContainer3->TabIndex = 4;
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AllowUserToOrderColumns = true;
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Window;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(415, 166);
+			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->Size = System::Drawing::Size(426, 192);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// button2
@@ -800,9 +825,9 @@ namespace Farol {
 			this->button2->Enabled = false;
 			this->button2->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"button2.Image")));
 			this->button2->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button2->Location = System::Drawing::Point(3, 135);
+			this->button2->Location = System::Drawing::Point(0, 167);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(175, 25);
+			this->button2->Size = System::Drawing::Size(183, 25);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"mover para baixo";
 			this->button2->UseVisualStyleBackColor = true;
@@ -814,9 +839,9 @@ namespace Farol {
 			this->button1->Enabled = false;
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"button1.Image")));
 			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button1->Location = System::Drawing::Point(3, 109);
+			this->button1->Location = System::Drawing::Point(0, 141);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(175, 26);
+			this->button1->Size = System::Drawing::Size(183, 26);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"mover para cima";
 			this->button1->UseVisualStyleBackColor = true;
@@ -826,31 +851,49 @@ namespace Farol {
 			this->groupBox3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->groupBox3->Controls->Add(this->panel3);
-			this->groupBox3->Location = System::Drawing::Point(3, 53);
+			this->groupBox3->Location = System::Drawing::Point(3, 70);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(175, 54);
+			this->groupBox3->Size = System::Drawing::Size(180, 69);
 			this->groupBox3->TabIndex = 1;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Ordem alterada";
 			// 
 			// panel3
 			// 
-			this->panel3->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->panel3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel3->Controls->Add(this->dataGridView3);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel3->Location = System::Drawing::Point(3, 16);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(169, 35);
+			this->panel3->Size = System::Drawing::Size(174, 50);
 			this->panel3->TabIndex = 1;
+			// 
+			// dataGridView3
+			// 
+			this->dataGridView3->AllowUserToAddRows = false;
+			this->dataGridView3->AllowUserToDeleteRows = false;
+			this->dataGridView3->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView3->Location = System::Drawing::Point(0, 0);
+			this->dataGridView3->Name = L"dataGridView3";
+			this->dataGridView3->ReadOnly = true;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::Black;
+			this->dataGridView3->RowsDefaultCellStyle = dataGridViewCellStyle3;
+			this->dataGridView3->Size = System::Drawing::Size(170, 46);
+			this->dataGridView3->TabIndex = 0;
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->groupBox1->Controls->Add(this->panel2);
-			this->groupBox1->Location = System::Drawing::Point(3, -1);
+			this->groupBox1->Location = System::Drawing::Point(3, 1);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(175, 54);
+			this->groupBox1->Size = System::Drawing::Size(180, 69);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Ordem original";
@@ -858,13 +901,31 @@ namespace Farol {
 			// 
 			// panel2
 			// 
-			this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->panel2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel2->Controls->Add(this->dataGridView4);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel2->Location = System::Drawing::Point(3, 16);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(169, 35);
+			this->panel2->Size = System::Drawing::Size(174, 50);
 			this->panel2->TabIndex = 0;
+			// 
+			// dataGridView4
+			// 
+			this->dataGridView4->AllowUserToAddRows = false;
+			this->dataGridView4->AllowUserToDeleteRows = false;
+			this->dataGridView4->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView4->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView4->Location = System::Drawing::Point(0, 0);
+			this->dataGridView4->Name = L"dataGridView4";
+			this->dataGridView4->ReadOnly = true;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Black;
+			this->dataGridView4->RowsDefaultCellStyle = dataGridViewCellStyle4;
+			this->dataGridView4->Size = System::Drawing::Size(170, 46);
+			this->dataGridView4->TabIndex = 1;
 			// 
 			// openFileDialog1
 			// 
@@ -873,9 +934,9 @@ namespace Farol {
 			// 
 			// statusStrip1
 			// 
-			this->statusStrip1->Location = System::Drawing::Point(0, 517);
+			this->statusStrip1->Location = System::Drawing::Point(0, 543);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(853, 22);
+			this->statusStrip1->Size = System::Drawing::Size(874, 22);
 			this->statusStrip1->TabIndex = 7;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -883,7 +944,7 @@ namespace Farol {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(853, 539);
+			this->ClientSize = System::Drawing::Size(874, 565);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->splitContainer2);
 			this->Controls->Add(this->toolStrip1);
@@ -919,11 +980,13 @@ namespace Farol {
 			this->splitContainer3->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
 			this->groupBox3->ResumeLayout(false);
+			this->panel3->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView3))->EndInit();
 			this->groupBox1->ResumeLayout(false);
+			this->panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView4))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
-
 
 		}
 #pragma endregion
@@ -1012,7 +1075,8 @@ private: System::Int32 ^ getConectorsNumber(System::String ^ c)
 
 private: int getTamanho(System::String ^classe)
 {
-	for(int i=0;i<MatClass->Length/5;i++)
+	//for(int i=0;i<MatClass->Length/5;i++)
+	for(int i=0;i<numClass;i++)
 	{
 		if(MatClass[i,0]==classe)
 		{
@@ -1038,23 +1102,62 @@ private: System::Boolean ^ isNavigable(System::String ^ nav){
 			  return nav->Contains("Navigable=Navigable");
 }
 
-/*
-private: int calcularFI(int i)
+private: System::Void updateMatClass()
 {
-	int FI = 0;
+	//int numClass = MatClass->Length/5;
+	int undef = 0;
+	bool onlyLastOne = true;
 
-	for(int j=0;j<MatClass->Length/5;j++)
+	//TODO: Verificar o parâmetro Tamanho das classes
+	for(int i=0;i<numClass;i++)
 	{
-		FI+=MatrizInfluencia[i,j];
-	}
+		//if(MatClass[i,0]=="<undefined>")
+		if(String::IsNullOrEmpty(MatClass[i,0]) || MatClass[i,0]=="<undefined>")
+		{
+			undef++;
+			if(i==numClass-1 && onlyLastOne)
+			{
+				for(int k=0;k<5;k++)
+				{
+					MatClass[i,k]=String::Empty;
+				}
+			}
+			else
+			{
+				for(int j=i;j<numClass-1;j++)
+				{
+					for(int k=0;k<5;k++)
+					{
+						MatClass[j,k]=MatClass[j+1,k];
+					}
+					if(j==numClass-2)
+					{
+						for(int k=0;k<5;k++)
+						{
+							MatClass[j+1,k] = String::Empty;
+						}
+					}
+					
+				}
+				onlyLastOne = false;
+			}
 
-	return FI;
+		}
+	}
+	if(onlyLastOne)
+	{
+		numClass=numClass-(undef);
+	}
+	else
+	{
+		numClass=numClass-(undef-1);
+	}
 }
-*/
+
 private: int undefinedClasses()
 {
 	int n = 0;
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 
 	for(int i=0;i<numClass;i++)
 	{
@@ -1068,7 +1171,7 @@ private: int undefinedClasses()
 
 private: System::Void setFICol()
 {
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 	int j = 0;
 
 	for(int i=0;i<numClass;i++)
@@ -1094,7 +1197,7 @@ private: System::Void setFICol()
 
 private: System::Void calcularFI()
 {
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 	FI = gcnew array< int, 1 >(numClass);
 	for(int i=0;i<numClass;i++)
 	{
@@ -1122,8 +1225,8 @@ private: System::String ^buscaContClasse(int ID, array< String^, 1 >^lista, int 
 private: System::Void deadLockCaso3(int Num, array< int, 1 >^ Classes)
 {
 	array< int, 1 >^ Tamanho = gcnew array< int, 1 >(Num);
-	int numClass = MatClass->Length/5;
-	array< String^, 1 >^lstClass = gcnew array< String^, 1 >(numClass);
+	//int numClass = MatClass->Length/5;
+	lstClass = gcnew array< String^, 1 >(numClass);
 
 	for(int i=0;i<numClass;i++)
 	{
@@ -1132,7 +1235,6 @@ private: System::Void deadLockCaso3(int Num, array< int, 1 >^ Classes)
 
 	for(int i=0;i<Num;i++)
 	{
-		//TODO
 		//Tamanho[i]=buscaContClasse(Classes[i],lstClass,numClass)->getTamanho();
 		Tamanho[i]=getTamanho(buscaContClasse(Classes[i],lstClass,numClass));
 	}
@@ -1167,7 +1269,7 @@ private: int deadLockCaso2(int Num,int numStubs,array< int, 1 >^ Classes, array<
 	int deadlock,menor;
 	menor=(numStubs*Num)+1;
 	deadlock=0;
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 
 	for(int x=0;x<Num;x++)
 	{
@@ -1225,7 +1327,7 @@ private: System::Void resolverDeadlock(int Num,array< int, 1 >^ Classes, array< 
 	array< int, 1 >^ NumStubs = gcnew array< int, 1 >(Num);
 	array< int, 1 >^ LCD = gcnew array< int, 1 >(Num); //LCD - Lista de Classes Dependentes
 	int menor, deadlock, tot;
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 	
 
 	for(int i=0;i<Num;i++)
@@ -1282,7 +1384,7 @@ private: System::Void resolverDeadlock(int Num,array< int, 1 >^ Classes, array< 
 /************************ Funcao que marca as classes que possuem FI nulo ***********************/
 private: int marcarFInulo(array< int, 1 >^ LCOTI, array< int, 1 >^ ListaUltimos)
 {
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 	FI = gcnew array< int, 1 >(numClass);
 
 	for(int i=0;i<numClass;i++)
@@ -1309,10 +1411,98 @@ private: int marcarFInulo(array< int, 1 >^ LCOTI, array< int, 1 >^ ListaUltimos)
 	return cont;
 }
 
+private: int calcularStubs()
+{
+	array< int, 1 >^ Integrar = gcnew array< int, 1 >(numClass);
+	int Resp = 0;
+
+	for(int i=0;i<numClass;i++)
+	{
+		Integrar[i]=0;
+	}
+
+	for(int i=0;i<numClass;i++)
+	{
+		for(int j=0;j<numClass;j++)
+		{
+			if(!Integrar[j])
+			{
+				Resp+=MatrizInfluencia[j,LCOTI[i]];
+			}
+		}
+		Integrar[LCOTI[i]]=1;
+	}
+	return Resp;
+}
+
+private: int calcularComplexidade()
+{
+	array< int, 1 >^ Integrar = gcnew array< int, 1 >(numClass);
+	int Resp = 0;
+
+	for(int i=0;i<numClass;i++)
+	{
+		Integrar[i]=0;
+	}
+
+	for(int i=0;i<numClass;i++)
+	{
+		for(int j=0;j<numClass;j++)
+		{
+			if(!Integrar[j])
+			{
+				Resp+=(MatrizInfluencia[j,LCOTI[i]]*getTamanho(lstClass[j]));
+			}
+		}
+		Integrar[LCOTI[i]]=1;
+	}
+	return Resp;
+}
+
+int getNumStubsOriginal()
+{
+	return(NumStubsOriginal);
+}
+//---------------------------------------------------------------------------
+void setNumStubsOriginal(int num)
+{
+	NumStubsOriginal=num;
+}
+//---------------------------------------------------------------------------
+int getNumStubsAtual()
+{
+	return(NumStubsAtual);
+}
+//---------------------------------------------------------------------------
+void setNumStubsAtual(int num)
+{
+	NumStubsAtual=num;
+}
+//---------------------------------------------------------------------------
+int getComplexidadeAtual()
+{
+	return(ComplexidadeAtual);
+}
+//---------------------------------------------------------------------------
+void setComplexidadeAtual(int num)
+{
+	ComplexidadeAtual=num;
+}
+//---------------------------------------------------------------------------
+int getComplexidadeOriginal()
+{
+	return(ComplexidadeOriginal);
+}
+//---------------------------------------------------------------------------
+void setComplexidadeOriginal(int num)
+{
+	ComplexidadeOriginal=num;
+}
+
 private: System::Void ordemIntegrar()
 {
 	classInt = 0;
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 	array< int, 1 >^ ListaClassesIntegradas = gcnew array< int, 1 >(numClass);
 	array< int, 1 >^ ListaUltimos = gcnew array< int, 1 >(numClass);
 	array< int, 1 >^ ListaDeadLock = gcnew array< int, 1 >(numClass);
@@ -1403,7 +1593,7 @@ private: System::Void createTable()
 {
 	dataGridView2->Visible = true;
 	
-	int numClass = MatClass->Length/5;
+	//int numClass = MatClass->Length/5;
 	int j = 0;
 
 	for(int n=0;n<(numClass-undefinedClasses()-1);n++)
@@ -1435,6 +1625,33 @@ private: System::Void createTable()
 	setFICol();
 	calcularFI();
 	ordemIntegrar();
+	setNumStubsOriginal(calcularStubs());
+	setNumStubsAtual(getNumStubsOriginal());
+	setComplexidadeOriginal(calcularComplexidade());
+	setComplexidadeAtual(getComplexidadeOriginal());
+	
+	dataGridView3->RowCount::set(1);
+	dataGridView3->ColumnCount::set(2);
+	dataGridView3->RowHeadersVisible = false;
+	dataGridView3->Columns[0]->HeaderText = "Total Stubs";
+	dataGridView3->Columns[1]->HeaderText = "Tamanho";
+	dataGridView3->Columns[0]->Width = 90;
+	dataGridView3->Columns[1]->Width = 76;
+
+	dataGridView4->RowCount::set(1);
+	dataGridView4->ColumnCount::set(2);
+	dataGridView4->RowHeadersVisible = false;
+	dataGridView4->Columns[0]->HeaderText = "Total Stubs";
+	dataGridView4->Columns[1]->HeaderText = "Tamanho";
+	dataGridView4->Columns[0]->Width = 90;
+	dataGridView4->Columns[1]->Width = 76;
+
+	dataGridView3->Rows[0]->Cells[0]->Value = getNumStubsOriginal();
+	dataGridView3->Rows[0]->Cells[1]->Value = getComplexidadeOriginal();
+	dataGridView4->Rows[0]->Cells[0]->Value = getNumStubsAtual();
+	dataGridView4->Rows[0]->Cells[1]->Value = getComplexidadeAtual();
+
+
 }
 
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
@@ -1486,6 +1703,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			root->SelectedImageIndex = 0;
 
 			treeView1->Nodes->Add("Modelo: "+root->Text);
+
+			numClass = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;
 			
 			//Classes
 			System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
@@ -1516,7 +1735,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			
 			//Matriz de Classes
 			//[Class_name, xmi.id, FI, tamanho, No conectores]
-			MatClass = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count, 5);
+			MatClass = gcnew array< String^, 2 >(numClass, 5);
 
 			//Lista de tags de classes
 			//System::Xml::XmlNamespaceManager^ nsmgr = gcnew System::Xml::XmlNamespaceManager(dom->NameTable);
@@ -1524,10 +1743,12 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			//System::Xml::XmlNodeList ^lclasses = dom->SelectNodes("/XMI/XMI.content/'UML:Model'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Class'",nsmgr);
 			System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
 
-			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
+
+			//TODO: Verificar como retirar classe <undefined> da lclasses antes de pegar valores da lclasses
+			for(int i=0; i<numClass;i++)
 			{				
-				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
-				{
+				//if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				//{
 					//Insere o nome de cada classe na matriz de classes
 					MatClass[i,0] = lclasses[i]->Attributes->Item(0)->InnerText;
 					
@@ -1535,8 +1756,9 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 					MatClass[i,1] = lclasses[i]->Attributes->Item(1)->InnerText;
 
 					MatClass[i,2] = (0).ToString();
-				}
+				//}
 			}
+			
 
 			//Matriz de Associações e Composição/Agregação
 			//[direction, source, target, src_isNavigable, tgt_isNavigable]
@@ -1593,7 +1815,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				String ^client;
 				String ^supplier;
 
-				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
+				for(int j=0; j<numClass; j++)
 				{
 				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(0)->InnerText)
 				  {
@@ -1601,7 +1823,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				  }
 				}
 
-				for(int j=0; j<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count; j++)
+				for(int j=0; j<numClass; j++)
 				{
 				  if(MatClass[j,1]==ldepend[i]->Attributes->Item(1)->InnerText)
 				  {
@@ -1617,30 +1839,41 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			//Reconhece Fator de Influência, Tamanho e Número de Conectores para cada classe
 
-			MatrizInfluencia = gcnew array< int, 2 >(MatClass->Length/5, MatClass->Length/5);
-
-			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
+			int j = 0;
+			for(int i=0; i<numClass;i++)
 			{				
-				int classSize = 0;
 				
-				try
-				{
-					classSize = lclasses[i]->ChildNodes[1]->ChildNodes->Count;
-				}
-				catch(Exception ^e){
-				}
 
-				//Insere o tamanho de cada classe na matriz de classes
-				MatClass[i,3] = classSize.ToString(); 
 				
-				//Insere o número de conectores de cada classe na matriz de classes
-				MatClass[i,4] = getConectorsNumber(MatClass[i,0])->ToString();
-				
+				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				{
+					
+					int classSize = 0;
+			
+					try
+					{
+						classSize = lclasses[i]["UML:Classifier.feature"]->ChildNodes->Count;
+					}
+					catch(Exception ^e){
+					}
+
+					//Insere o tamanho de cada classe na matriz de classes
+					MatClass[i,3] = classSize.ToString(); 
+					
+					//Insere o número de conectores de cada classe na matriz de classes
+					MatClass[i,4] = getConectorsNumber(MatClass[i,0])->ToString();
+				}
+						
+					
 			}
 
-			for(int i=0;i<MatClass->Length/5;i++)
+			updateMatClass();
+
+			MatrizInfluencia = gcnew array< int, 2 >(numClass, numClass);
+
+			for(int i=0;i<numClass;i++)
 			{
-				for(int j=0;j<MatClass->Length/5;j++)
+				for(int j=0;j<numClass;j++)
 				{
 					MatrizInfluencia[i,j] = 0;
 				}
@@ -1809,10 +2042,10 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			}
 
 			//Classes
-			for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;i++)
+			for(int i=0; i<numClass;i++)
 			{				
-				if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
-				{
+				//if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
+				//{
 					classe = classes->Nodes->Add("Classe: "+MatClass[i,0]);
 					classe->ImageIndex = 6;
 					classe->SelectedImageIndex = 6;
@@ -1828,7 +2061,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 					classe3 = classe->Nodes->Add("Número de Conectores: "+MatClass[i,4]);
 					classe3->ImageIndex = 7;
 					classe3->SelectedImageIndex = 7;
-				}
+				//}
 			}
 			
 			classes->ImageIndex = 1;
