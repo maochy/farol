@@ -201,10 +201,12 @@ namespace Farol {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->funçõesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->abrirArquivoXMIToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -716,10 +718,12 @@ namespace Farol {
 				this->Column1});
 			this->dataGridView2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView2->Location = System::Drawing::Point(0, 0);
+			this->dataGridView2->MultiSelect = false;
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->ReadOnly = true;
 			this->dataGridView2->RowHeadersVisible = false;
 			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
+			this->dataGridView2->RowsDefaultCellStyle = dataGridViewCellStyle3;
 			this->dataGridView2->RowTemplate->ReadOnly = true;
 			this->dataGridView2->Size = System::Drawing::Size(617, 178);
 			this->dataGridView2->TabIndex = 0;
@@ -787,7 +791,7 @@ namespace Farol {
 			// 
 			// splitContainer3.Panel1
 			// 
-			this->splitContainer3->Panel1->BackColor = System::Drawing::SystemColors::Control;
+			this->splitContainer3->Panel1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->splitContainer3->Panel1->Controls->Add(this->dataGridView1);
 			this->splitContainer3->Panel1->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->splitContainer3->Panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::splitContainer3_Panel1_Paint);
@@ -809,12 +813,19 @@ namespace Farol {
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->AllowUserToOrderColumns = true;
+			this->dataGridView1->AllowUserToResizeColumns = false;
+			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Window;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->ColumnHeadersVisible = false;
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->RowHeadersVisible = false;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle4;
 			this->dataGridView1->Size = System::Drawing::Size(426, 192);
 			this->dataGridView1->TabIndex = 0;
 			// 
@@ -873,18 +884,22 @@ namespace Farol {
 			// 
 			this->dataGridView3->AllowUserToAddRows = false;
 			this->dataGridView3->AllowUserToDeleteRows = false;
+			this->dataGridView3->AllowUserToResizeColumns = false;
+			this->dataGridView3->AllowUserToResizeRows = false;
 			this->dataGridView3->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView3->Enabled = false;
 			this->dataGridView3->Location = System::Drawing::Point(0, 0);
 			this->dataGridView3->Name = L"dataGridView3";
 			this->dataGridView3->ReadOnly = true;
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::Black;
-			this->dataGridView3->RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::Black;
+			this->dataGridView3->RowsDefaultCellStyle = dataGridViewCellStyle5;
 			this->dataGridView3->Size = System::Drawing::Size(170, 46);
 			this->dataGridView3->TabIndex = 0;
+			this->dataGridView3->Visible = false;
 			// 
 			// groupBox1
 			// 
@@ -914,18 +929,22 @@ namespace Farol {
 			// 
 			this->dataGridView4->AllowUserToAddRows = false;
 			this->dataGridView4->AllowUserToDeleteRows = false;
+			this->dataGridView4->AllowUserToResizeColumns = false;
+			this->dataGridView4->AllowUserToResizeRows = false;
 			this->dataGridView4->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView4->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView4->Enabled = false;
 			this->dataGridView4->Location = System::Drawing::Point(0, 0);
 			this->dataGridView4->Name = L"dataGridView4";
 			this->dataGridView4->ReadOnly = true;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Black;
-			this->dataGridView4->RowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
+			this->dataGridView4->RowsDefaultCellStyle = dataGridViewCellStyle6;
 			this->dataGridView4->Size = System::Drawing::Size(170, 46);
 			this->dataGridView4->TabIndex = 1;
+			this->dataGridView4->Visible = false;
 			// 
 			// openFileDialog1
 			// 
@@ -1027,6 +1046,11 @@ private: System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^ 
 				  }
 			  }
 			  //TO DO: Adicionar uma exceção
+}
+
+System::String ^getClass(int ind)
+{
+	return(lstClass[ind]);
 }
 
 //Retorna o número de conectores de uma classe c
@@ -1226,7 +1250,6 @@ private: System::Void deadLockCaso3(int Num, array< int, 1 >^ Classes)
 {
 	array< int, 1 >^ Tamanho = gcnew array< int, 1 >(Num);
 	//int numClass = MatClass->Length/5;
-	lstClass = gcnew array< String^, 1 >(numClass);
 
 	for(int i=0;i<numClass;i++)
 	{
@@ -1499,6 +1522,22 @@ void setComplexidadeOriginal(int num)
 	ComplexidadeOriginal=num;
 }
 
+/*---------------------------------------------------------------------------
+Procedimento responsável pela visualização da ordem de classe gerada na tela do programa
+---------------------------------------------------------------------------*/
+void imprimeSaida(int NC)
+{
+	dataGridView1->Enabled = true;
+	dataGridView1->Visible = true;
+	dataGridView1->RowCount = numClass;
+	dataGridView1->ColumnCount = 1;
+	dataGridView1->Columns[0]->Width = 423;
+    for(int i=0;i<NC;i++)
+	{
+		dataGridView1->Rows[i]->Cells[0]->Value = getClass(LCOTI[i]);
+	}
+}
+
 private: System::Void ordemIntegrar()
 {
 	classInt = 0;
@@ -1526,6 +1565,11 @@ private: System::Void ordemIntegrar()
 			dataGridView2->ColumnCount = it + 1;
 			dataGridView2->Columns[it]->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridView2->Columns[it]->DefaultCellStyle->BackColor = System::Drawing::Color::LightYellow;
+			dataGridView2->Columns[it]->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightYellow;
+			dataGridView2->Columns[it]->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			
+
 		}
 
 		dataGridView2->Columns[it]->HeaderText = "FIT Iteração "+Convert::ToString(it-1);
@@ -1625,11 +1669,14 @@ private: System::Void createTable()
 	setFICol();
 	calcularFI();
 	ordemIntegrar();
+	imprimeSaida(numClass);
 	setNumStubsOriginal(calcularStubs());
 	setNumStubsAtual(getNumStubsOriginal());
 	setComplexidadeOriginal(calcularComplexidade());
 	setComplexidadeAtual(getComplexidadeOriginal());
 	
+	dataGridView3->Enabled = true;
+	dataGridView3->Visible = true;
 	dataGridView3->RowCount::set(1);
 	dataGridView3->ColumnCount::set(2);
 	dataGridView3->RowHeadersVisible = false;
@@ -1638,6 +1685,8 @@ private: System::Void createTable()
 	dataGridView3->Columns[0]->Width = 90;
 	dataGridView3->Columns[1]->Width = 76;
 
+	dataGridView4->Enabled = true;
+	dataGridView4->Visible = true;
 	dataGridView4->RowCount::set(1);
 	dataGridView4->ColumnCount::set(2);
 	dataGridView4->RowHeadersVisible = false;
@@ -1868,6 +1917,12 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			}
 
 			updateMatClass();
+
+			lstClass = gcnew array< String^, 1 >(numClass);
+			for(int i=0;i<numClass;i++)
+			{
+				lstClass[i] = MatClass[i,0];
+			}
 
 			MatrizInfluencia = gcnew array< int, 2 >(numClass, numClass);
 
@@ -2121,20 +2176,38 @@ private: System::Void splitContainer2_Panel2_Paint(System::Object^  sender, Syst
 private: System::Void label4_Click_1(System::Object^  sender, System::EventArgs^  e) {
 		 }
 
+/*---------------------------------------------------------------------------
+Procedimento que inicializa a tela para um novo modelo, ou seja, limpa os campos existentes na tela e remove objetos
+---------------------------------------------------------------------------*/
+System::Void liberarMemoria()
+{
+	treeView1->Nodes->Clear();
+	label4->Text = "";
+	dataGridView2->ColumnCount::set(2);
+	dataGridView2->RowCount::set(1);
+	dataGridView2->Rows[0]->Cells[0]->Value = "";
+	dataGridView2->Rows[0]->Cells[1]->Value = "";
+	dataGridView2->Visible = false;
+	toolStripButton1->Enabled = true;
+	toolStripButton2->Enabled = false;
+	toolStripButton3->Enabled = false;
+	dataGridView1->ColumnCount::set(0);
+	dataGridView1->RowCount::set(0);
+	dataGridView3->ColumnCount::set(0);
+	dataGridView3->RowCount::set(0);
+	dataGridView1->Visible = false;
+	dataGridView3->Visible = false;
+	dataGridView4->Visible = false;
+	dataGridView1->Enabled = false;
+	dataGridView3->Enabled = false;
+	dataGridView4->Enabled = false;
+	LCOTI->Clear;
+}
 //Procedimento que inicializa a tela para um novo modelo, ou seja, limpa os campos existentes na tela e remove objetos
-private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e) {
-
-			 treeView1->Nodes->Clear();
-			 this->label4->Text = "";
-			 this->dataGridView2->ColumnCount::set(2);
-			 this->dataGridView2->RowCount::set(1);
-			 this->dataGridView2->Rows[0]->Cells[0]->Value = "";
-			 this->dataGridView2->Rows[0]->Cells[1]->Value = "";
-			 this->dataGridView2->Visible = false;
-			 this->toolStripButton1->Enabled = true;
-			 this->toolStripButton2->Enabled = false;
-			 this->toolStripButton3->Enabled = false;
-		 }
+private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	liberarMemoria();
+}
 private: System::Void dataGridView2_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		 }
 private: System::Void toolStripButton3_Click(System::Object^  sender, System::EventArgs^  e) {
