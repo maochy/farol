@@ -213,6 +213,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Idioma.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -255,6 +259,15 @@
 				<File
 					RelativePath=".\FSobre.resx"
 					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
+				RelativePath=".\Idioma.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\Idioma.resx"
 					>
 				</File>
 			</File>
