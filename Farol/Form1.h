@@ -1,4 +1,6 @@
 #include "FSobre.h"
+#include "Idioma.h"
+#include <stdio.h>
 #pragma once
 
 namespace Farol {
@@ -38,12 +40,24 @@ namespace Farol {
 		array< String^, 1 >^ lstClass;
 		array< int, 1 >^ FI;
 		array< int, 1 >^ LCOTI;
+		
 		int numClass;
 		int classInt;
 		int NumStubsOriginal;
 		int NumStubsAtual;
 		int ComplexidadeOriginal;
 		int ComplexidadeAtual;
+		
+		int Num_Idioma;
+		int Num_palavra;
+		int IDIOMA;
+		array< String^, 2 > ^Dicionario;
+		array< String^, 1> ^Idiomas;
+		array< String^, 1> ^HelpFile;
+		array< String^, 1 > ^ReportsFile;
+		array< String^, 1 > ^Tags;
+
+
 	private: System::Windows::Forms::DataGridView^  dataGridView2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column0;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
@@ -55,6 +69,14 @@ namespace Farol {
 	private: System::Windows::Forms::DataGridView^  dataGridView3;
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::DataGridView^  dataGridView4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn4;
+
+
+
+
 
 
 
@@ -74,6 +96,95 @@ namespace Farol {
 
 	public: 
 		array< int, 2 >^ MatrizInfluencia;
+System::String ^getTag(String ^Tag)
+{
+	//IDIOMA = Farol::Idioma::ID;
+	return(Dicionario[IDIOMA,consultarTag(Tag)]);
+}
+
+/*---------------------------------------------------------------------------
+Procedimento responsável por consultar uma tag para um componente na biblioteca de textos
+---------------------------------------------------------------------------*/
+int consultarTag(String ^Tag)
+{
+        for(int i=0;i<Num_palavra;i++)
+		{
+			if(Tag==Tags[i]) return(i);
+        }
+        return(-1);
+}
+
+System::Void carregarIdioma()
+{
+	//Form1 ^ordenador;
+	String^ path = "./language.dll";
+	String^ ArqLine;
+	String^ delimStr;
+	System::IO::StreamReader ^Arq = gcnew System::IO::StreamReader(path,System::Text::Encoding::Default);
+	//FILE *Arq;
+	
+	array< String^, 1 > ^line;
+	
+	array< wchar_t> ^delimiter;
+	
+
+	ArqLine = Arq->ReadLine();
+	delimStr = "%d %d";
+	delimiter = delimStr->ToCharArray();
+	line = ArqLine->Split(delimiter);
+
+	Num_Idioma = Convert::ToInt32(line[0]);
+	Num_palavra = Convert::ToInt32(line[1]);
+
+	ArqLine = Arq->ReadLine();
+	delimStr = "%d";
+	delimiter = delimStr->ToCharArray();
+	line = ArqLine->Split(delimiter);
+
+	IDIOMA = Convert::ToInt32(line[0]);
+	
+	Dicionario = gcnew array< String^, 2 >(Num_Idioma,Num_palavra);
+    Idiomas = gcnew array< String^, 1 >(Num_Idioma);
+    HelpFile = gcnew array< String^, 1 >(Num_Idioma);
+    ReportsFile = gcnew array< String^, 1 >(Num_Idioma);
+	Tags = gcnew array< String^, 1 >(Num_palavra);
+
+	for(int i=0;i<Num_Idioma;i++)
+	{
+		ArqLine = Arq->ReadLine();
+		delimStr = "%s %s %s";
+		delimiter = delimStr->ToCharArray();
+		line = ArqLine->Split(delimiter);
+		Idiomas[i] = line[0];
+		HelpFile[i] = line[1];
+		ReportsFile[i] = line[2];
+	}
+
+	for(int i=0;i<Num_palavra;i++)
+	{
+		ArqLine = Arq->ReadLine()->Normalize(System::Text::NormalizationForm::FormD);
+		
+		delimStr = "%[^=]";
+		//delimStr = "=%s=";
+		delimiter = delimStr->ToCharArray();
+		line = ArqLine->Split(delimiter);
+
+		Tags[i] = line[0];
+
+		delimStr = "=%[=\n]";
+		delimiter = delimStr->ToCharArray();
+		line = ArqLine->Split(delimiter);
+        
+		for(int j=0;j<Num_Idioma;j++)
+		{
+			Dicionario[j,i] = line[j+1];
+			//String::Format(Arq->ReadLine(),"{=:[^=\n]s}",Dicionario[j,i]);
+        }
+    }
+
+	//ordenador->label4->Text = Dicionario[1,3];
+	//label4->Text = Dicionario[0,2];
+}
 
 	protected:
 		/// <summary>
@@ -202,10 +313,11 @@ private: System::Windows::Forms::Button^  moverCima;
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			carregarIdioma();
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -258,9 +370,13 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->dataGridView4 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
@@ -307,14 +423,18 @@ private: System::Windows::Forms::Button^  moverCima;
 				this->gerarOrdenaçãoCtrlGToolStripMenuItem, this->fecharArquivoCtrlFToolStripMenuItem});
 			this->funçõesToolStripMenuItem->Name = L"funçõesToolStripMenuItem";
 			this->funçõesToolStripMenuItem->Size = System::Drawing::Size(63, 20);
-			this->funçõesToolStripMenuItem->Text = L"Funções";
+			this->funçõesToolStripMenuItem->Tag = L"FUNCAO";
+			//this->funçõesToolStripMenuItem->Text = L"Funções";
+			this->funçõesToolStripMenuItem->Text = Farol::Form1::getTag("FUNCAO");
+			this->funçõesToolStripMenuItem->TextChanged += gcnew System::EventHandler(this, &Form1::funçõesToolStripMenuItem_TextChanged);
 			// 
 			// abrirArquivoXMIToolStripMenuItem
 			// 
 			this->abrirArquivoXMIToolStripMenuItem->Name = L"abrirArquivoXMIToolStripMenuItem";
 			this->abrirArquivoXMIToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::A));
 			this->abrirArquivoXMIToolStripMenuItem->Size = System::Drawing::Size(214, 22);
-			this->abrirArquivoXMIToolStripMenuItem->Text = L"Abrir Arquivo XMI ";
+			//this->abrirArquivoXMIToolStripMenuItem->Text = L"Abrir Arquivo XMI ";
+			this->abrirArquivoXMIToolStripMenuItem->Text = Farol::Form1::getTag("ABRIR");
 			this->abrirArquivoXMIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// gerarOrdenaçãoCtrlGToolStripMenuItem
@@ -322,14 +442,16 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Name = L"gerarOrdenaçãoCtrlGToolStripMenuItem";
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::G));
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Size = System::Drawing::Size(214, 22);
-			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = L"Gerar Ordenação ";
+			//this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = L"Gerar Ordenação ";
+			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = Farol::Form1::getTag("GERARORD");
 			// 
 			// fecharArquivoCtrlFToolStripMenuItem
 			// 
 			this->fecharArquivoCtrlFToolStripMenuItem->Name = L"fecharArquivoCtrlFToolStripMenuItem";
 			this->fecharArquivoCtrlFToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
 			this->fecharArquivoCtrlFToolStripMenuItem->Size = System::Drawing::Size(214, 22);
-			this->fecharArquivoCtrlFToolStripMenuItem->Text = L"Fechar Arquivo";
+			//this->fecharArquivoCtrlFToolStripMenuItem->Text = L"Fechar Arquivo";
+			this->fecharArquivoCtrlFToolStripMenuItem->Text = Farol::Form1::getTag("FECHAR");
 			// 
 			// opçõesToolStripMenuItem
 			// 
@@ -337,21 +459,24 @@ private: System::Windows::Forms::Button^  moverCima;
 				this->importarResultadoCtrlIToolStripMenuItem, this->toolStripSeparator1, this->imprimirResultadoCtrlToolStripMenuItem});
 			this->opçõesToolStripMenuItem->Name = L"opçõesToolStripMenuItem";
 			this->opçõesToolStripMenuItem->Size = System::Drawing::Size(59, 20);
-			this->opçõesToolStripMenuItem->Text = L"Opções";
+			//this->opçõesToolStripMenuItem->Text = L"Opções";
+			this->opçõesToolStripMenuItem->Text = Farol::Form1::getTag("OPCAO");
 			// 
 			// slavarResultadoCtrlBToolStripMenuItem
 			// 
 			this->slavarResultadoCtrlBToolStripMenuItem->Name = L"slavarResultadoCtrlBToolStripMenuItem";
 			this->slavarResultadoCtrlBToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::B));
 			this->slavarResultadoCtrlBToolStripMenuItem->Size = System::Drawing::Size(216, 22);
-			this->slavarResultadoCtrlBToolStripMenuItem->Text = L"Salvar Resultado";
+			//this->slavarResultadoCtrlBToolStripMenuItem->Text = L"Salvar Resultado";
+			this->slavarResultadoCtrlBToolStripMenuItem->Text = Farol::Form1::getTag("SALVAR");
 			// 
 			// importarResultadoCtrlIToolStripMenuItem
 			// 
 			this->importarResultadoCtrlIToolStripMenuItem->Name = L"importarResultadoCtrlIToolStripMenuItem";
 			this->importarResultadoCtrlIToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::I));
 			this->importarResultadoCtrlIToolStripMenuItem->Size = System::Drawing::Size(216, 22);
-			this->importarResultadoCtrlIToolStripMenuItem->Text = L"Importar Resultado";
+			//this->importarResultadoCtrlIToolStripMenuItem->Text = L"Importar Resultado";
+			this->importarResultadoCtrlIToolStripMenuItem->Text = Farol::Form1::getTag("IMPORTAR");
 			this->importarResultadoCtrlIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::importarResultadoCtrlIToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
@@ -364,7 +489,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->imprimirResultadoCtrlToolStripMenuItem->Name = L"imprimirResultadoCtrlToolStripMenuItem";
 			this->imprimirResultadoCtrlToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::P));
 			this->imprimirResultadoCtrlToolStripMenuItem->Size = System::Drawing::Size(216, 22);
-			this->imprimirResultadoCtrlToolStripMenuItem->Text = L"Imprimir Resultado";
+			//this->imprimirResultadoCtrlToolStripMenuItem->Text = L"Imprimir Resultado";
+			this->imprimirResultadoCtrlToolStripMenuItem->Text = Farol::Form1::getTag("IMPRIMIR");
 			// 
 			// configuraçõesToolStripMenuItem
 			// 
@@ -373,7 +499,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->configuraçõesToolStripMenuItem->Name = L"configuraçõesToolStripMenuItem";
 			this->configuraçõesToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
 			this->configuraçõesToolStripMenuItem->Size = System::Drawing::Size(96, 20);
-			this->configuraçõesToolStripMenuItem->Text = L"Configurações";
+			//this->configuraçõesToolStripMenuItem->Text = L"Configurações";
+			this->configuraçõesToolStripMenuItem->Text = Farol::Form1::getTag("CONFIGURACAO");
 			// 
 			// painelDeModeloDeClasseToolStripMenuItem
 			// 
@@ -381,7 +508,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->painelDeModeloDeClasseToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->painelDeModeloDeClasseToolStripMenuItem->Name = L"painelDeModeloDeClasseToolStripMenuItem";
 			this->painelDeModeloDeClasseToolStripMenuItem->Size = System::Drawing::Size(256, 22);
-			this->painelDeModeloDeClasseToolStripMenuItem->Text = L"Painel de Modelo de Classes";
+			//this->painelDeModeloDeClasseToolStripMenuItem->Text = L"Painel de Modelo de Classes";
+			this->painelDeModeloDeClasseToolStripMenuItem->Text = Farol::Form1::getTag("PMOC");
 			// 
 			// painelDeSequênciaDeOrdenaçãoToolStripMenuItem
 			// 
@@ -389,7 +517,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Name = L"painelDeSequênciaDeOrdenaçãoToolStripMenuItem";
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Size = System::Drawing::Size(256, 22);
-			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = L"Painel de Sequência de Ordenação";
+			//this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = L"Painel de Sequência de Ordenação";
+			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = Farol::Form1::getTag("PSEO");
 			// 
 			// toolStripSeparator2
 			// 
@@ -401,7 +530,9 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->mudarIdiomaToolStripMenuItem->Name = L"mudarIdiomaToolStripMenuItem";
 			this->mudarIdiomaToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
 			this->mudarIdiomaToolStripMenuItem->Size = System::Drawing::Size(256, 22);
-			this->mudarIdiomaToolStripMenuItem->Text = L"Mudar Idioma";
+            //this->mudarIdiomaToolStripMenuItem->Text = L"Mudar Idioma";
+			this->mudarIdiomaToolStripMenuItem->Text = Farol::Form1::getTag("MUDARIDIOMA");
+			this->mudarIdiomaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::mudarIdiomaToolStripMenuItem_Click);
 			// 
 			// ajudaToolStripMenuItem
 			// 
@@ -409,28 +540,32 @@ private: System::Windows::Forms::Button^  moverCima;
 				this->sobreToolStripMenuItem});
 			this->ajudaToolStripMenuItem->Name = L"ajudaToolStripMenuItem";
 			this->ajudaToolStripMenuItem->Size = System::Drawing::Size(50, 20);
-			this->ajudaToolStripMenuItem->Text = L"Ajuda";
+			//this->ajudaToolStripMenuItem->Text = L"Ajuda";
+			this->ajudaToolStripMenuItem->Text = Farol::Form1::getTag("AJUDA");
 			// 
 			// conteúdoToolStripMenuItem
 			// 
 			this->conteúdoToolStripMenuItem->Name = L"conteúdoToolStripMenuItem";
 			this->conteúdoToolStripMenuItem->ShortcutKeys = System::Windows::Forms::Keys::F1;
 			this->conteúdoToolStripMenuItem->Size = System::Drawing::Size(146, 22);
-			this->conteúdoToolStripMenuItem->Text = L"Conteúdo";
+			//this->conteúdoToolStripMenuItem->Text = L"Conteúdo";
+			this->conteúdoToolStripMenuItem->Text = Farol::Form1::getTag("CONTEUDO");
 			// 
 			// sobreToolStripMenuItem
 			// 
 			this->sobreToolStripMenuItem->Name = L"sobreToolStripMenuItem";
 			this->sobreToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::S));
 			this->sobreToolStripMenuItem->Size = System::Drawing::Size(146, 22);
-			this->sobreToolStripMenuItem->Text = L"Sobre";
+			//this->sobreToolStripMenuItem->Text = L"Sobre";
+			this->sobreToolStripMenuItem->Text = Farol::Form1::getTag("SOBRE");
 			this->sobreToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::sobreToolStripMenuItem_Click);
 			// 
 			// sairToolStripMenuItem
 			// 
 			this->sairToolStripMenuItem->Name = L"sairToolStripMenuItem";
 			this->sairToolStripMenuItem->Size = System::Drawing::Size(38, 20);
-			this->sairToolStripMenuItem->Text = L"Sair";
+			//this->sairToolStripMenuItem->Text = L"Sair";
+			this->sairToolStripMenuItem->Text = Farol::Form1::getTag("SAIR");
 			this->sairToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::sairToolStripMenuItem_Click);
 			// 
 			// toolStrip1
@@ -455,7 +590,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton1->Name = L"toolStripButton1";
 			this->toolStripButton1->Size = System::Drawing::Size(36, 43);
 			this->toolStripButton1->Text = L"toolStripButton1";
-			this->toolStripButton1->ToolTipText = L"Abrir Arquivo XMI";
+			//this->toolStripButton1->ToolTipText = L"Abrir Arquivo XMI";
+			this->toolStripButton1->ToolTipText = Farol::Form1::getTag("ABRIR");
 			this->toolStripButton1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// toolStripButton3
@@ -468,7 +604,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton3->Name = L"toolStripButton3";
 			this->toolStripButton3->Size = System::Drawing::Size(39, 43);
 			this->toolStripButton3->Text = L"toolStripButton1";
-			this->toolStripButton3->ToolTipText = L"Gerar Ordenação";
+			//this->toolStripButton3->ToolTipText = L"Gerar Ordenação";
+			this->toolStripButton3->ToolTipText = Farol::Form1::getTag("GERARORD");
 			this->toolStripButton3->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
 			// 
 			// toolStripButton2
@@ -481,7 +618,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton2->Name = L"toolStripButton2";
 			this->toolStripButton2->Size = System::Drawing::Size(39, 43);
 			this->toolStripButton2->Text = L"toolStripButton1";
-			this->toolStripButton2->ToolTipText = L"Fechar Arquivo";
+			//this->toolStripButton2->ToolTipText = L"Fechar Arquivo";
+			this->toolStripButton2->ToolTipText = Farol::Form1::getTag("FECHAR");
 			this->toolStripButton2->Click += gcnew System::EventHandler(this, &Form1::toolStripButton2_Click);
 			// 
 			// toolStripSeparator4
@@ -499,7 +637,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton4->Name = L"toolStripButton4";
 			this->toolStripButton4->Size = System::Drawing::Size(38, 43);
 			this->toolStripButton4->Text = L"toolStripButton1";
-			this->toolStripButton4->ToolTipText = L"Salvar Resultado";
+			//this->toolStripButton4->ToolTipText = L"Salvar Resultado";
+			this->toolStripButton4->ToolTipText = Farol::Form1::getTag("SALVAR");
 			// 
 			// toolStripButton5
 			// 
@@ -510,7 +649,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton5->Name = L"toolStripButton5";
 			this->toolStripButton5->Size = System::Drawing::Size(37, 43);
 			this->toolStripButton5->Text = L"toolStripButton1";
-			this->toolStripButton5->ToolTipText = L"Importar Resultado";
+			//this->toolStripButton5->ToolTipText = L"Importar Resultado";
+			this->toolStripButton5->ToolTipText = Farol::Form1::getTag("IMPORTAR");
 			// 
 			// toolStripButton6
 			// 
@@ -522,7 +662,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton6->Name = L"toolStripButton6";
 			this->toolStripButton6->Size = System::Drawing::Size(41, 43);
 			this->toolStripButton6->Text = L"toolStripButton1";
-			this->toolStripButton6->ToolTipText = L"Imprimir Resultado";
+			//this->toolStripButton6->ToolTipText = L"Imprimir Resultado";
+			this->toolStripButton6->ToolTipText = Farol::Form1::getTag("IMPRIMIR");
 			// 
 			// toolStripSeparator5
 			// 
@@ -538,7 +679,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton7->Name = L"toolStripButton7";
 			this->toolStripButton7->Size = System::Drawing::Size(38, 43);
 			this->toolStripButton7->Text = L"toolStripButton1";
-			this->toolStripButton7->ToolTipText = L"Ajuda";
+			//this->toolStripButton7->ToolTipText = L"Ajuda";
+			this->toolStripButton7->ToolTipText = Farol::Form1::getTag("AJUDA");
 			// 
 			// toolStripButton8
 			// 
@@ -549,7 +691,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton8->Name = L"toolStripButton8";
 			this->toolStripButton8->Size = System::Drawing::Size(39, 43);
 			this->toolStripButton8->Text = L"toolStripButton1";
-			this->toolStripButton8->ToolTipText = L"Sair";
+			//this->toolStripButton8->ToolTipText = L"Sair";
+			this->toolStripButton8->ToolTipText = Farol::Form1::getTag("SAIR");
 			this->toolStripButton8->Click += gcnew System::EventHandler(this, &Form1::toolStripButton8_Click);
 			// 
 			// label1
@@ -563,7 +706,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->label1->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->label1->Size = System::Drawing::Size(99, 19);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Arquivo XMI";
+			//this->label1->Text = L"Arquivo XMI";
+			this->label1->Text = Farol::Form1::getTag("ARQUIVOXMI");
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
 			// 
@@ -667,7 +811,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->groupBox2->Size = System::Drawing::Size(624, 437);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Sequência de Ordenação";
+			//this->groupBox2->Text = L"Sequência de Ordenação";
+			this->groupBox2->Text = Farol::Form1::getTag("SEQUENCIAORD");
 			this->groupBox2->Enter += gcnew System::EventHandler(this, &Form1::groupBox2_Enter);
 			// 
 			// splitContainer4
@@ -732,16 +877,17 @@ private: System::Windows::Forms::Button^  moverCima;
 			// 
 			// Column0
 			// 
-			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle7->BackColor = System::Drawing::Color::Silver;
-			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::Silver;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle7->ForeColor = System::Drawing::Color::Yellow;
-			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::Silver;
-			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::Color::Yellow;
-			this->Column0->DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Yellow;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Silver;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Yellow;
+			this->Column0->DefaultCellStyle = dataGridViewCellStyle6;
 			this->Column0->Frozen = true;
-			this->Column0->HeaderText = L"Classe / Iteração";
+			//this->Column0->HeaderText = L"Classe / Iteração";
+			this->Column0->HeaderText = Farol::Form1::getTag("CLASSEITERACAO");
 			this->Column0->Name = L"Column0";
 			this->Column0->ReadOnly = true;
 			this->Column0->Resizable = System::Windows::Forms::DataGridViewTriState::False;
@@ -750,15 +896,16 @@ private: System::Windows::Forms::Button^  moverCima;
 			// Column1
 			// 
 			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::ColumnHeader;
-			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle8->BackColor = System::Drawing::Color::LightYellow;
-			dataGridViewCellStyle8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)), 
+			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle7->BackColor = System::Drawing::Color::LightYellow;
+			dataGridViewCellStyle7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)), 
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::LightYellow;
-			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), 
+			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::LightYellow;
+			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), 
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle8;
-			this->Column1->HeaderText = L"Valor de FI";
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle7;
+			//this->Column1->HeaderText = L"Valor de FI";
+			this->Column1->HeaderText = Farol::Form1::getTag("VALORFI");
 			this->Column1->MinimumWidth = 83;
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
@@ -775,7 +922,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(208, 24);
 			this->label3->TabIndex = 0;
-			this->label3->Text = L"Ordem de Integração";
+			//this->label3->Text = L"Ordem de Integração";
+			this->label3->Text = Farol::Form1::getTag("ORDEMINT");
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label3->Click += gcnew System::EventHandler(this, &Form1::label3_Click_1);
 			// 
@@ -824,8 +972,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersVisible = false;
-			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle8;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(426, 192);
 			this->dataGridView1->TabIndex = 0;
@@ -841,7 +989,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->moverBaixo->Name = L"moverBaixo";
 			this->moverBaixo->Size = System::Drawing::Size(183, 25);
 			this->moverBaixo->TabIndex = 3;
-			this->moverBaixo->Text = L"mover para baixo";
+			//this->moverBaixo->Text = L"mover para baixo";
+			this->moverBaixo->Text = Farol::Form1::getTag("MOVERBAIXO");
 			this->moverBaixo->UseVisualStyleBackColor = true;
 			this->moverBaixo->Click += gcnew System::EventHandler(this, &Form1::moverBaixo_Click);
 			// 
@@ -856,7 +1005,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->moverCima->Name = L"moverCima";
 			this->moverCima->Size = System::Drawing::Size(183, 26);
 			this->moverCima->TabIndex = 2;
-			this->moverCima->Text = L"mover para cima";
+			//this->moverCima->Text = L"mover para cima";
+			this->moverCima->Text = Farol::Form1::getTag("MOVERCIMA");
 			this->moverCima->UseVisualStyleBackColor = true;
 			this->moverCima->Click += gcnew System::EventHandler(this, &Form1::moverCima_Click);
 			// 
@@ -870,7 +1020,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->groupBox3->Size = System::Drawing::Size(180, 69);
 			this->groupBox3->TabIndex = 1;
 			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Ordem alterada";
+			//this->groupBox3->Text = L"Ordem alterada";
+			this->groupBox3->Text = Farol::Form1::getTag("ORDEMALTERADA");
 			// 
 			// panel3
 			// 
@@ -891,25 +1042,35 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView3->AllowUserToResizeRows = false;
 			this->dataGridView3->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {this->dataGridViewTextBoxColumn1, 
+				this->dataGridViewTextBoxColumn2});
 			this->dataGridView3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->dataGridView3->Enabled = true;
 			this->dataGridView3->Location = System::Drawing::Point(0, 0);
 			this->dataGridView3->Name = L"dataGridView3";
 			this->dataGridView3->ReadOnly = true;
+			this->dataGridView3->RowHeadersVisible = false;
 			dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::Color::White;
 			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::Color::Black;
 			this->dataGridView3->RowsDefaultCellStyle = dataGridViewCellStyle9;
 			this->dataGridView3->Size = System::Drawing::Size(170, 46);
 			this->dataGridView3->TabIndex = 0;
-			this->dataGridView3->Visible = true;
-			this->dataGridView3->ColumnCount = 2;
-			this->dataGridView3->RowCount = 1;
-			this->dataGridView3->RowHeadersVisible = false;
-			this->dataGridView3->Columns[0]->Width = 90;
-			this->dataGridView3->Columns[1]->Width = 76;
-			this->dataGridView3->Columns[0]->HeaderText = "Total Stubs";
-			this->dataGridView3->Columns[1]->HeaderText = "Tamanho";
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			//this->dataGridViewTextBoxColumn1->HeaderText = L"Total Stubs";
+			this->dataGridViewTextBoxColumn1->HeaderText = Farol::Form1::getTag("TOTSTUBS");
+			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			this->dataGridViewTextBoxColumn1->ReadOnly = true;
+			this->dataGridViewTextBoxColumn1->Width = 90;
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			//this->dataGridViewTextBoxColumn2->HeaderText = L"Tamanho";
+			this->dataGridViewTextBoxColumn2->HeaderText = Farol::Form1::getTag("TAMANHO");
+			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			this->dataGridViewTextBoxColumn2->ReadOnly = true;
+			this->dataGridViewTextBoxColumn2->Width = 76;
 			// 
 			// groupBox1
 			// 
@@ -921,7 +1082,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->groupBox1->Size = System::Drawing::Size(180, 69);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Ordem original";
+			//this->groupBox1->Text = L"Ordem original";
+			this->groupBox1->Text = Farol::Form1::getTag("ORDEMORIGINAL");
 			this->groupBox1->Enter += gcnew System::EventHandler(this, &Form1::groupBox1_Enter);
 			// 
 			// panel2
@@ -943,25 +1105,35 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView4->AllowUserToResizeRows = false;
 			this->dataGridView4->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView4->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {this->dataGridViewTextBoxColumn3, 
+				this->dataGridViewTextBoxColumn4});
 			this->dataGridView4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->dataGridView4->Enabled = true;
 			this->dataGridView4->Location = System::Drawing::Point(0, 0);
 			this->dataGridView4->Name = L"dataGridView4";
 			this->dataGridView4->ReadOnly = true;
+			this->dataGridView4->RowHeadersVisible = false;
 			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::Color::White;
 			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::Color::Black;
 			this->dataGridView4->RowsDefaultCellStyle = dataGridViewCellStyle10;
 			this->dataGridView4->Size = System::Drawing::Size(170, 46);
 			this->dataGridView4->TabIndex = 1;
-			this->dataGridView4->Visible = true;
-			this->dataGridView4->ColumnCount = 2;
-			this->dataGridView4->RowCount = 1;
-			this->dataGridView4->RowHeadersVisible = false;
-			this->dataGridView4->Columns[0]->Width = 90;
-			this->dataGridView4->Columns[1]->Width = 76;
-			this->dataGridView4->Columns[0]->HeaderText = "Total Stubs";
-			this->dataGridView4->Columns[1]->HeaderText = "Tamanho";
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			//this->dataGridViewTextBoxColumn3->HeaderText = L"Total Stubs";
+			this->dataGridViewTextBoxColumn3->HeaderText = Farol::Form1::getTag("TOTSTUBS");
+			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			this->dataGridViewTextBoxColumn3->ReadOnly = true;
+			this->dataGridViewTextBoxColumn3->Width = 90;
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			//this->dataGridViewTextBoxColumn4->HeaderText = L"Tamanho";
+			this->dataGridViewTextBoxColumn4->HeaderText = Farol::Form1::getTag("TAMANHO");
+			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			this->dataGridViewTextBoxColumn4->ReadOnly = true;
+			this->dataGridViewTextBoxColumn4->Width = 76;
 			// 
 			// openFileDialog1
 			// 
@@ -1026,7 +1198,8 @@ private: System::Windows::Forms::Button^  moverCima;
 
 		}
 #pragma endregion
-	private: System::Void toolStripComboBox1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+private: System::Void toolStripComboBox1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }
 private: System::Void importarResultadoCtrlIToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
@@ -1724,8 +1897,8 @@ private: System::Void createTable()
 	
 	dataGridView3->Enabled = true;
 	dataGridView3->Visible = true;
-	dataGridView3->RowCount::set(1);
-	dataGridView3->ColumnCount::set(2);
+	dataGridView3->RowCount = 1;
+	dataGridView3->ColumnCount = 2;
 	dataGridView3->RowHeadersVisible = false;
 	dataGridView3->Columns[0]->HeaderText = "Total Stubs";
 	dataGridView3->Columns[1]->HeaderText = "Tamanho";
@@ -1734,8 +1907,8 @@ private: System::Void createTable()
 
 	dataGridView4->Enabled = true;
 	dataGridView4->Visible = true;
-	dataGridView4->RowCount::set(1);
-	dataGridView4->ColumnCount::set(2);
+	dataGridView4->RowCount = 1;
+	dataGridView4->ColumnCount = 2;
 	dataGridView4->RowHeadersVisible = false;
 	dataGridView4->Columns[0]->HeaderText = "Total Stubs";
 	dataGridView4->Columns[1]->HeaderText = "Tamanho";
@@ -2231,14 +2404,18 @@ System::Void liberarMemoria()
 {
 	treeView1->Nodes->Clear();
 	label4->Text = "";
-	dataGridView2->ColumnCount::set(2);
-	dataGridView2->RowCount::set(1);
+	dataGridView2->ColumnCount = 2;
+	dataGridView2->RowCount = 1;
 	dataGridView2->Rows[0]->Cells[0]->Value = "";
 	dataGridView2->Rows[0]->Cells[1]->Value = "";
 
+	dataGridView3->ColumnCount = 2;
+	dataGridView3->RowCount = 1;
 	dataGridView3->Rows[0]->Cells[0]->Value = "";
 	dataGridView3->Rows[0]->Cells[1]->Value = "";
 
+	dataGridView4->ColumnCount = 2;
+	dataGridView4->RowCount = 1;
 	dataGridView4->Rows[0]->Cells[0]->Value = "";
 	dataGridView4->Rows[0]->Cells[1]->Value = "";
 	dataGridView2->Visible = false;
@@ -2247,8 +2424,8 @@ System::Void liberarMemoria()
 	toolStripButton3->Enabled = false;
 	moverCima->Enabled = false;
 	moverBaixo->Enabled = false;
-	dataGridView1->ColumnCount::set(0);
-	dataGridView1->RowCount::set(0);
+	dataGridView1->ColumnCount = 0;
+	dataGridView1->RowCount = 0;
 	dataGridView1->Visible = false;
 	dataGridView3->Visible = true;
 	dataGridView4->Visible = true;
@@ -2332,6 +2509,13 @@ private: System::Void moverBaixo_Click(System::Object^  sender, System::EventArg
 
 	}
 }
+private: System::Void mudarIdiomaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Idioma ^ Id = gcnew Idioma();
+			 Id->Show();
+		 }
+private: System::Void funçõesToolStripMenuItem_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
 };
+
 }
 

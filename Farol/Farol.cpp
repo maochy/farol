@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Form1.h"
 #include "FSobre.h"
+#include "Idioma.h"
 
 using namespace Farol;
 
