@@ -36,14 +36,14 @@ CLASSES=Classes=Classes
 CLASSE=Classe: =Class: 
 FATORINF=Fator de Influência: =Factor of Influency: 
 NUMEROCONECTOR=Número de Conectores: =Conectors Numbers: 
+COMPOSICAO=Composição/Associação=Composition/Aggregation
+PARTE=Parte: =Part: 
+TODO=Todo: =Whole: 
 ASSOCIACOES=Associações=Associations
 ASSOCIACAO=Associação: =Association: 
 ORIGEM=Origem: =Source: 
 DESTINO=Destino: =Target: 
-NAVEGAVEL= - Navegável: = - Navegable: 
-COMPOSICAO=Composição/Associação=Composition/Aggregation
-PARTE=Parte: =Part: 
-TODO=Todo: =Whole: 
+NAVEGAVEL= - Navegável: = - Navegable:  
 HERANCAS=Heranças=Inheritances
 HERANCA=Herança: =Inheritance: 
 PAI=Pai: =Superclass: 

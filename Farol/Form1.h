@@ -29,10 +29,12 @@ namespace Farol {
 		Form1(void)
 		{
 			InitializeComponent();
+			//Idioma ^ Id = gcnew Idioma();
 			//
 			//TODO: Add the constructor code here
 			//
 		}
+		Idioma ^Id;
 		array< String^, 2 >^ MatClass;
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
@@ -96,10 +98,25 @@ namespace Farol {
 
 	public: 
 		array< int, 2 >^ MatrizInfluencia;
+
+
 System::String ^getTag(String ^Tag)
 {
-	//IDIOMA = Farol::Idioma::ID;
+	//Idioma ^ Id = gcnew Idioma();
+	//IDIOMA = Id->ID;
+	//this->dataGridView2->Refresh();
+	//this->dataGridView3->Refresh();
+	//this->dataGridView4->Refresh();
 	return(Dicionario[IDIOMA,consultarTag(Tag)]);
+}
+
+System::String ^getNotTag(String ^Tag)
+{
+	int IDIOMA2;
+	if(IDIOMA==0) IDIOMA2 = 1;
+	else IDIOMA2 = 0;
+
+	return(Dicionario[IDIOMA2,consultarTag(Tag)]);
 }
 
 /*---------------------------------------------------------------------------
@@ -1161,7 +1178,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
-			this->Text = L"Farol Tool: Ordenador de Classes para Teste de Integração";
+			this->Text = L"Farol Tool: "+Farol::Form1::getTag("OCTI");//Ordenador de Classes para Teste de Integração";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -1224,6 +1241,122 @@ private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, Syste
 		 }
 private: System::Void openFileDialog1_FileOk_1(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 }
+
+System::Void AtualizarTreeViewIdioma()
+{
+	array< String^, 1> ^TVTags = gcnew array< String^, 1>(21);
+	int t = 0;
+	int IDIOMA2;
+
+	if(IDIOMA==1) IDIOMA2 = 0;
+	else IDIOMA2 = 1;
+
+	for(int i=30;i<50;i++)
+	{
+		TVTags[t] = Dicionario[IDIOMA2,i];
+		t++;
+	}
+	TVTags[t] = Dicionario[IDIOMA2,18];
+
+	for(int i=0;i<5;i++)
+	{
+		for(int j=0;j<this->treeView1->Nodes[0]->Nodes[i]->Nodes->Count;j++)
+		{
+			for(int k=0;k<this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes->Count;k++)
+			{
+				if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Contains(getNotTag("TAMANHO")))
+				{
+					this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Replace(getNotTag("TAMANHO"),Farol::Form1::getTag("TAMANHO"));
+				}
+			}
+		}
+	}
+
+	for(int n=0;n<21;n++)
+	{
+		for(int i=0;i<5;i++)
+		{
+			if(this->treeView1->Nodes[0]->Nodes[i]->Text->Contains(TVTags[n]))
+			{
+				this->treeView1->Nodes[0]->Nodes[i]->Text = this->treeView1->Nodes[0]->Nodes[i]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+			}
+			for(int j=0;j<this->treeView1->Nodes[0]->Nodes[i]->Nodes->Count;j++)
+			{
+				if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text->Contains(TVTags[n]))
+				{
+					this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+				}
+				for(int k=0;k<this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes->Count;k++)
+				{
+					if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Contains(TVTags[n]))
+					{
+						this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+					}
+				}
+			}
+		}
+		
+	}
+	
+	
+	
+
+}
+
+System::Void AtualizarIdioma()
+{
+	//this->Refresh();
+	//this->treeView1->Refresh();
+	//this->treeView1->UpdateStyles();
+	//this->treeView1->UpdateZOrder();
+	/*
+	for(int i=0;i<this->treeView1->Nodes[0]->Nodes->Count;i++)
+	{
+		if(this->treeView1->Nodes[0]->Nodes[i]->Text->Contains("tion"))
+		{
+			//this->treeView1->Nodes[0]->Nodes[i]->Text = this->treeView1->Nodes[0]->Nodes[i]->Text->Replace("tion",Farol::Form1::getTag("MODELO"));
+		}
+	}*/
+	this->AtualizarTreeViewIdioma();
+	this->treeView1->Nodes[0]->Text = Farol::Form1::getTag("MODELO");
+	this->Text = "Farol Tool: "+Farol::Form1::getTag("OCTI");
+	this->funçõesToolStripMenuItem->Text = Farol::Form1::getTag("FUNCAO");
+	this->abrirArquivoXMIToolStripMenuItem->Text = Farol::Form1::getTag("ABRIR");
+	this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = Farol::Form1::getTag("GERARORD");
+	this->fecharArquivoCtrlFToolStripMenuItem->Text = Farol::Form1::getTag("FECHAR");
+	this->opçõesToolStripMenuItem->Text = Farol::Form1::getTag("OPCAO");
+	this->slavarResultadoCtrlBToolStripMenuItem->Text = Farol::Form1::getTag("SALVAR");
+	this->importarResultadoCtrlIToolStripMenuItem->Text = Farol::Form1::getTag("IMPORTAR");
+	this->imprimirResultadoCtrlToolStripMenuItem->Text = Farol::Form1::getTag("IMPRIMIR");
+	this->configuraçõesToolStripMenuItem->Text = Farol::Form1::getTag("CONFIGURACAO");
+	this->painelDeModeloDeClasseToolStripMenuItem->Text = Farol::Form1::getTag("PMOC");
+	this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = Farol::Form1::getTag("PSEO");
+	this->mudarIdiomaToolStripMenuItem->Text = Farol::Form1::getTag("MUDARIDIOMA");
+	this->ajudaToolStripMenuItem->Text = Farol::Form1::getTag("AJUDA");
+	this->conteúdoToolStripMenuItem->Text = Farol::Form1::getTag("CONTEUDO");
+	this->sairToolStripMenuItem->Text = Farol::Form1::getTag("SAIR");
+	this->toolStripButton1->ToolTipText = Farol::Form1::getTag("ABRIR");
+	this->toolStripButton3->ToolTipText = Farol::Form1::getTag("GERARORD");
+	this->toolStripButton2->ToolTipText = Farol::Form1::getTag("FECHAR");
+	this->toolStripButton4->ToolTipText = Farol::Form1::getTag("SALVAR");
+	this->toolStripButton5->ToolTipText = Farol::Form1::getTag("IMPORTAR");
+	this->toolStripButton6->ToolTipText = Farol::Form1::getTag("IMPRIMIR");
+	this->toolStripButton7->ToolTipText = Farol::Form1::getTag("AJUDA");
+	this->toolStripButton8->ToolTipText = Farol::Form1::getTag("SAIR");
+	this->label1->Text = Farol::Form1::getTag("ARQUIVOXMI");
+	this->groupBox2->Text = Farol::Form1::getTag("SEQUENCIAORD");
+	this->Column0->HeaderText = Farol::Form1::getTag("CLASSEITERACAO");
+	this->Column1->HeaderText = Farol::Form1::getTag("VALORFI");
+	this->label3->Text = Farol::Form1::getTag("ORDEMINT");
+	this->moverBaixo->Text = Farol::Form1::getTag("MOVERBAIXO");
+	this->moverCima->Text = Farol::Form1::getTag("MOVERCIMA");
+	this->groupBox3->Text = Farol::Form1::getTag("ORDEMALTERADA");
+	this->dataGridViewTextBoxColumn1->HeaderText = Farol::Form1::getTag("TOTSTUBS");
+	this->dataGridViewTextBoxColumn2->HeaderText = Farol::Form1::getTag("TAMANHO");
+	this->groupBox1->Text = Farol::Form1::getTag("ORDEMORIGINAL");
+	this->dataGridViewTextBoxColumn3->HeaderText = Farol::Form1::getTag("TOTSTUBS");
+	this->dataGridViewTextBoxColumn4->HeaderText = Farol::Form1::getTag("TAMANHO");
+}
 
 //Retorna o nome da classe a partir do ID da classe fornecido
 private: System::String ^ getClassName(array<String ^,2> ^Mat, System::String ^ id){
@@ -1900,8 +2033,10 @@ private: System::Void createTable()
 	dataGridView3->RowCount = 1;
 	dataGridView3->ColumnCount = 2;
 	dataGridView3->RowHeadersVisible = false;
-	dataGridView3->Columns[0]->HeaderText = "Total Stubs";
-	dataGridView3->Columns[1]->HeaderText = "Tamanho";
+	//dataGridView3->Columns[0]->HeaderText = "Total Stubs";
+	dataGridView3->Columns[0]->HeaderText =	getTag("TOTSTUBS");
+	//dataGridView3->Columns[1]->HeaderText = "Tamanho";
+	dataGridView3->Columns[1]->HeaderText =	getTag("TAMANHO");
 	dataGridView3->Columns[0]->Width = 90;
 	dataGridView3->Columns[1]->Width = 76;
 
@@ -1910,8 +2045,10 @@ private: System::Void createTable()
 	dataGridView4->RowCount = 1;
 	dataGridView4->ColumnCount = 2;
 	dataGridView4->RowHeadersVisible = false;
-	dataGridView4->Columns[0]->HeaderText = "Total Stubs";
-	dataGridView4->Columns[1]->HeaderText = "Tamanho";
+	//dataGridView4->Columns[0]->HeaderText = "Total Stubs";
+	dataGridView4->Columns[0]->HeaderText =	getTag("TOTSTUBS");
+	//dataGridView4->Columns[1]->HeaderText = "Tamanho";
+	dataGridView4->Columns[1]->HeaderText =	getTag("TAMANHO");
 	dataGridView4->Columns[0]->Width = 90;
 	dataGridView4->Columns[1]->Width = 76;
 
@@ -1929,7 +2066,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
       // Displays an OpenFileDialog so the user can select a Cursor.
       OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog();
       openFileDialog1->Filter = "XML Files|*.xml";
-      openFileDialog1->Title = "Selecione o arquivo XMI";
+      openFileDialog1->Title = getTag("SELECIONEXMI");
 	  System::String ^filename;
 	  bool ^Association = false;
 
@@ -1971,13 +2108,13 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			root->ImageIndex = 0;
 			root->SelectedImageIndex = 0;
 
-			treeView1->Nodes->Add("Modelo: "+root->Text);
+			treeView1->Nodes->Add(getTag("MODELO")+root->Text);
 
 			numClass = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;
 			
 			//Classes
 			System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
-			classes = treeView1->Nodes[0]->Nodes->Add("Classes");
+			classes = treeView1->Nodes[0]->Nodes->Add(getTag("CLASSES"));
 			classes->ImageIndex = 1;
 			classes->SelectedImageIndex = 1;
 
@@ -2157,7 +2294,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			//Associações
 			System::Windows::Forms::TreeNode ^assoc = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
-			assoc = treeView1->Nodes[0]->Nodes->Add("Associações: ");
+			assoc = treeView1->Nodes[0]->Nodes->Add(getTag("ASSOCIACOES"));
 			
 			assoc->ImageIndex = 2;
 			assoc->SelectedImageIndex = 2;
@@ -2171,7 +2308,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 					if(MatAssoc[i,0]=="Unspecified")
 					{
-						assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,1]+" -- "+MatAssoc[i,2]);
+						assoc1 = assoc->Nodes->Add(getTag("ASSOCIACAO")+MatAssoc[i,1]+" -- "+MatAssoc[i,2]);
 						assoc1->ImageIndex = 6;
 						assoc1->SelectedImageIndex = 6;
 
@@ -2181,11 +2318,11 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 						MatrizInfluencia[c1,c2] = 1;
 						MatrizInfluencia[c2,c1] = 1;
 
-						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]+" - Navegável: "+isNavigable(MatAssoc[i,3])->ToString());
+						assoc2 = assoc1->Nodes->Add(getTag("ORIGEM")+MatAssoc[i,1]+getTag("NAVEGAVEL")+isNavigable(MatAssoc[i,3])->ToString());
 						assoc2->ImageIndex = 7;
 						assoc2->SelectedImageIndex = 7;
 
-						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]+" - Navegável: "+isNavigable(MatAssoc[i,4])->ToString());
+						assoc3 = assoc1->Nodes->Add(getTag("DESTINO")+MatAssoc[i,2]+getTag("NAVEGAVEL")+isNavigable(MatAssoc[i,4])->ToString());
 						assoc3->ImageIndex = 7;
 						assoc3->SelectedImageIndex = 7;
 					}
@@ -2193,7 +2330,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 					{
 						if(isNavigable(MatAssoc[i,3])->ToString()=="True")
 						{
-							assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,2]+" --> "+MatAssoc[i,1]);
+							assoc1 = assoc->Nodes->Add(getTag("ASSOCIACAO")+MatAssoc[i,2]+" --> "+MatAssoc[i,1]);
 							assoc1->ImageIndex = 6;
 							assoc1->SelectedImageIndex = 6;
 
@@ -2203,7 +2340,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 						}
 						else
 						{
-							assoc1 = assoc->Nodes->Add("Associação: "+MatAssoc[i,1]+" --> "+MatAssoc[i,2]);
+							assoc1 = assoc->Nodes->Add(getTag("ASSOCIACAO")+MatAssoc[i,1]+" --> "+MatAssoc[i,2]);
 							assoc1->ImageIndex = 6;
 							assoc1->SelectedImageIndex = 6;
 
@@ -2212,11 +2349,11 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 							MatrizInfluencia[c2,c1] = 1;
 						}
 
-						assoc2 = assoc1->Nodes->Add("Origem: "+MatAssoc[i,1]+" - Navegável: "+isNavigable(MatAssoc[i,3])->ToString());
+						assoc2 = assoc1->Nodes->Add(getTag("ORIGEM")+MatAssoc[i,1]+getTag("NAVEGAVEL")+isNavigable(MatAssoc[i,3])->ToString());
 						assoc2->ImageIndex = 7;
 						assoc2->SelectedImageIndex = 7;
 
-						assoc3 = assoc1->Nodes->Add("Destino: "+MatAssoc[i,2]+" - Navegável: "+isNavigable(MatAssoc[i,4])->ToString());
+						assoc3 = assoc1->Nodes->Add(getTag("DESTINO")+MatAssoc[i,2]+getTag("NAVEGAVEL")+isNavigable(MatAssoc[i,4])->ToString());
 						assoc3->ImageIndex = 7;
 						assoc3->SelectedImageIndex = 7;
 					}					
@@ -2226,7 +2363,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			//Composição/Agregação
 			System::Windows::Forms::TreeNode ^agreg = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
-			agreg = treeView1->Nodes[0]->Nodes->Add("Composição/Agregação: ");
+			agreg = treeView1->Nodes[0]->Nodes->Add(getTag("COMPOSICAO"));
 			
 			agreg->ImageIndex = 3;
 			agreg->SelectedImageIndex = 3;
@@ -2240,15 +2377,15 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 					if(MatAssoc[i,0]=="Bi-Directional")
 					{
-						agreg1 = agreg->Nodes->Add("Associação: "+MatAssoc[i,1]+" <>-- "+MatAssoc[i,2]);
+						agreg1 = agreg->Nodes->Add(getTag("COMPOSICAO")+": "+MatAssoc[i,1]+" <>-- "+MatAssoc[i,2]);
 						agreg1->ImageIndex = 6;
 						agreg1->SelectedImageIndex = 6;
 
-						agreg2 = agreg1->Nodes->Add("Parte: "+MatAssoc[i,2]);
+						agreg2 = agreg1->Nodes->Add(getTag("PARTE")+MatAssoc[i,2]);
 						agreg2->ImageIndex = 7;
 						agreg2->SelectedImageIndex = 7;
 
-						agreg3 = agreg1->Nodes->Add("Todo: "+MatAssoc[i,1]);
+						agreg3 = agreg1->Nodes->Add(getTag("TODO")+MatAssoc[i,1]);
 						agreg3->ImageIndex = 7;
 						agreg3->SelectedImageIndex = 7;
 
@@ -2262,7 +2399,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			//Heranças
 			System::Windows::Forms::TreeNode ^her = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
 			
-			her = treeView1->Nodes[0]->Nodes->Add("Heranças: ");
+			her = treeView1->Nodes[0]->Nodes->Add(getTag("HERANCAS"));
 			her->ImageIndex = 4;
 			her->SelectedImageIndex = 4;
 
@@ -2271,15 +2408,15 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				int c0 = getContador(MatHer[i,0]);
 				int c1 = getContador(MatHer[i,1]);
 
-				her1 = her->Nodes->Add("Herança: "+MatHer[i,0]+" <|-- "+MatHer[i,1]);
+				her1 = her->Nodes->Add(getTag("HERANCA")+MatHer[i,0]+" <|-- "+MatHer[i,1]);
 				her1->ImageIndex = 6;
 				her1->SelectedImageIndex = 6;
 
-				her2 = her1->Nodes->Add("Pai: "+MatHer[i,0]);
+				her2 = her1->Nodes->Add(getTag("PAI")+MatHer[i,0]);
 				her2->ImageIndex = 7;
 				her2->SelectedImageIndex = 7;
 
-				her3 = her1->Nodes->Add("Filho: "+MatHer[i,1]);
+				her3 = her1->Nodes->Add(getTag("FILHO")+MatHer[i,1]);
 				her3->ImageIndex = 7;
 				her3->SelectedImageIndex = 7;
 
@@ -2290,7 +2427,7 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 
 			//Dependência
 			System::Windows::Forms::TreeNode ^depend = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
-			depend = treeView1->Nodes[0]->Nodes->Add("Dependência: ");
+			depend = treeView1->Nodes[0]->Nodes->Add(getTag("DEPENDENCIAS"));
 			
 			depend->ImageIndex = 5;
 			depend->SelectedImageIndex = 5;
@@ -2300,15 +2437,15 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 				int c0 = getContador(MatDepend[i,0]);
 				int c1 = getContador(MatDepend[i,1]);
 
-				depend1 = depend->Nodes->Add("Dependência: "+MatDepend[i,0]+" <-- "+MatDepend[i,1]);
+				depend1 = depend->Nodes->Add(getTag("DEPENDENCIA")+MatDepend[i,0]+" <-- "+MatDepend[i,1]);
 				depend1->ImageIndex = 6;
 				depend1->SelectedImageIndex = 6;					
 				
-				depend11 = depend1->Nodes->Add("Cliente: "+MatDepend[i,1]);
+				depend11 = depend1->Nodes->Add(getTag("CLIENTE")+MatDepend[i,1]);
 				depend11->ImageIndex = 7;
 				depend11->SelectedImageIndex = 7;
 				
-				depend12 = depend1->Nodes->Add("Fornecedor: "+MatDepend[i,0]);
+				depend12 = depend1->Nodes->Add(getTag("FORNECEDOR")+MatDepend[i,0]);
 				depend12->ImageIndex = 7;
 				depend12->SelectedImageIndex = 7;
 
@@ -2322,19 +2459,19 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 			{				
 				//if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
 				//{
-					classe = classes->Nodes->Add("Classe: "+MatClass[i,0]);
+					classe = classes->Nodes->Add(getTag("CLASSE")+MatClass[i,0]);
 					classe->ImageIndex = 6;
 					classe->SelectedImageIndex = 6;
 
-					classe1 = classe->Nodes->Add("Fator de Influência: "+ MatClass[i,2]);
+					classe1 = classe->Nodes->Add(getTag("FATORINF")+ MatClass[i,2]);
 					classe1->ImageIndex = 7;
 					classe1->SelectedImageIndex = 7;
 
-					classe2 = classe->Nodes->Add("Tamanho: "+MatClass[i,3]);
+					classe2 = classe->Nodes->Add(getTag("TAMANHO")+": "+MatClass[i,3]);
 					classe2->ImageIndex = 7;
 					classe2->SelectedImageIndex = 7;
 
-					classe3 = classe->Nodes->Add("Número de Conectores: "+MatClass[i,4]);
+					classe3 = classe->Nodes->Add(getTag("NUMEROCONECTOR")+MatClass[i,4]);
 					classe3->ImageIndex = 7;
 					classe3->SelectedImageIndex = 7;
 				//}
@@ -2510,10 +2647,20 @@ private: System::Void moverBaixo_Click(System::Object^  sender, System::EventArg
 	}
 }
 private: System::Void mudarIdiomaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Idioma ^ Id = gcnew Idioma();
+			 Id = gcnew Idioma();
 			 Id->Show();
+			 Id->OKButton->Click += gcnew EventHandler(this,&Farol::Form1::funçõesToolStripMenuItem_TextChanged);
+			 
+			 //Id->OKButton->OnClick(e);
+			 //AtualizarIdioma();
 		 }
 private: System::Void funçõesToolStripMenuItem_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+			 //Idioma ^ Id = gcnew Idioma();
+			 IDIOMA = Id->ID;
+
+			 //carregarIdioma();
+			 AtualizarIdioma();
+			 Id->Close();
 		 }
 };
 
