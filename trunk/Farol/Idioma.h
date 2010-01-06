@@ -22,16 +22,20 @@ namespace Farol {
 	public ref class Idioma : public System::Windows::Forms::Form
 	{
 	public:
-		int ID;
+		
+		bool closing;
+		
 		Idioma(void)
 		{
 			InitializeComponent();
-			IdiomaBox->SelectedIndex = 0;
-			ID = 1;
+			
+			closing = false;
 			//
 			//TODO: Add the constructor code here
 			//
 		}
+		int ID;
+		array< int, 1 >^ lstId;
 
 	protected:
 		/// <summary>
@@ -44,13 +48,13 @@ namespace Farol {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  OKButton;
+	public: System::Windows::Forms::Button^  OKButton;
 	protected: 
 
 	protected: 
 
 	private: System::Windows::Forms::Button^  CancelButton;
-	private: System::Windows::Forms::ComboBox^  IdiomaBox;
+	public: System::Windows::Forms::ComboBox^  IdiomaBox;
 
 
 
@@ -67,6 +71,9 @@ namespace Farol {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			//lstId = gcnew array< int, 1 >(2);
+			//this->ID = 0;
+
 			this->OKButton = (gcnew System::Windows::Forms::Button());
 			this->CancelButton = (gcnew System::Windows::Forms::Button());
 			this->IdiomaBox = (gcnew System::Windows::Forms::ComboBox());
@@ -100,6 +107,7 @@ namespace Farol {
 			this->IdiomaBox->Name = L"IdiomaBox";
 			this->IdiomaBox->Size = System::Drawing::Size(185, 21);
 			this->IdiomaBox->TabIndex = 3;
+			this->IdiomaBox->SelectedIndex = 0;
 			// 
 			// Idioma
 			// 
@@ -124,11 +132,24 @@ private: System::Void CancelButton_Click(System::Object^  sender, System::EventA
 {
 	Idioma::Close();
 }
+private: void Form1_FormClosing(System::Object^ sender, FormClosingEventArgs e)
+        {
+            closing = true;
+			e.Cancel = false;
+        }
 
-private: System::Void OKButton_Click(System::Object^  sender, System::EventArgs^  e)
+public: System::Void OKButton_Click(System::Object^  sender, System::EventArgs^  e)
 {
-	ID = IdiomaBox->SelectedIndex;
-	Idioma::Close();
+	ID = IdiomaBox->SelectedIndex::get();
+	
+	//Idioma::Close();
 }
+
+public: int getIdioma()
+{
+	return Farol::Idioma::IdiomaBox->SelectedIndex;
+	//return ID;
+}
+
 };
 }
