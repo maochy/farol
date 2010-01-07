@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FAbout.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Farol.cpp"
 				>
 			</File>
@@ -243,9 +247,25 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\FAbout.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\FAbout.resx"
+					>
+				</File>
+			</File>
+			<File
 				RelativePath=".\Form1.h"
 				FileType="3"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
 				<File
 					RelativePath=".\Form1.resX"
 					SubType="Designer"
@@ -291,6 +311,10 @@
 			</File>
 			<File
 				RelativePath=".\app.rc"
+				>
+			</File>
+			<File
+				RelativePath=".\language.dll"
 				>
 			</File>
 		</Filter>

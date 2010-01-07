@@ -1,4 +1,5 @@
 #include "FSobre.h"
+#include "FAbout.h"
 #include "Idioma.h"
 #include <stdio.h>
 #pragma once
@@ -527,6 +528,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->painelDeModeloDeClasseToolStripMenuItem->Size = System::Drawing::Size(256, 22);
 			//this->painelDeModeloDeClasseToolStripMenuItem->Text = L"Painel de Modelo de Classes";
 			this->painelDeModeloDeClasseToolStripMenuItem->Text = Farol::Form1::getTag("PMOC");
+			this->painelDeModeloDeClasseToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::painelDeModeloDeClasseToolStripMenuItem_Click);
 			// 
 			// painelDeSequênciaDeOrdenaçãoToolStripMenuItem
 			// 
@@ -536,6 +538,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Size = System::Drawing::Size(256, 22);
 			//this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = L"Painel de Sequência de Ordenação";
 			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Text = Farol::Form1::getTag("PSEO");
+			this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::painelDeSequênciaDeOrdenaçãoToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -1226,16 +1229,16 @@ private: System::Void openFileDialog1_FileOk(System::Object^  sender, System::Co
 		 }
 
 private: System::Void toolStripButton8_Click(System::Object^  sender, System::EventArgs^  e) {
-			 String^ msg("Confirmar a saída do programa?");
+			 String^ msg = getTag("CONFIRMARSAIDA");
 
-			 if (MessageBox::Show(msg,"Saída do Programa",MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
+			 if (MessageBox::Show(msg,getTag("SAIDAPROG"),MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
 				 Application::Exit();
 			 }
 		 }
 private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 String^ msg("Confirmar a saída do programa?");
+			 String^ msg = getTag("CONFIRMARSAIDA");
 
-			 if (MessageBox::Show(msg,"Saída do Programa",MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
+			 if (MessageBox::Show(msg,getTag("SAIDAPROG"),MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
 				 Application::Exit();
 			 }
 		 }
@@ -1244,58 +1247,62 @@ private: System::Void openFileDialog1_FileOk_1(System::Object^  sender, System::
 
 System::Void AtualizarTreeViewIdioma()
 {
-	array< String^, 1> ^TVTags = gcnew array< String^, 1>(21);
-	int t = 0;
-	int IDIOMA2;
-
-	if(IDIOMA==1) IDIOMA2 = 0;
-	else IDIOMA2 = 1;
-
-	for(int i=30;i<50;i++)
+	if(this->treeView1->Nodes->Count>0)
 	{
-		TVTags[t] = Dicionario[IDIOMA2,i];
-		t++;
-	}
-	TVTags[t] = Dicionario[IDIOMA2,18];
+		array< String^, 1> ^TVTags = gcnew array< String^, 1>(21);
+		int t = 0;
+		int IDIOMA2;
 
-	for(int i=0;i<5;i++)
-	{
-		for(int j=0;j<this->treeView1->Nodes[0]->Nodes[i]->Nodes->Count;j++)
+		if(IDIOMA==1) IDIOMA2 = 0;
+		else IDIOMA2 = 1;
+
+		for(int i=30;i<50;i++)
 		{
-			for(int k=0;k<this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes->Count;k++)
-			{
-				if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Contains(getNotTag("TAMANHO")))
-				{
-					this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Replace(getNotTag("TAMANHO"),Farol::Form1::getTag("TAMANHO"));
-				}
-			}
+			TVTags[t] = Dicionario[IDIOMA2,i];
+			t++;
 		}
-	}
+		TVTags[t] = Dicionario[IDIOMA2,18];
 
-	for(int n=0;n<21;n++)
-	{
+		this->treeView1->Nodes[0]->Text = this->treeView1->Nodes[0]->Text->Replace(Farol::Form1::getNotTag("MODELO"), Farol::Form1::getTag("MODELO"));
 		for(int i=0;i<5;i++)
 		{
-			if(this->treeView1->Nodes[0]->Nodes[i]->Text->Contains(TVTags[n]))
-			{
-				this->treeView1->Nodes[0]->Nodes[i]->Text = this->treeView1->Nodes[0]->Nodes[i]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
-			}
 			for(int j=0;j<this->treeView1->Nodes[0]->Nodes[i]->Nodes->Count;j++)
 			{
-				if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text->Contains(TVTags[n]))
-				{
-					this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
-				}
 				for(int k=0;k<this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes->Count;k++)
 				{
-					if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Contains(TVTags[n]))
+					if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Contains(getNotTag("TAMANHO")))
 					{
-						this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+						this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Replace(getNotTag("TAMANHO"),Farol::Form1::getTag("TAMANHO"));
 					}
 				}
 			}
 		}
-		
+
+		for(int n=0;n<21;n++)
+		{
+			for(int i=0;i<5;i++)
+			{
+				if(this->treeView1->Nodes[0]->Nodes[i]->Text->Contains(TVTags[n]))
+				{
+					this->treeView1->Nodes[0]->Nodes[i]->Text = this->treeView1->Nodes[0]->Nodes[i]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+				}
+				for(int j=0;j<this->treeView1->Nodes[0]->Nodes[i]->Nodes->Count;j++)
+				{
+					if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text->Contains(TVTags[n]))
+					{
+						this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+					}
+					for(int k=0;k<this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes->Count;k++)
+					{
+						if(this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Contains(TVTags[n]))
+						{
+							this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text = this->treeView1->Nodes[0]->Nodes[i]->Nodes[j]->Nodes[k]->Text->Replace(TVTags[n],Farol::Form1::getTag(Tags[n+30]));
+						}
+					}
+				}
+			}
+			
+		}
 	}
 	
 	
@@ -1305,20 +1312,13 @@ System::Void AtualizarTreeViewIdioma()
 
 System::Void AtualizarIdioma()
 {
-	//this->Refresh();
-	//this->treeView1->Refresh();
-	//this->treeView1->UpdateStyles();
-	//this->treeView1->UpdateZOrder();
-	/*
-	for(int i=0;i<this->treeView1->Nodes[0]->Nodes->Count;i++)
-	{
-		if(this->treeView1->Nodes[0]->Nodes[i]->Text->Contains("tion"))
-		{
-			//this->treeView1->Nodes[0]->Nodes[i]->Text = this->treeView1->Nodes[0]->Nodes[i]->Text->Replace("tion",Farol::Form1::getTag("MODELO"));
-		}
-	}*/
 	this->AtualizarTreeViewIdioma();
-	this->treeView1->Nodes[0]->Text = Farol::Form1::getTag("MODELO");
+
+	for(int i=0;i<this->dataGridView2->ColumnCount-2;i++)
+	{
+		this->dataGridView2->Columns[i+2]->HeaderText = this->dataGridView2->Columns[i+2]->HeaderText->Replace(Farol::Form1::getNotTag("FITITERACAO"), Farol::Form1::getTag("FITITERACAO"));
+	}
+
 	this->Text = "Farol Tool: "+Farol::Form1::getTag("OCTI");
 	this->funçõesToolStripMenuItem->Text = Farol::Form1::getTag("FUNCAO");
 	this->abrirArquivoXMIToolStripMenuItem->Text = Farol::Form1::getTag("ABRIR");
@@ -1925,7 +1925,7 @@ private: System::Void ordemIntegrar()
 
 		}
 
-		dataGridView2->Columns[it]->HeaderText = "FIT Iteração "+Convert::ToString(it-1);
+		dataGridView2->Columns[it]->HeaderText = getTag("FITITERACAO")+Convert::ToString(it-1);
 		menor=numClass*numClass;
 		deadlock=0;
 		for(int i=0;i<(numClass-undefinedClasses()); i++)
@@ -2037,8 +2037,8 @@ private: System::Void createTable()
 	dataGridView3->Columns[0]->HeaderText =	getTag("TOTSTUBS");
 	//dataGridView3->Columns[1]->HeaderText = "Tamanho";
 	dataGridView3->Columns[1]->HeaderText =	getTag("TAMANHO");
-	dataGridView3->Columns[0]->Width = 90;
-	dataGridView3->Columns[1]->Width = 76;
+	//dataGridView3->Columns[0]->Width = 90;
+	//dataGridView3->Columns[1]->Width = 76;
 
 	dataGridView4->Enabled = true;
 	dataGridView4->Visible = true;
@@ -2049,8 +2049,8 @@ private: System::Void createTable()
 	dataGridView4->Columns[0]->HeaderText =	getTag("TOTSTUBS");
 	//dataGridView4->Columns[1]->HeaderText = "Tamanho";
 	dataGridView4->Columns[1]->HeaderText =	getTag("TAMANHO");
-	dataGridView4->Columns[0]->Width = 90;
-	dataGridView4->Columns[1]->Width = 76;
+	//dataGridView4->Columns[0]->Width = 90;
+	//dataGridView4->Columns[1]->Width = 76;
 
 	dataGridView3->Rows[0]->Cells[0]->Value = getNumStubsOriginal();
 	dataGridView3->Rows[0]->Cells[1]->Value = getComplexidadeOriginal();
@@ -2522,10 +2522,19 @@ private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs
 		 }
 private: System::Void splitContainer2_SplitterMoved(System::Object^  sender, System::Windows::Forms::SplitterEventArgs^  e) {
 		 }
-private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 FSobre ^ F = gcnew FSobre();
-			 F->Show();
-		 }
+private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	if(IDIOMA==0)
+	{
+		FSobre ^ sobre = gcnew FSobre();
+		sobre->Show();
+	}
+	else
+	{
+		FAbout ^ about = gcnew FAbout();
+		about->Show();
+	}
+}
 
 private: System::Void treeView1_AfterSelect(System::Object^  sender, System::Windows::Forms::TreeViewEventArgs^  e) {
 		 }
@@ -2661,6 +2670,52 @@ private: System::Void funçõesToolStripMenuItem_TextChanged(System::Object^  send
 			 //carregarIdioma();
 			 AtualizarIdioma();
 			 Id->Close();
+		 }
+private: System::Void painelDeSequênciaDeOrdenaçãoToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if(this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Checked)
+			 {
+				 this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Checked = false;
+				 this->splitContainer4->SendToBack();
+				 this->splitContainer3->Location = System::Drawing::Point(0, 0);
+				 this->splitContainer3->BringToFront();
+				 this->splitContainer3->Height = 437;
+			 }
+			 else
+			 {
+				 this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Checked = true;
+				 this->splitContainer4->BringToFront();
+				 this->splitContainer3->Location = System::Drawing::Point(3, 241);
+				 //this->splitContainer3->BringToFront();
+				 this->splitContainer3->Height = 196;
+			 }
+		 }
+
+private: System::Void painelDeModeloDeClasseToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if(this->painelDeModeloDeClasseToolStripMenuItem->Checked)
+			 {
+				 this->painelDeModeloDeClasseToolStripMenuItem->Checked = false;
+				 this->splitContainer1->SplitterDistance = 1;
+				 this->dataGridView3->Columns[0]->Width+=34;
+				 this->dataGridView3->Columns[1]->Width+=34;
+				 this->dataGridView4->Columns[0]->Width+=34;
+				 this->dataGridView4->Columns[1]->Width+=34;
+				 //this->splitContainer3->Location = System::Drawing::Point(0, 0);
+				 //this->splitContainer3->BringToFront();
+				 //this->splitContainer3->Height = 437;
+			 }
+			 else
+			 {
+				 this->painelDeModeloDeClasseToolStripMenuItem->Checked = true;
+				 this->splitContainer1->SplitterDistance = 243;
+				 this->dataGridView3->Columns[0]->Width-=34;
+				 this->dataGridView3->Columns[1]->Width-=34;
+				 this->dataGridView4->Columns[0]->Width-=34;
+				 this->dataGridView4->Columns[1]->Width-=34;
+				 //this->splitContainer4->BringToFront();
+				 //this->splitContainer3->Location = System::Drawing::Point(3, 241);
+				 //this->splitContainer3->BringToFront();
+				 //this->splitContainer3->Height = 196;
+			 }
 		 }
 };
 
