@@ -48,7 +48,7 @@ HERANCAS=Heranças=Inheritances
 HERANCA=Herança: =Inheritance: 
 PAI=Pai: =Superclass: 
 FILHO=Filho: =Subclass: 
-DEPENDENCIAS=Dependência=Dependencies
+DEPENDENCIAS=Dependências=Dependencies
 DEPENDENCIA=Dependência: =Dependency: 
 CLIENTE=Cliente: =Client: 
 FORNECEDOR=Fornecedor: =Supplier: 

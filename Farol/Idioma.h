@@ -95,14 +95,14 @@ namespace Farol {
 			this->CancelButton->Name = L"CancelButton";
 			this->CancelButton->Size = System::Drawing::Size(75, 23);
 			this->CancelButton->TabIndex = 2;
-			this->CancelButton->Text = L"Cancelar";
+			this->CancelButton->Text = Farol::Idioma::getTag("CANCELAR");
 			this->CancelButton->UseVisualStyleBackColor = true;
 			this->CancelButton->Click += gcnew System::EventHandler(this, &Idioma::CancelButton_Click);
 			// 
 			// IdiomaBox
 			// 
 			this->IdiomaBox->FormattingEnabled = true;
-			this->IdiomaBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Português", L"Inglês"});
+			this->IdiomaBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Português", L"English"});
 			this->IdiomaBox->Location = System::Drawing::Point(31, 28);
 			this->IdiomaBox->Name = L"IdiomaBox";
 			this->IdiomaBox->Size = System::Drawing::Size(185, 21);
@@ -122,11 +122,39 @@ namespace Farol {
 			this->Name = L"Idioma";
 			this->ShowIcon = false;
 			this->ShowInTaskbar = false;
-			this->Text = L"Selecionar um idioma";
+			this->Text = Farol::Idioma::getTag("SELECIONARIDIOMA");
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+
+System::String ^getTag(String ^tag)
+{
+	if(Farol::Idioma::getIdioma()==0)
+	{
+		if(tag=="CANCELAR")
+		{
+			return "Cancelar";
+		}
+		else if(tag=="SELECIONARIDIOMA")
+		{
+			return "Selecionar um idioma";
+		}
+		else return "";
+	}
+	else
+	{
+		if(tag=="CANCELAR")
+		{
+			return "Cancel";
+		}
+		else if(tag=="SELECIONARIDIOMA")
+		{
+			return "Select an language";
+		}
+		else return "";
+	}
+}
 
 private: System::Void CancelButton_Click(System::Object^  sender, System::EventArgs^  e)
 {
