@@ -2759,18 +2759,52 @@ private: System::Void toolStripButton4_Click(System::Object^  sender, System::Ev
 
 		  System::Xml::XmlElement ^source;
 		  source = dom->CreateElement("Source");
-		  System::Xml::XmlAttribute  ^stubs;
+		  
+		  System::Xml::XmlAttribute  ^stubsS;
+		  System::Xml::XmlAttribute  ^compS;
+		  System::Xml::XmlAttribute  ^stubsF;
+		  System::Xml::XmlAttribute  ^compF;
 
-		  stubs = dom->CreateAttribute("stubs");
-		  stubs->Value = "10";
-		  source->Attributes->Append(stubs);
+		  stubsS = dom->CreateAttribute("stubs");
+		  stubsS->Value = getNumStubsOriginal().ToString();
+		  source->Attributes->Append(stubsS);
 
-		  //TODO: Inserir os demais atributos e nós
+		  compS = dom->CreateAttribute("complexity");
+		  compS->Value = getComplexidadeOriginal().ToString();
+		  source->Attributes->Append(compS);
+
+		  result->AppendChild(source);
+
 		  System::Xml::XmlElement ^final;
 		  final = dom->CreateElement("Final");
+
+		  stubsF = dom->CreateAttribute("stubs");
+		  stubsF->Value = getNumStubsAtual().ToString();
+		  final->Attributes->Append(stubsF);
+
+		  compF = dom->CreateAttribute("complexity");
+		  compF->Value = getComplexidadeAtual().ToString();
+		  final->Attributes->Append(compF);
 		  
-		  result->AppendChild(source);
 		  result->AppendChild(final);
+		  
+		  System::Xml::XmlElement ^order;
+		  order = dom->CreateElement("Order");
+
+		  for(int i=0;i<numClass;i++)
+		  {
+			  System::Xml::XmlElement  ^classe;
+			  classe = dom->CreateElement("Class");
+			  
+			  System::Xml::XmlAttribute  ^value;
+			  value = dom->CreateAttribute("value");
+			  value->Value = LCOTI[i].ToString();
+			  classe->Attributes->Append(value);
+
+			  order->AppendChild(classe);
+			  result->AppendChild(order);
+		  }
+		  
 		  dom->LastChild->AppendChild(result);
 		  
 		  dom->Save(saveFileDialog1->FileName);
