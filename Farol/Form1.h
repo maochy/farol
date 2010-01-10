@@ -36,6 +36,7 @@ namespace Farol {
 			//
 		}
 		Idioma ^Id;
+		System::Xml::XmlDocument ^dom;
 		array< String^, 2 >^ MatClass;
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
@@ -650,7 +651,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			// toolStripButton4
 			// 
 			this->toolStripButton4->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->toolStripButton4->Enabled = false;
+			this->toolStripButton4->Enabled = true;
 			this->toolStripButton4->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripButton4.Image")));
 			this->toolStripButton4->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
 			this->toolStripButton4->ImageTransparentColor = System::Drawing::Color::Transparent;
@@ -659,6 +660,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton4->Text = L"toolStripButton1";
 			//this->toolStripButton4->ToolTipText = L"Salvar Resultado";
 			this->toolStripButton4->ToolTipText = Farol::Form1::getTag("SALVAR");
+			this->toolStripButton4->Click += gcnew System::EventHandler(this, &Form1::toolStripButton4_Click);
 			// 
 			// toolStripButton5
 			// 
@@ -2082,7 +2084,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 		  try 
          {
             // SECTION 1. Create a DOM Document and load the XML data into it.
-			System::Xml::XmlDocument ^dom = gcnew System::Xml::XmlDocument();
+			//System::Xml::XmlDocument ^dom = gcnew System::Xml::XmlDocument();
+			dom = gcnew System::Xml::XmlDocument();
 			dom->Load(filename);
 			path = System::IO::Path::GetFullPath(filename);
 			this->label4->Text = path;
@@ -2717,6 +2720,62 @@ private: System::Void painelDeModeloDeClasseToolStripMenuItem_Click(System::Obje
 				 //this->splitContainer3->Height = 196;
 			 }
 		 }
+
+/*---------------------------------------------------------------------------
+Procedimento responsável pela geração de um arquivo XML contendo o resultado de
+uma ordanação de classes efetuada pelo sistema
+---------------------------------------------------------------------------*/
+/*void __fastcall TFOrdenador::gerarXML()
+{
+	ModelXML->Result->Source->Set_stubs(modelo->getNumStubsOriginal());
+    ModelXML->Result->Source->Set_complexity(modelo->getComplexidadeOriginal());
+    ModelXML->Result->Final->Set_stubs(modelo->getNumStubsAtual());
+    ModelXML->Result->Final->Set_complexity(modelo->getComplexidadeAtual());
+    int *Saida = modelo->getOrdemSaida();
+    for(int i=0;i<modelo->getNumClass();i++){
+            ModelXML->Result->Order->Add();
+            ModelXML->Result->Order->Get_Class(i)->Set_value(Saida[i]);
+    }
+    ModelXML->OwnerDocument->SaveToFile(SaveDialog1->FileName);
+}*/
+
+private: System::Void toolStripButton4_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	  //Abre a caixa para salvar arquivo
+      SaveFileDialog ^ saveFileDialog1 = gcnew SaveFileDialog();
+      saveFileDialog1->Filter = "XML files (*.xml)|*.XML";
+      saveFileDialog1->Title = this->getTag("SALVARXMI");
+	  saveFileDialog1->InitialDirectory = Application::ExecutablePath;
+      saveFileDialog1->DefaultExt = ".xml";
+	  System::String ^filename;
+
+      // Show the Dialog.
+      // If the user clicked OK in the dialog and
+      // a .XML file was selected, save it.
+      if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+      {
+		  System::Xml::XmlElement ^result;
+		  result = dom->CreateElement("Result");
+
+		  System::Xml::XmlElement ^source;
+		  source = dom->CreateElement("Source");
+		  System::Xml::XmlAttribute  ^stubs;
+
+		  stubs = dom->CreateAttribute("stubs");
+		  stubs->Value = "10";
+		  source->Attributes->Append(stubs);
+
+		  //TODO: Inserir os demais atributos e nós
+		  System::Xml::XmlElement ^final;
+		  final = dom->CreateElement("Final");
+		  
+		  result->AppendChild(source);
+		  result->AppendChild(final);
+		  dom->LastChild->AppendChild(result);
+		  
+		  dom->Save(saveFileDialog1->FileName);
+	  }
+}
 };
 
 }
