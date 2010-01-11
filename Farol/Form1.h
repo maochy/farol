@@ -223,7 +223,7 @@ System::Void carregarIdioma()
 	private: System::Windows::Forms::ToolStripMenuItem^  abrirArquivoXMIToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  gerarOrdenaçãoCtrlGToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  fecharArquivoCtrlFToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  slavarResultadoCtrlBToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  salvarResultadoCtrlBToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  importarResultadoCtrlIToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator1;
 	private: System::Windows::Forms::ToolStripMenuItem^  imprimirResultadoCtrlToolStripMenuItem;
@@ -345,7 +345,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->fecharArquivoCtrlFToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->opçõesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->slavarResultadoCtrlBToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->salvarResultadoCtrlBToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->importarResultadoCtrlIToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->imprimirResultadoCtrlToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -463,6 +463,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			//this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = L"Gerar Ordenação ";
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = Farol::Form1::getTag("GERARORD");
+			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
+			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Enabled = false;
 			// 
 			// fecharArquivoCtrlFToolStripMenuItem
 			// 
@@ -471,23 +473,27 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->fecharArquivoCtrlFToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			//this->fecharArquivoCtrlFToolStripMenuItem->Text = L"Fechar Arquivo";
 			this->fecharArquivoCtrlFToolStripMenuItem->Text = Farol::Form1::getTag("FECHAR");
+			this->fecharArquivoCtrlFToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton2_Click);
+			this->fecharArquivoCtrlFToolStripMenuItem->Enabled = false;
 			// 
 			// opçõesToolStripMenuItem
 			// 
-			this->opçõesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->slavarResultadoCtrlBToolStripMenuItem, 
+			this->opçõesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->salvarResultadoCtrlBToolStripMenuItem, 
 				this->importarResultadoCtrlIToolStripMenuItem, this->toolStripSeparator1, this->imprimirResultadoCtrlToolStripMenuItem});
 			this->opçõesToolStripMenuItem->Name = L"opçõesToolStripMenuItem";
 			this->opçõesToolStripMenuItem->Size = System::Drawing::Size(59, 20);
 			//this->opçõesToolStripMenuItem->Text = L"Opções";
 			this->opçõesToolStripMenuItem->Text = Farol::Form1::getTag("OPCAO");
 			// 
-			// slavarResultadoCtrlBToolStripMenuItem
+			// salvarResultadoCtrlBToolStripMenuItem
 			// 
-			this->slavarResultadoCtrlBToolStripMenuItem->Name = L"slavarResultadoCtrlBToolStripMenuItem";
-			this->slavarResultadoCtrlBToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::B));
-			this->slavarResultadoCtrlBToolStripMenuItem->Size = System::Drawing::Size(216, 22);
-			//this->slavarResultadoCtrlBToolStripMenuItem->Text = L"Salvar Resultado";
-			this->slavarResultadoCtrlBToolStripMenuItem->Text = Farol::Form1::getTag("SALVAR");
+			this->salvarResultadoCtrlBToolStripMenuItem->Name = L"salvarResultadoCtrlBToolStripMenuItem";
+			this->salvarResultadoCtrlBToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::B));
+			this->salvarResultadoCtrlBToolStripMenuItem->Size = System::Drawing::Size(216, 22);
+			//this->salvarResultadoCtrlBToolStripMenuItem->Text = L"Salvar Resultado";
+			this->salvarResultadoCtrlBToolStripMenuItem->Text = Farol::Form1::getTag("SALVAR");
+			this->salvarResultadoCtrlBToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton4_Click);
+			this->salvarResultadoCtrlBToolStripMenuItem->Enabled = false;
 			// 
 			// importarResultadoCtrlIToolStripMenuItem
 			// 
@@ -496,7 +502,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->importarResultadoCtrlIToolStripMenuItem->Size = System::Drawing::Size(216, 22);
 			//this->importarResultadoCtrlIToolStripMenuItem->Text = L"Importar Resultado";
 			this->importarResultadoCtrlIToolStripMenuItem->Text = Farol::Form1::getTag("IMPORTAR");
-			this->importarResultadoCtrlIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::importarResultadoCtrlIToolStripMenuItem_Click);
+			this->importarResultadoCtrlIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton5_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -510,6 +516,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->imprimirResultadoCtrlToolStripMenuItem->Size = System::Drawing::Size(216, 22);
 			//this->imprimirResultadoCtrlToolStripMenuItem->Text = L"Imprimir Resultado";
 			this->imprimirResultadoCtrlToolStripMenuItem->Text = Farol::Form1::getTag("IMPRIMIR");
+			this->imprimirResultadoCtrlToolStripMenuItem->Enabled = false;
 			// 
 			// configuraçõesToolStripMenuItem
 			// 
@@ -1248,6 +1255,71 @@ private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, Syste
 private: System::Void openFileDialog1_FileOk_1(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 }
 
+/*---------------------------------------------------------------------------
+Procedimento que gerencia a habilitação ou não dos botões do formulário
+STATUS = 0 ==> não foi escolhido um arquivo XMI
+STATUS = 1 ==> foi escolhido um arquivo XMI, mas ainda não foi gerada a ordem das classes
+STATUS = 2 ==> foi escolhido um arquivo XMI e foi gerada a ordem das classes
+---------------------------------------------------------------------------*/
+void maquinaEstado(int STATUS){
+        switch(STATUS){
+                case 0:{
+                        // Botões da barra de ferramentas //
+						this->toolStripButton1->Enabled = true;
+						this->toolStripButton5->Enabled = true;
+						this->toolStripButton3->Enabled = false;
+						this->toolStripButton2->Enabled = false;
+						this->toolStripButton6->Enabled = false;
+						this->toolStripButton4->Enabled = false;
+                        // Itens do menu //
+						this->abrirArquivoXMIToolStripMenuItem->Enabled = true;
+						this->importarResultadoCtrlIToolStripMenuItem->Enabled = true;
+						this->gerarOrdenaçãoCtrlGToolStripMenuItem->Enabled = false;
+						this->fecharArquivoCtrlFToolStripMenuItem->Enabled = false;
+						this->imprimirResultadoCtrlToolStripMenuItem->Enabled = false;
+						this->salvarResultadoCtrlBToolStripMenuItem->Enabled = false;
+						this->moverBaixo->Enabled = false;
+						this->moverCima->Enabled = false;
+                }break;
+                case 1:{
+						// Botões da barra de ferramentas //
+						this->toolStripButton1->Enabled = false;
+						this->toolStripButton5->Enabled = false;
+						this->toolStripButton3->Enabled = true;
+						this->toolStripButton2->Enabled = true;
+						this->toolStripButton6->Enabled = false;
+						this->toolStripButton4->Enabled = false;
+                        // Itens do menu //
+						this->abrirArquivoXMIToolStripMenuItem->Enabled = false;
+						this->importarResultadoCtrlIToolStripMenuItem->Enabled = false;
+						this->gerarOrdenaçãoCtrlGToolStripMenuItem->Enabled = true;
+						this->fecharArquivoCtrlFToolStripMenuItem->Enabled = true;
+						this->imprimirResultadoCtrlToolStripMenuItem->Enabled = false;
+						this->salvarResultadoCtrlBToolStripMenuItem->Enabled = false;
+						this->moverBaixo->Enabled = false;
+						this->moverCima->Enabled = false;
+                }break;
+                case 2:{
+						// Botões da barra de ferramentas //
+						this->toolStripButton1->Enabled = false;
+						this->toolStripButton5->Enabled = false;
+						this->toolStripButton3->Enabled = false;
+						this->toolStripButton2->Enabled = true;
+						this->toolStripButton6->Enabled = true;
+						this->toolStripButton4->Enabled = true;
+                        // Itens do menu //
+						this->abrirArquivoXMIToolStripMenuItem->Enabled = false;
+						this->importarResultadoCtrlIToolStripMenuItem->Enabled = false;
+						this->gerarOrdenaçãoCtrlGToolStripMenuItem->Enabled = false;
+						this->fecharArquivoCtrlFToolStripMenuItem->Enabled = true;
+						this->imprimirResultadoCtrlToolStripMenuItem->Enabled = true;
+						this->salvarResultadoCtrlBToolStripMenuItem->Enabled = true;
+						this->moverBaixo->Enabled = true;
+						this->moverCima->Enabled = true;
+                }break;
+        }
+}
+
 System::Void AtualizarTreeViewIdioma()
 {
 	if(this->treeView1->Nodes->Count>0)
@@ -1328,7 +1400,7 @@ System::Void AtualizarIdioma()
 	this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = Farol::Form1::getTag("GERARORD");
 	this->fecharArquivoCtrlFToolStripMenuItem->Text = Farol::Form1::getTag("FECHAR");
 	this->opçõesToolStripMenuItem->Text = Farol::Form1::getTag("OPCAO");
-	this->slavarResultadoCtrlBToolStripMenuItem->Text = Farol::Form1::getTag("SALVAR");
+	this->salvarResultadoCtrlBToolStripMenuItem->Text = Farol::Form1::getTag("SALVAR");
 	this->importarResultadoCtrlIToolStripMenuItem->Text = Farol::Form1::getTag("IMPORTAR");
 	this->imprimirResultadoCtrlToolStripMenuItem->Text = Farol::Form1::getTag("IMPRIMIR");
 	this->configuraçõesToolStripMenuItem->Text = Farol::Form1::getTag("CONFIGURACAO");
@@ -1337,6 +1409,7 @@ System::Void AtualizarIdioma()
 	this->mudarIdiomaToolStripMenuItem->Text = Farol::Form1::getTag("MUDARIDIOMA");
 	this->ajudaToolStripMenuItem->Text = Farol::Form1::getTag("AJUDA");
 	this->conteúdoToolStripMenuItem->Text = Farol::Form1::getTag("CONTEUDO");
+	this->sobreToolStripMenuItem->Text = Farol::Form1::getTag("SOBRE");
 	this->sairToolStripMenuItem->Text = Farol::Form1::getTag("SAIR");
 	this->toolStripButton1->ToolTipText = Farol::Form1::getTag("ABRIR");
 	this->toolStripButton3->ToolTipText = Farol::Form1::getTag("GERARORD");
@@ -1577,7 +1650,6 @@ private: System::Void setFICol()
 
 private: System::Void calcularFI()
 {
-	//int numClass = MatClass->Length/5;
 	FI = gcnew array< int, 1 >(numClass);
 	for(int i=0;i<numClass;i++)
 	{
@@ -1586,7 +1658,6 @@ private: System::Void calcularFI()
 		{
 			FI[i]+=MatrizInfluencia[i,j];
 		}
-	//FOrdenador->Iteracao->Cells[1][i+1]=IntToStr(FI[i]);
 	}
 }
 
@@ -1605,7 +1676,6 @@ private: System::String ^buscaContClasse(int ID, array< String^, 1 >^lista, int 
 private: System::Void deadLockCaso3(int Num, array< int, 1 >^ Classes)
 {
 	array< int, 1 >^ Tamanho = gcnew array< int, 1 >(Num);
-	//int numClass = MatClass->Length/5;
 
 	for(int i=0;i<numClass;i++)
 	{
@@ -1614,7 +1684,6 @@ private: System::Void deadLockCaso3(int Num, array< int, 1 >^ Classes)
 
 	for(int i=0;i<Num;i++)
 	{
-		//Tamanho[i]=buscaContClasse(Classes[i],lstClass,numClass)->getTamanho();
 		Tamanho[i]=getTamanho(buscaContClasse(Classes[i],lstClass,numClass));
 	}
 
@@ -1648,7 +1717,6 @@ private: int deadLockCaso2(int Num,int numStubs,array< int, 1 >^ Classes, array<
 	int deadlock,menor;
 	menor=(numStubs*Num)+1;
 	deadlock=0;
-	//int numClass = MatClass->Length/5;
 
 	for(int x=0;x<Num;x++)
 	{
@@ -1666,7 +1734,6 @@ private: int deadLockCaso2(int Num,int numStubs,array< int, 1 >^ Classes, array<
 							total+=MatrizInfluencia[j, Classes[i]];
 						}
 					}
-
 				}
 			}
 			if(total<menor)
@@ -1706,9 +1773,7 @@ private: System::Void resolverDeadlock(int Num,array< int, 1 >^ Classes, array< 
 	array< int, 1 >^ NumStubs = gcnew array< int, 1 >(Num);
 	array< int, 1 >^ LCD = gcnew array< int, 1 >(Num); //LCD - Lista de Classes Dependentes
 	int menor, deadlock, tot;
-	//int numClass = MatClass->Length/5;
 	
-
 	for(int i=0;i<Num;i++)
 	{
 		NumStubs[i]=0;
@@ -1763,7 +1828,6 @@ private: System::Void resolverDeadlock(int Num,array< int, 1 >^ Classes, array< 
 /************************ Funcao que marca as classes que possuem FI nulo ***********************/
 private: int marcarFInulo(array< int, 1 >^ LCOTI, array< int, 1 >^ ListaUltimos)
 {
-	//int numClass = MatClass->Length/5;
 	FI = gcnew array< int, 1 >(numClass);
 
 	for(int i=0;i<numClass;i++)
@@ -1773,10 +1837,8 @@ private: int marcarFInulo(array< int, 1 >^ LCOTI, array< int, 1 >^ ListaUltimos)
 		{
 			FI[i]+=MatrizInfluencia[i,j];
 		}
-	//FOrdenador->Iteracao->Cells[1][i+1]=IntToStr(FI[i]);
 	}
 	int cont=0;
-	//int numClass = MatClass->Length/5;
 	//LCOTI = Lista de Classes Ordenadas Integradas
 	for(int i=0;i<numClass;i++)
 	{
@@ -1897,7 +1959,6 @@ void imprimeSaida(int NC)
 private: System::Void ordemIntegrar()
 {
 	classInt = 0;
-	//int numClass = MatClass->Length/5;
 	array< int, 1 >^ ListaClassesIntegradas = gcnew array< int, 1 >(numClass);
 	array< int, 1 >^ ListaUltimos = gcnew array< int, 1 >(numClass);
 	array< int, 1 >^ ListaDeadLock = gcnew array< int, 1 >(numClass);
@@ -1924,8 +1985,6 @@ private: System::Void ordemIntegrar()
 			dataGridView2->Columns[it]->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightYellow;
 			dataGridView2->Columns[it]->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), 
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			
-
 		}
 
 		dataGridView2->Columns[it]->HeaderText = getTag("FITITERACAO")+Convert::ToString(it-1);
@@ -1959,7 +2018,6 @@ private: System::Void ordemIntegrar()
 			}
 		   else
 		   {
-			   //FOrdenador->Iteracao->Cells[it][i+1]="-";
 			   dataGridView2->Rows[i]->Cells[it]->Value = "-"; 
 		   }
 		}
@@ -1992,8 +2050,7 @@ private: System::Void ordemIntegrar()
 private: System::Void createTable()
 {
 	dataGridView2->Visible = true;
-	
-	//int numClass = MatClass->Length/5;
+
 	int j = 0;
 
 	for(int n=0;n<(numClass-undefinedClasses()-1);n++)
@@ -2225,19 +2282,13 @@ private: System::Void gerarTreeView(System::String ^filename)
 		MatDepend[i,1] = client;
 	}
 
-
-
 	//Reconhece Fator de Influência, Tamanho e Número de Conectores para cada classe
 
 	int j = 0;
 	for(int i=0; i<numClass;i++)
 	{				
-		
-
-		
 		if(lclasses[i]->Attributes->Item(0)->InnerText!="<undefined>")
 		{
-			
 			int classSize = 0;
 	
 			try
@@ -2253,8 +2304,6 @@ private: System::Void gerarTreeView(System::String ^filename)
 			//Insere o número de conectores de cada classe na matriz de classes
 			MatClass[i,4] = getConectorsNumber(MatClass[i,0])->ToString();
 		}
-				
-			
 	}
 
 	updateMatClass();
@@ -2343,7 +2392,6 @@ private: System::Void gerarTreeView(System::String ^filename)
 			}					
 		}
 	}
-
 
 	//Composição/Agregação
 	System::Windows::Forms::TreeNode ^agreg = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]->GetAttribute("name"));
@@ -2467,10 +2515,31 @@ private: System::Void gerarTreeView(System::String ^filename)
 	treeView1->Nodes[0]->Expand();
 }
 
+private: System::Void importarSaida()
+{
+	System::Xml::XmlNodeList ^lresult = dom->ChildNodes[2]["Result"]->ChildNodes;
+
+	setNumStubsOriginal(Convert::ToInt32(lresult[0]->Attributes->Item(0)->InnerText));
+    setComplexidadeOriginal(Convert::ToInt32(lresult[0]->Attributes->Item(1)->InnerText));
+
+	dataGridView4->Rows[0]->Cells[0]->Value = getNumStubsOriginal().ToString();
+    dataGridView4->Rows[0]->Cells[1]->Value = getComplexidadeOriginal().ToString();
+
+    setNumStubsAtual(Convert::ToInt32(lresult[1]->Attributes->Item(0)->InnerText));
+    setComplexidadeAtual(Convert::ToInt32(lresult[1]->Attributes->Item(1)->InnerText));
+
+	dataGridView3->Rows[0]->Cells[0]->Value = getNumStubsAtual().ToString();
+	dataGridView3->Rows[0]->Cells[1]->Value = getComplexidadeAtual().ToString();
+
+	for(int i=0; i<lresult[2]->ChildNodes->Count; i++)
+	{
+		setOrdemClass(i,Convert::ToInt32(lresult[2]->ChildNodes[i]->Attributes->Item(0)->Value));
+    }
+}
+
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
    {  
 	  // Abre a caixa para selecionar arquivo
-      // Displays an OpenFileDialog so the user can select a Cursor.
       OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog();
       openFileDialog1->Filter = "XML Files|*.xml";
       openFileDialog1->Title = getTag("SELECIONEXMI");
@@ -2488,11 +2557,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 		  filename = openFileDialog1->FileName::get();
 		  try 
          {
-            // SECTION 1. Create a DOM Document and load the XML data into it.
-			//System::Xml::XmlDocument ^dom = gcnew System::Xml::XmlDocument();
-
 		    gerarTreeView(filename);
-			
+			maquinaEstado(1);	
          }
 		  catch(System::Xml::XmlException ^xmlEx)
          {
@@ -2502,9 +2568,6 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
          {
 			 MessageBox::Show(ex->Message);
          }
-
-		  this->toolStripButton2->Enabled = true;
-		  this->toolStripButton3->Enabled = true;
       }
 	  
 }
@@ -2577,12 +2640,7 @@ System::Void liberarMemoria()
 	dataGridView4->Rows[0]->Cells[0]->Value = "";
 	dataGridView4->Rows[0]->Cells[1]->Value = "";
 	dataGridView2->Visible = false;
-	toolStripButton1->Enabled = true;
-	toolStripButton2->Enabled = false;
-	toolStripButton3->Enabled = false;
-	toolStripButton4->Enabled = false;
-	moverCima->Enabled = false;
-	moverBaixo->Enabled = false;
+
 	dataGridView1->ColumnCount = 0;
 	dataGridView1->RowCount = 0;
 	dataGridView1->Visible = false;
@@ -2591,23 +2649,21 @@ System::Void liberarMemoria()
 	dataGridView1->Enabled = false;
 	dataGridView3->Enabled = false;
 	dataGridView4->Enabled = false;
+	maquinaEstado(0);
 	LCOTI->Clear;
 }
 //Procedimento que inicializa a tela para um novo modelo, ou seja, limpa os campos existentes na tela e remove objetos
 private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	liberarMemoria();
+	maquinaEstado(0);
 }
 private: System::Void dataGridView2_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		 }
 private: System::Void toolStripButton3_Click(System::Object^  sender, System::EventArgs^  e) {
 
 			 createTable();
-			 toolStripButton3->Enabled = false;
-			 moverCima->Enabled = true;
-			 moverBaixo->Enabled = true;
-			 toolStripButton4->Enabled = true;
-
+			 maquinaEstado(2);
 		 }
 
 /*---------------------------------------------------------------------------
@@ -2635,7 +2691,6 @@ private: System::Void moverCima_Click(System::Object^  sender, System::EventArgs
 		dataGridView3->Rows[0]->Cells[1]->Value = Convert::ToString(getComplexidadeAtual());
 
 		dataGridView1->Rows[pos-1]->Selected = true;
-
 	}
 }
 private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
@@ -2666,22 +2721,15 @@ private: System::Void moverBaixo_Click(System::Object^  sender, System::EventArg
 		dataGridView3->Rows[0]->Cells[1]->Value = Convert::ToString(getComplexidadeAtual());
 
 		dataGridView1->Rows[pos+1]->Selected = true;
-
 	}
 }
 private: System::Void mudarIdiomaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 Id = gcnew Idioma();
 			 Id->Show();
 			 Id->OKButton->Click += gcnew EventHandler(this,&Farol::Form1::funçõesToolStripMenuItem_TextChanged);
-			 
-			 //Id->OKButton->OnClick(e);
-			 //AtualizarIdioma();
 		 }
 private: System::Void funçõesToolStripMenuItem_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-			 //Idioma ^ Id = gcnew Idioma();
 			 IDIOMA = Id->ID;
-
-			 //carregarIdioma();
 			 AtualizarIdioma();
 			 Id->Close();
 		 }
@@ -2699,7 +2747,6 @@ private: System::Void painelDeSequênciaDeOrdenaçãoToolStripMenuItem_Click(System
 				 this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Checked = true;
 				 this->splitContainer4->BringToFront();
 				 this->splitContainer3->Location = System::Drawing::Point(3, 241);
-				 //this->splitContainer3->BringToFront();
 				 this->splitContainer3->Height = 196;
 			 }
 		 }
@@ -2713,9 +2760,6 @@ private: System::Void painelDeModeloDeClasseToolStripMenuItem_Click(System::Obje
 				 this->dataGridView3->Columns[1]->Width+=34;
 				 this->dataGridView4->Columns[0]->Width+=34;
 				 this->dataGridView4->Columns[1]->Width+=34;
-				 //this->splitContainer3->Location = System::Drawing::Point(0, 0);
-				 //this->splitContainer3->BringToFront();
-				 //this->splitContainer3->Height = 437;
 			 }
 			 else
 			 {
@@ -2725,10 +2769,6 @@ private: System::Void painelDeModeloDeClasseToolStripMenuItem_Click(System::Obje
 				 this->dataGridView3->Columns[1]->Width-=34;
 				 this->dataGridView4->Columns[0]->Width-=34;
 				 this->dataGridView4->Columns[1]->Width-=34;
-				 //this->splitContainer4->BringToFront();
-				 //this->splitContainer3->Location = System::Drawing::Point(3, 241);
-				 //this->splitContainer3->BringToFront();
-				 //this->splitContainer3->Height = 196;
 			 }
 		 }
 
@@ -2825,7 +2865,7 @@ private: System::Void toolStripButton5_Click(System::Object^  sender, System::Ev
       // a .XML file was selected, open it.
       if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
       {
-		  this->toolStripButton1->Enabled = false;
+		  //this->toolStripButton1->Enabled = false;
 
          // Assign the cursor in the Stream to the Form's Cursor property.
 		  filename = openFileDialog1->FileName::get();
@@ -2836,24 +2876,10 @@ private: System::Void toolStripButton5_Click(System::Object^  sender, System::Ev
 			 
 			 gerarTreeView(filename);
 			 createTable();
-			 toolStripButton3->Enabled = false;
-			 moverCima->Enabled = true;
-			 moverBaixo->Enabled = true;
-			 toolStripButton4->Enabled = true;
 
-			 //TODO: Reconhecer no XML os números de stubs e complexidades originais e finais  
-			 //setNumStubsOriginal();
-             //setComplexidadeOriginal();
-
-			 dataGridView3->Rows[0]->Cells[0]->Value = getNumStubsOriginal();
-			 dataGridView3->Rows[0]->Cells[1]->Value = getComplexidadeOriginal();
-
-			 //setNumStubsAtual();
-             //setComplexidadeAtual();
-
-			 dataGridView4->Rows[0]->Cells[0]->Value = getNumStubsAtual();
-			 dataGridView4->Rows[0]->Cells[1]->Value = getComplexidadeAtual();
-			
+			 importarSaida();
+			 imprimeSaida(numClass);
+			 maquinaEstado(2);		
          }
 		  catch(System::Xml::XmlException ^xmlEx)
          {
@@ -2863,9 +2889,6 @@ private: System::Void toolStripButton5_Click(System::Object^  sender, System::Ev
          {
 			 MessageBox::Show(ex->Message);
          }
-
-		  this->toolStripButton2->Enabled = true;
-		  this->toolStripButton3->Enabled = true;
       }
 }
 };
