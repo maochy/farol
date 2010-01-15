@@ -45,6 +45,7 @@ namespace Farol {
 		array< int, 1 >^ FI;
 		array< int, 1 >^ LCOTI;
 		
+		String ^modelName;
 		int numClass;
 		int classInt;
 		int NumStubsOriginal;
@@ -694,6 +695,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton6->Text = L"toolStripButton1";
 			//this->toolStripButton6->ToolTipText = L"Imprimir Resultado";
 			this->toolStripButton6->ToolTipText = Farol::Form1::getTag("IMPRIMIR");
+			this->toolStripButton6->Click += gcnew System::EventHandler(this, &Form1::toolStripButton6_Click);
 			// 
 			// toolStripSeparator5
 			// 
@@ -1452,6 +1454,16 @@ System::String ^getClass(int ind)
 	return(lstClass[ind]);
 }
 
+System::Void setName(String ^name)
+{
+	modelName = name;
+}
+
+System::String ^getName()
+{
+	return modelName;
+}
+
 //Retorna o número de conectores de uma classe c
 private: System::Int32 ^ getConectorsNumber(System::String ^ c)
 {
@@ -2149,7 +2161,9 @@ private: System::Void gerarTreeView(System::String ^filename)
 	root->ImageIndex = 0;
 	root->SelectedImageIndex = 0;
 
-	treeView1->Nodes->Add(getTag("MODELO")+root->Text);
+	setName(root->Text);
+
+	treeView1->Nodes->Add(getTag("MODELO")+getName());
 
 	numClass = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;
 	
@@ -2891,6 +2905,286 @@ private: System::Void toolStripButton5_Click(System::Object^  sender, System::Ev
          }
       }
 }
+
+System::Void saidaStubs(System::Xml::XmlDocument outputXML)
+{
+	array< int, 1 >^ Integrar = gcnew array< int, 1 >(numClass);
+	array< int, 1 >^ TotStubs = gcnew array< int, 1 >(numClass);
+	array< int, 1 >^ S = gcnew array< int, 1 >(numClass);
+	int  stubs;
+
+	for(int i=0;i<numClass;i++)
+	{
+		Integrar[i]=0;
+		TotStubs[i]=0;
+	}
+
+	for(int i=0;i<numClass;i++)
+	{
+		stubs=0;
+		for(int j=0;j<numClass;j++)
+		{
+			if(!Integrar[j])
+			{
+				TotStubs[i]+=MatrizInfluencia[j,LCOTI[i]];
+				if(MatrizInfluencia[j,LCOTI[i]]==1)
+				{
+					S[stubs]=j;
+					stubs++;
+				}
+			}
+		}
+
+
+		System::Xml::XmlElement ^classe;
+		classe = outputXML.CreateElement("Class");
+
+		System::Xml::XmlAttribute  ^cName;
+		cName = outputXML.CreateAttribute("name");
+		cName->Value = lstClass[LCOTI[i]];
+
+		System::Xml::XmlAttribute  ^cStubs;
+		cStubs = outputXML.CreateAttribute("stubs");
+		cStubs->Value = TotStubs[i].ToString();
+
+		classe->Attributes->Append(cName);
+		classe->Attributes->Append(cStubs);
+
+		for(int j=0;j<stubs;j++)
+		{
+			System::Xml::XmlElement ^stubs;
+			stubs = outputXML.CreateElement("Stubs");
+
+			System::Xml::XmlAttribute  ^name;
+			name = outputXML.CreateAttribute("name");
+			name->Value = lstClass[S[j]];
+
+			stubs->Attributes->Append(name);
+			classe->AppendChild(stubs);
+		}
+
+		outputXML.LastChild->AppendChild(classe);
+		
+		//TODO
+		/*outputXML->Result->Order->Add();
+		outputXML->Result->Order->Get_Class(i)->Set_name(lstClass[LCOTI[i]]->getName());
+		outputXML->Result->Order->Get_Class(i)->Set_stubs(TotStubs[i]);
+		
+		for(int j=0;j<stubs;j++)
+		{
+			outputXML->Result->Order->Get_Class(i)->Add();
+			outputXML->Result->Order->Get_Class(i)->Get_Stubs(j)->Set_name(lstClass[S[j]]->getName());
+		}
+		*/
+		Integrar[LCOTI[i]]=1;
+	}
+}
+
+/*---------------------------------------------------------------------------
+Procedimento responsável pela impressão de uma ordem efetuada pelo sistema através da geração de um arquivo HTML com o resultado gerado
+---------------------------------------------------------------------------*/
+System::Void imprimirOrdem(String ^direct)
+{
+        //Class *C;
+
+		direct = direct->Insert(direct->Length,"reports/resultReport.xml");
+
+		System::Xml::XmlDocument outputReportXML;
+
+		//System::Xml::XmlElement ^source;
+		outputReportXML.AppendChild(outputReportXML.CreateXmlDeclaration("1.0",String::Empty,String::Empty));
+
+		outputReportXML.AppendChild(outputReportXML.CreateProcessingInstruction("xml-stylesheet","type='text/xsl'  href='report.xsl'"));
+		
+		System::Xml::XmlElement ^intTest;
+		intTest = outputReportXML.CreateElement("IntegrationTest");
+		System::Xml::XmlElement ^model;
+		model = outputReportXML.CreateElement("Model");
+		
+		System::Xml::XmlAttribute  ^name;
+		name = outputReportXML.CreateAttribute("name");
+		name->Value = this->modelName;
+
+		System::Xml::XmlAttribute  ^date;
+		date = outputReportXML.CreateAttribute("date");
+		date->Value = Convert::ToString(System::DateTime::Now);
+
+		model->Attributes->Append(name);
+		model->Attributes->Append(date);
+
+		for(int i=0;i<numClass;i++)
+		{
+			System::Xml::XmlElement ^classe;
+			classe = outputReportXML.CreateElement("Class");
+
+			System::Xml::XmlAttribute  ^cName;
+			cName = outputReportXML.CreateAttribute("name");
+			cName->Value = this->MatClass[i,0];
+
+			System::Xml::XmlAttribute  ^cSize;
+			cSize = outputReportXML.CreateAttribute("size");
+			cSize->Value = this->MatClass[i,3];
+
+			System::Xml::XmlAttribute  ^cFit;
+			cFit = outputReportXML.CreateAttribute("fit");
+			cFit->Value = this->MatClass[i,2];
+
+			classe->Attributes->Append(cName);
+			classe->Attributes->Append(cSize);
+			classe->Attributes->Append(cFit);
+
+			model->AppendChild(classe);
+		}
+		
+		intTest->AppendChild(model);
+
+
+		System::Xml::XmlElement ^result;
+		result = outputReportXML.CreateElement("Result");
+
+		System::Xml::XmlElement ^source;
+		source = outputReportXML.CreateElement("Source");
+	  
+		System::Xml::XmlAttribute  ^stubsS;
+		System::Xml::XmlAttribute  ^compS;
+		System::Xml::XmlAttribute  ^stubsF;
+		System::Xml::XmlAttribute  ^compF;
+
+		stubsS = outputReportXML.CreateAttribute("stubs");
+		stubsS->Value = getNumStubsOriginal().ToString();
+		source->Attributes->Append(stubsS);
+
+		compS = outputReportXML.CreateAttribute("complexity");
+		compS->Value = getComplexidadeOriginal().ToString();
+		source->Attributes->Append(compS);
+
+		result->AppendChild(source);
+
+		System::Xml::XmlElement ^final;
+		final = outputReportXML.CreateElement("Final");
+
+		stubsF = outputReportXML.CreateAttribute("stubs");
+		stubsF->Value = getNumStubsAtual().ToString();
+		final->Attributes->Append(stubsF);
+
+		compF = outputReportXML.CreateAttribute("complexity");
+		compF->Value = getComplexidadeAtual().ToString();
+		final->Attributes->Append(compF);
+	  
+		result->AppendChild(final);
+	  
+		System::Xml::XmlElement ^order;
+		order = outputReportXML.CreateElement("Order");
+
+		result->AppendChild(order);
+
+		//saidaStubs(outputReportXML);
+
+		array< int, 1 >^ Integrar = gcnew array< int, 1 >(numClass);
+		array< int, 1 >^ TotStubs = gcnew array< int, 1 >(numClass);
+		array< int, 1 >^ S = gcnew array< int, 1 >(numClass);
+		int  stubs;
+
+		for(int i=0;i<numClass;i++)
+		{
+			Integrar[i]=0;
+			TotStubs[i]=0;
+		}
+
+		for(int i=0;i<numClass;i++)
+		{
+			stubs=0;
+			for(int j=0;j<numClass;j++)
+			{
+				if(!Integrar[j])
+				{
+					TotStubs[i]+=MatrizInfluencia[j,LCOTI[i]];
+					if(MatrizInfluencia[j,LCOTI[i]]==1)
+					{
+						S[stubs]=j;
+						stubs++;
+					}
+				}
+			}
+
+
+			System::Xml::XmlElement ^classe;
+			classe = outputReportXML.CreateElement("Class");
+
+			System::Xml::XmlAttribute  ^cName;
+			cName = outputReportXML.CreateAttribute("name");
+			cName->Value = lstClass[LCOTI[i]];
+
+			System::Xml::XmlAttribute  ^cStubs;
+			cStubs = outputReportXML.CreateAttribute("stubs");
+			cStubs->Value = TotStubs[i].ToString();
+
+			classe->Attributes->Append(cName);
+			classe->Attributes->Append(cStubs);
+
+			for(int j=0;j<stubs;j++)
+			{
+				System::Xml::XmlElement ^stubs;
+				stubs = outputReportXML.CreateElement("Stubs");
+
+				System::Xml::XmlAttribute  ^name;
+				name = outputReportXML.CreateAttribute("name");
+				name->Value = lstClass[S[j]];
+
+				stubs->Attributes->Append(name);
+				classe->AppendChild(stubs);
+			}
+
+			order->AppendChild(classe);
+			
+			/*outputXML->Result->Order->Add();
+			outputXML->Result->Order->Get_Class(i)->Set_name(lstClass[LCOTI[i]]->getName());
+			outputXML->Result->Order->Get_Class(i)->Set_stubs(TotStubs[i]);
+			
+			for(int j=0;j<stubs;j++)
+			{
+				outputXML->Result->Order->Get_Class(i)->Add();
+				outputXML->Result->Order->Get_Class(i)->Get_Stubs(j)->Set_name(lstClass[S[j]]->getName());
+			}
+			*/
+			Integrar[LCOTI[i]]=1;
+		}
+
+
+
+		intTest->AppendChild(result);
+
+
+		outputReportXML.AppendChild(intTest);
+
+		outputReportXML.Save(direct);
+
+
+		//TODO: Formatar o campo "href" de acordo com o IDIOMA
+		
+		/*
+        outputReportXML->OwnerDocument->SaveToFile(direct);
+
+        TStringList *temp = new TStringList();
+        TStringList *temp2 = new TStringList();
+
+        temp2->LoadFromFile(direct);
+
+        temp->AddStrings(temp2);
+
+        AnsiString Msg = Format("<?xml-stylesheet type=\"text/xsl\" href=\"%s\"?>", ARRAYOFCONST((ReportsFile[IDIOMA])));
+
+        temp->Insert(1,Msg);
+        temp->SaveToFile(direct);
+        ShellExecute( NULL, "open", direct.c_str(), NULL, NULL, SW_SHOWNORMAL );
+		*/
+}
+
+private: System::Void toolStripButton6_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	imprimirOrdem("./");
+}
+
 };
 
 }
