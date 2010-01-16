@@ -294,7 +294,10 @@ namespace Farol {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"FAbout";
+			this->ShowInTaskbar = false;
 			this->Text = L"About...";
 			this->TopMost = true;
 			this->Load += gcnew System::EventHandler(this, &FAbout::FAbout_Load);

@@ -79,8 +79,8 @@ namespace Farol {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -128,18 +128,6 @@ namespace Farol {
 			this->panel1->TabIndex = 2;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FSobre::panel1_Paint);
 			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(12, 2);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(367, 13);
-			this->label2->TabIndex = 0;
-			this->label2->Text = L"Heurísticas para Identificação da Ordem de Classes para Teste";
-			this->label2->Click += gcnew System::EventHandler(this, &FSobre::label2_Click);
-			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
@@ -151,6 +139,18 @@ namespace Farol {
 			this->label3->TabIndex = 1;
 			this->label3->Text = L"de Integração em Software Orientado a Objetos";
 			this->label3->Click += gcnew System::EventHandler(this, &FSobre::label3_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(12, 2);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(367, 13);
+			this->label2->TabIndex = 0;
+			this->label2->Text = L"Heurísticas para Identificação da Ordem de Classes para Teste";
+			this->label2->Click += gcnew System::EventHandler(this, &FSobre::label2_Click);
 			// 
 			// label4
 			// 
@@ -293,7 +293,10 @@ namespace Farol {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"FSobre";
+			this->ShowInTaskbar = false;
 			this->Text = L"Sobre...";
 			this->TopMost = true;
 			this->Load += gcnew System::EventHandler(this, &FSobre::FSobre_Load);

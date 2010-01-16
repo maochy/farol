@@ -1,7 +1,7 @@
 2 71
 1
-Português help/ordenadorPTG.hlp
-English help/ordenadorENU.hlp
+Português \help\ordenadorPTG.hlp relatorio.xsl
+English \help\ordenadorENU.hlp report.xsl
 FUNCAO=Funções=Functions
 OPCAO=Opções=Options
 CONFIGURACAO=Configurações=Settings

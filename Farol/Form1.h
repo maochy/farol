@@ -2,6 +2,7 @@
 #include "FAbout.h"
 #include "Idioma.h"
 #include <stdio.h>
+
 #pragma once
 
 namespace Farol {
@@ -172,7 +173,7 @@ System::Void carregarIdioma()
 	for(int i=0;i<Num_Idioma;i++)
 	{
 		ArqLine = Arq->ReadLine();
-		delimStr = "%s %s %s";
+		delimStr = "%[^] %[^] %[^]";
 		delimiter = delimStr->ToCharArray();
 		line = ArqLine->Split(delimiter);
 		Idiomas[i] = line[0];
@@ -579,6 +580,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->conteúdoToolStripMenuItem->Size = System::Drawing::Size(146, 22);
 			//this->conteúdoToolStripMenuItem->Text = L"Conteúdo";
 			this->conteúdoToolStripMenuItem->Text = Farol::Form1::getTag("CONTEUDO");
+			this->conteúdoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton7_Click);
 			// 
 			// sobreToolStripMenuItem
 			// 
@@ -713,6 +715,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->toolStripButton7->Text = L"toolStripButton1";
 			//this->toolStripButton7->ToolTipText = L"Ajuda";
 			this->toolStripButton7->ToolTipText = Farol::Form1::getTag("AJUDA");
+			this->toolStripButton7->Click += gcnew System::EventHandler(this, &Form1::toolStripButton7_Click);
 			// 
 			// toolStripButton8
 			// 
@@ -2994,7 +2997,8 @@ System::Void imprimirOrdem(String ^direct)
 		//System::Xml::XmlElement ^source;
 		outputReportXML.AppendChild(outputReportXML.CreateXmlDeclaration("1.0",String::Empty,String::Empty));
 
-		outputReportXML.AppendChild(outputReportXML.CreateProcessingInstruction("xml-stylesheet","type='text/xsl'  href='report.xsl'"));
+		String ^data = "type='text/xsl'  href='"+ReportsFile[IDIOMA]+"'";
+		outputReportXML.AppendChild(outputReportXML.CreateProcessingInstruction("xml-stylesheet",data));
 		
 		System::Xml::XmlElement ^intTest;
 		intTest = outputReportXML.CreateElement("IntegrationTest");
@@ -3159,6 +3163,15 @@ System::Void imprimirOrdem(String ^direct)
 
 		outputReportXML.Save(direct);
 
+		/*
+		//TODO: Versão Debug
+		String ^File = Application::StartupPath->Replace("Debug","Farol")->Replace("/","\\")+direct->Substring(1)->Replace("/","\\");
+		//TODO: Versão Release
+		//String ^File = Application::StartupPath;//->Replace("Debug","Farol");
+		//File=File+HelpFile[IDIOMA];
+
+		System::Diagnostics::Process::Start(File);
+		*/
 
 		//TODO: Formatar o campo "href" de acordo com o IDIOMA
 		
@@ -3183,6 +3196,26 @@ System::Void imprimirOrdem(String ^direct)
 private: System::Void toolStripButton6_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	imprimirOrdem("./");
+}
+
+private: System::Void toolStripButton7_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	//TODO: Versão Debug
+	String ^File = Application::StartupPath->Replace("Debug","Farol")+HelpFile[IDIOMA];
+	//TODO: Versão Release
+	//String ^File = Application::StartupPath;//->Replace("Debug","Farol");
+	//File=File+HelpFile[IDIOMA];
+	
+	
+	if (System::IO::File::Exists(File))
+	{
+		System::Diagnostics::Process::Start(File);
+	}
+	//TODO
+    else
+	{
+		MessageBox::Show(this->getTag("ARQINEXISTENTE"),this->getTag("ERRO"),MessageBoxButtons::OK);
+	}
 }
 
 };
