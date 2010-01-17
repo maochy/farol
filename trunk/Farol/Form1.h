@@ -1011,6 +1011,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle8;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(426, 192);
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill; 
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// moverBaixo
@@ -1089,6 +1090,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::Color::Black;
 			this->dataGridView3->RowsDefaultCellStyle = dataGridViewCellStyle9;
 			this->dataGridView3->Size = System::Drawing::Size(170, 46);
+			this->dataGridView3->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill; 
 			this->dataGridView3->TabIndex = 0;
 			// 
 			// dataGridViewTextBoxColumn1
@@ -1152,6 +1154,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::Color::Black;
 			this->dataGridView4->RowsDefaultCellStyle = dataGridViewCellStyle10;
 			this->dataGridView4->Size = System::Drawing::Size(170, 46);
+			this->dataGridView4->AutoSizeColumnsMode= System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill; 
 			this->dataGridView4->TabIndex = 1;
 			// 
 			// dataGridViewTextBoxColumn3
