@@ -2150,14 +2150,32 @@ private: System::Void gerarTreeView(System::String ^filename)
 	treeView1->Nodes->Clear();
 
 	ImageList^ myImageList = gcnew ImageList;
-	myImageList->Images->Add(Image::FromFile("./icons/xml.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/classe.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/associacao.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/agregacao.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/heranca.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/dependencia.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/atributo.bmp"));
-	myImageList->Images->Add(Image::FromFile("./icons/objeto.bmp"));
+
+	OperatingSystem^ os = Environment::OSVersion;
+	String ^windows = os->VersionString;
+
+	if(windows->Contains("NT 6"))
+	{
+		myImageList->Images->Add(Image::FromFile("./icons/xml.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/classe.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/associacao.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/agregacao.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/heranca.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/dependencia.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/atributo.bmp"));
+		myImageList->Images->Add(Image::FromFile("./icons/objeto.bmp"));
+	}
+	else
+	{
+		myImageList->Images->Add(Image::FromFile("../icons/xml.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/classe.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/associacao.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/agregacao.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/heranca.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/dependencia.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/atributo.bmp"));
+		myImageList->Images->Add(Image::FromFile("../icons/objeto.bmp"));
+	}
 
 	treeView1->ImageList = myImageList;
 	// Set the TreeView control's default image and selected image indexes.
