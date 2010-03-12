@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE XMI SYSTEM "UML_EA.dtd">
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2010-02-16 08:32:47">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>4.1RR</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="EA Model" xmi.id="MX_EAID_5071ED1D_42BA_4dc5_8935_024F12897D9C">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="Exercise 1" xmi.id="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue/>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="F" xmi.id="EAID_09870417_983A_4414_A425_2EBC307F8A34" visibility="public" namespace="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue/>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_7AF39BCB_0B9C_42df_BB51_1EC3B5A63ABD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue/>
+							<UML:Association.connection>
+								<UML:AssociationEnd xmi.id="EAID_srcF39BCB_0B9C_42df_BB51_1EC3B5A63ABD" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_09870417_983A_4414_A425_2EBC307F8A34">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd xmi.id="EAID_dstF39BCB_0B9C_42df_BB51_1EC3B5A63ABD" visibility="public" aggregation="aggregate" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_1EA01694_69B3_4b70_B892_8633F79F83E5">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_FA02C653_706E_4a9b_A6EA_52A7DB5ED7C7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue/>
+							<UML:Association.connection>
+								<UML:AssociationEnd xmi.id="EAID_src02C653_706E_4a9b_A6EA_52A7DB5ED7C7" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_CE2FC5BF_6558_465e_AFCC_5965F9E0F6B2">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd xmi.id="EAID_dst02C653_706E_4a9b_A6EA_52A7DB5ED7C7" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_09870417_983A_4414_A425_2EBC307F8A34">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Class name="C" xmi.id="EAID_1EA01694_69B3_4b70_B892_8633F79F83E5" visibility="public" namespace="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:GeneralizableElement.generalization>
+								<Foundation.Core.Generalization xmi.idref="EAID_AF56E640_0302_471c_8B6C_10DB6123D6A9"/>
+							</UML:GeneralizableElement.generalization>
+							<UML:ModelElement.taggedValue/>
+							<UML:Namespace.ownedElement>
+								<UML:Generalization child="EAID_1EA01694_69B3_4b70_B892_8633F79F83E5" parent="EAID_B9E5B3BE_A60D_41e3_BF0D_5724C79FB92C" xmi.id="EAID_AF56E640_0302_471c_8B6C_10DB6123D6A9" visibility="public">
+									<UML:ModelElement.taggedValue/>
+								</UML:Generalization>
+							</UML:Namespace.ownedElement>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_54650E97_C887_4500_98AC_5FE174445058" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue/>
+							<UML:Association.connection>
+								<UML:AssociationEnd xmi.id="EAID_src650E97_C887_4500_98AC_5FE174445058" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_D0355D3D_7A60_40e1_B69D_0A2897FECA59">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd xmi.id="EAID_dst650E97_C887_4500_98AC_5FE174445058" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_1EA01694_69B3_4b70_B892_8633F79F83E5">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Class name="D" xmi.id="EAID_201DCF7A_DF0E_46c7_8483_A93AD3723740" visibility="public" namespace="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:GeneralizableElement.generalization>
+								<Foundation.Core.Generalization xmi.idref="EAID_F2E3CC42_ACF2_4d4b_80D4_29FF1DC0ADCB"/>
+							</UML:GeneralizableElement.generalization>
+							<UML:ModelElement.taggedValue/>
+							<UML:Namespace.ownedElement>
+								<UML:Generalization child="EAID_201DCF7A_DF0E_46c7_8483_A93AD3723740" parent="EAID_D0355D3D_7A60_40e1_B69D_0A2897FECA59" xmi.id="EAID_F2E3CC42_ACF2_4d4b_80D4_29FF1DC0ADCB" visibility="public">
+									<UML:ModelElement.taggedValue/>
+								</UML:Generalization>
+							</UML:Namespace.ownedElement>
+						</UML:Class>
+						<UML:Class name="A" xmi.id="EAID_B9E5B3BE_A60D_41e3_BF0D_5724C79FB92C" visibility="public" namespace="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue/>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_63E519D3_9525_40b3_8CB5_61D3532E23B6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue/>
+							<UML:Association.connection>
+								<UML:AssociationEnd xmi.id="EAID_srcE519D3_9525_40b3_8CB5_61D3532E23B6" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_B9E5B3BE_A60D_41e3_BF0D_5724C79FB92C">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd xmi.id="EAID_dstE519D3_9525_40b3_8CB5_61D3532E23B6" visibility="public" aggregation="aggregate" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_D0355D3D_7A60_40e1_B69D_0A2897FECA59">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Class name="E" xmi.id="EAID_CE2FC5BF_6558_465e_AFCC_5965F9E0F6B2" visibility="public" namespace="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue/>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_3734874A_6FD2_4b64_A9A8_27E19C0C42AD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue/>
+							<UML:Association.connection>
+								<UML:AssociationEnd xmi.id="EAID_src34874A_6FD2_4b64_A9A8_27E19C0C42AD" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_D0355D3D_7A60_40e1_B69D_0A2897FECA59">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd xmi.id="EAID_dst34874A_6FD2_4b64_A9A8_27E19C0C42AD" visibility="public" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_CE2FC5BF_6558_465e_AFCC_5965F9E0F6B2">
+									<UML:AssociationEnd.multiplicity>
+										<UML:Multiplicity>
+											<UML:Multiplicity.range>
+												<UML:MultiplicityRange lower="0" upper="-1"/>
+											</UML:Multiplicity.range>
+										</UML:Multiplicity>
+									</UML:AssociationEnd.multiplicity>
+									<UML:ModelElement.taggedValue/>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Class name="B" xmi.id="EAID_D0355D3D_7A60_40e1_B69D_0A2897FECA59" visibility="public" namespace="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue/>
+						</UML:Class>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+		<UML:Diagram name="Package1" xmi.id="EAID_B0974B83_763D_4cfe_849A_7E49E4682293" diagramType="ClassDiagram" owner="EAPK_5071ED1D_42BA_4dc5_8935_024F12897D9C" toolName="Rational Rose 98">
+			<UML:ModelElement.taggedValue/>
+			<UML:Diagram.element>
+				<UML:DiagramElement geometry="1890,1176,315,245," subject="EAID_09870417_983A_4414_A425_2EBC307F8A34" seqno="1" style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,"/>
+				<UML:DiagramElement geometry="1274,1211,315,245," subject="EAID_CE2FC5BF_6558_465e_AFCC_5965F9E0F6B2" seqno="2" style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,"/>
+				<UML:DiagramElement geometry="585,1260,315,245," subject="EAID_201DCF7A_DF0E_46c7_8483_A93AD3723740" seqno="3" style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,"/>
+				<UML:DiagramElement geometry="1491,718,315,245," subject="EAID_1EA01694_69B3_4b70_B892_8633F79F83E5" seqno="4" style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,"/>
+				<UML:DiagramElement geometry="581,728,315,245," subject="EAID_D0355D3D_7A60_40e1_B69D_0A2897FECA59" seqno="5" style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,"/>
+				<UML:DiagramElement geometry="1166,280,315,245," subject="EAID_B9E5B3BE_A60D_41e3_BF0D_5724C79FB92C" seqno="6" style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0,"/>
+				<UML:DiagramElement geometry="876, 610, 214, 230, " subject="EAID_7AF39BCB_0B9C_42df_BB51_1EC3B5A63ABD" style="Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,"/>
+				<UML:DiagramElement geometry="814, 752, 276, 110, " subject="EAID_FA02C653_706E_4a9b_A6EA_52A7DB5ED7C7" style="Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,"/>
+				<UML:DiagramElement geometry="440, 624, 298, 238, " subject="EAID_3734874A_6FD2_4b64_A9A8_27E19C0C42AD" style="Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,"/>
+				<UML:DiagramElement geometry="242, 638, 100, 252, " subject="EAID_F2E3CC42_ACF2_4d4b_80D4_29FF1DC0ADCB" style="Inheritance"/>
+				<UML:DiagramElement geometry="502, 482, 360, 102, " subject="EAID_54650E97_C887_4500_98AC_5FE174445058" style="Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,"/>
+				<UML:DiagramElement geometry="408, 358, 266, 228, " subject="EAID_63E519D3_9525_40b3_8CB5_61D3532E23B6" style="Association:Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,"/>
+				<UML:DiagramElement geometry="668, 354, 192, 224, " subject="EAID_AF56E640_0302_471c_8B6C_10DB6123D6A9" style="Inheritance"/>
+			</UML:Diagram.element>
+		</UML:Diagram>
+		<UML:DiagramElement geometry="Left=509;Top=308;Right=639;Bottom=433;" subject="EAID_5071ED1D_42BA_4dc5_8935_024F12897D9C" seqno="7" style="DUID=09666CA7;">
+			<UML:ModelElement.taggedValue>
+				<UML:TaggedValue tag="diagram_guid" value="EAID_4BCD256D_C892_41d3_90CA_F321DF73C30F"/>
+			</UML:ModelElement.taggedValue>
+		</UML:DiagramElement>
+	</XMI.content>
+	<XMI.difference/>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5"/>
+</XMI>

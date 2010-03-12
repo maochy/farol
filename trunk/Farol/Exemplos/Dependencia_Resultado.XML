@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- <!DOCTYPE XMI SYSTEM 'UMLX13-11.dtd' > -->
+<XMI xmi.version="1.1" xmlns:UML="href://org.omg/UML/1.3" timestamp="Mon May 10 11:02:20 2004">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Unisys.JCR.2</XMI.exporter>
+			<XMI.exporterVersion>1.3.6</XMI.exporterVersion>
+		</XMI.documentation>
+		<XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+	</XMI.header>
+	<XMI.content>
+		<!-- ==================== Dependencia    [Model] ==================== -->
+		<UML:Model xmi.id="G.0" name="Dependencia" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+			<UML:Namespace.ownedElement>
+				<!-- ==================== Dependencia::A    [Class] ==================== -->
+				<UML:Class xmi.id="S.130.1102.05.1" name="A" visibility="public" isSpecification="false" isRoot="true" isLeaf="true" isAbstract="false" isActive="false" namespace="G.0" clientDependency="G.1"><UML:Namespace.ownedElement/><UML:Classifier.feature/></UML:Class>
+				<!-- ==================== Dependencia::B    [Class] ==================== -->
+				<UML:Class xmi.id="S.130.1102.05.2" name="B" visibility="public" isSpecification="false" isRoot="true" isLeaf="true" isAbstract="false" isActive="false" namespace="G.0" supplierDependency="G.1"><UML:Namespace.ownedElement/><UML:Classifier.feature/></UML:Class>
+				<!-- ==================== Dependencia::{A?B}{409F8B440013}    [Dependency] ==================== -->
+				<UML:Dependency xmi.id="G.1" name="" visibility="public" isSpecification="false" client="S.130.1102.05.1" supplier="S.130.1102.05.2"/>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+		<UML:TaggedValue xmi.id="XX.10.112.5.2" tag="persistence" value="transient" modelElement="S.130.1102.05.1"/>
+		<UML:TaggedValue xmi.id="XX.10.112.5.3" tag="persistence" value="transient" modelElement="S.130.1102.05.2"/>
+		<UML:Diagram xmi.id="S.130.1102.06.0" name="Main" toolName="Rational Rose 98" diagramType="ClassDiagram" style="" owner="G.0">
+			<UML:Diagram.element>
+				<UML:DiagramElement xmi.id="XX.10.112.6.4" geometry=" 256, 192, 210, 126," style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0," subject="S.130.1102.05.1"/>
+				<UML:DiagramElement xmi.id="XX.10.112.6.5" geometry=" 752, 192, 210, 126," style="Font.Blue= 0,Font.Green= 0,Font.Red= 0,Font.FaceName=Arial,Font.Size= 10,Font.Bold=0,Font.Italic=0,Font.Strikethrough=0,Font.Underline=0,LineColor.Blue= 51,LineColor.Green= 0,LineColor.Red= 153,FillColor.Blue= 204,FillColor.Green= 255,FillColor.Red= 255,FillColor.Transparent=1,AutomaticResize=1,ShowAllAttributes=1,ShowAllOperations=1,ShowOperationSignature=0,SuppressAttributes=0,SuppressOperations=0," subject="S.130.1102.05.2"/>
+				<UML:DiagramElement xmi.id="XX.10.112.6.6" geometry=" 503, 192, 339, 54," style="ClassDependency" subject="G.1"/>
+			</UML:Diagram.element>
+		</UML:Diagram>
+	</XMI.content>
+	<Result><Source stubs="0" complexity="0"/><Final stubs="0" complexity="0"/><Order><Class value="1"/><Class value="0"/></Order></Result></XMI>

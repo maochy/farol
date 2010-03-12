@@ -1,7 +1,9 @@
 #include "FSobre.h"
 #include "FAbout.h"
+#include "FSobre_ESP.h"
 #include "Idioma.h"
 #include <stdio.h>
+#using <System.Drawing.dll>
 
 #pragma once
 
@@ -38,6 +40,7 @@ namespace Farol {
 		}
 		Idioma ^Id;
 		System::Xml::XmlDocument ^dom;
+		System::Xml::XmlDocument outputReportXML;
 		array< String^, 2 >^ MatClass;
 		array< String^, 2 >^ MatAssoc;
 		array< String^, 2 >^ MatHer;
@@ -57,6 +60,8 @@ namespace Farol {
 		int Num_Idioma;
 		int Num_palavra;
 		int IDIOMA;
+		int IDIOMA2;
+		bool openedFile;
 		array< String^, 2 > ^Dicionario;
 		array< String^, 1> ^Idiomas;
 		array< String^, 1> ^HelpFile;
@@ -79,6 +84,8 @@ namespace Farol {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dataGridViewTextBoxColumn4;
+    private: System::Windows::Forms::PrintDialog^  printDialog1;
+	private: System::Drawing::Printing::PrintDocument^  printDocument1;
 
 
 
@@ -104,6 +111,19 @@ namespace Farol {
 		array< int, 2 >^ MatrizInfluencia;
 
 
+/*---------------------------------------------------------------------------
+Procedimento responsável por consultar uma tag para um componente na biblioteca de textos
+---------------------------------------------------------------------------*/
+int consultarTag(String ^Tag)
+{
+        for(int i=0;i<Num_palavra;i++)
+		{
+			if(Tag==Tags[i]) return(i);
+        }
+        return(-1);
+}
+
+
 System::String ^getTag(String ^Tag)
 {
 	//Idioma ^ Id = gcnew Idioma();
@@ -116,23 +136,10 @@ System::String ^getTag(String ^Tag)
 
 System::String ^getNotTag(String ^Tag)
 {
-	int IDIOMA2;
-	if(IDIOMA==0) IDIOMA2 = 1;
-	else IDIOMA2 = 0;
+	/*if(IDIOMA==0) IDIOMA2 = 1;
+	else IDIOMA2 = 0;*/
 
 	return(Dicionario[IDIOMA2,consultarTag(Tag)]);
-}
-
-/*---------------------------------------------------------------------------
-Procedimento responsável por consultar uma tag para um componente na biblioteca de textos
----------------------------------------------------------------------------*/
-int consultarTag(String ^Tag)
-{
-        for(int i=0;i<Num_palavra;i++)
-		{
-			if(Tag==Tags[i]) return(i);
-        }
-        return(-1);
 }
 
 System::Void carregarIdioma()
@@ -202,6 +209,7 @@ System::Void carregarIdioma()
 			//String::Format(Arq->ReadLine(),"{=:[^=\n]s}",Dicionario[j,i]);
         }
     }
+	IDIOMA2 = IDIOMA;
 
 	//ordenador->label4->Text = Dicionario[1,3];
 	//label4->Text = Dicionario[0,2];
@@ -401,6 +409,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->printDialog1 = (gcnew System::Windows::Forms::PrintDialog());
+			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
 			this->menuStrip1->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
 			this->splitContainer2->Panel1->SuspendLayout();
@@ -446,6 +456,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->funçõesToolStripMenuItem->Size = System::Drawing::Size(63, 20);
 			this->funçõesToolStripMenuItem->Tag = L"FUNCAO";
 			//this->funçõesToolStripMenuItem->Text = L"Funções";
+			this->funçõesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->funçõesToolStripMenuItem->Text = Farol::Form1::getTag("FUNCAO");
 			this->funçõesToolStripMenuItem->TextChanged += gcnew System::EventHandler(this, &Form1::funçõesToolStripMenuItem_TextChanged);
 			// 
@@ -455,6 +467,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->abrirArquivoXMIToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::A));
 			this->abrirArquivoXMIToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			//this->abrirArquivoXMIToolStripMenuItem->Text = L"Abrir Arquivo XMI ";
+			this->abrirArquivoXMIToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->abrirArquivoXMIToolStripMenuItem->Text = Farol::Form1::getTag("ABRIR");
 			this->abrirArquivoXMIToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
@@ -464,6 +478,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::G));
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			//this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = L"Gerar Ordenação ";
+			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Text = Farol::Form1::getTag("GERARORD");
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
 			this->gerarOrdenaçãoCtrlGToolStripMenuItem->Enabled = false;
@@ -474,6 +490,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->fecharArquivoCtrlFToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
 			this->fecharArquivoCtrlFToolStripMenuItem->Size = System::Drawing::Size(214, 22);
 			//this->fecharArquivoCtrlFToolStripMenuItem->Text = L"Fechar Arquivo";
+			this->fecharArquivoCtrlFToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->fecharArquivoCtrlFToolStripMenuItem->Text = Farol::Form1::getTag("FECHAR");
 			this->fecharArquivoCtrlFToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::toolStripButton2_Click);
 			this->fecharArquivoCtrlFToolStripMenuItem->Enabled = false;
@@ -485,7 +503,11 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->opçõesToolStripMenuItem->Name = L"opçõesToolStripMenuItem";
 			this->opçõesToolStripMenuItem->Size = System::Drawing::Size(59, 20);
 			//this->opçõesToolStripMenuItem->Text = L"Opções";
+			this->opçõesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->opçõesToolStripMenuItem->Text = Farol::Form1::getTag("OPCAO");
+			//this->opçõesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Calibri", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				//static_cast<System::Byte>(0)));
 			// 
 			// salvarResultadoCtrlBToolStripMenuItem
 			// 
@@ -519,6 +541,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->imprimirResultadoCtrlToolStripMenuItem->Text = L"Imprimir Resultado";
 			this->imprimirResultadoCtrlToolStripMenuItem->Text = Farol::Form1::getTag("IMPRIMIR");
 			this->imprimirResultadoCtrlToolStripMenuItem->Enabled = false;
+			this->imprimirResultadoCtrlToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::imprimirResultadoCtrlToolStripMenuItem_Click);
 			// 
 			// configuraçõesToolStripMenuItem
 			// 
@@ -528,6 +551,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->configuraçõesToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
 			this->configuraçõesToolStripMenuItem->Size = System::Drawing::Size(96, 20);
 			//this->configuraçõesToolStripMenuItem->Text = L"Configurações";
+			this->configuraçõesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->configuraçõesToolStripMenuItem->Text = Farol::Form1::getTag("CONFIGURACAO");
 			// 
 			// painelDeModeloDeClasseToolStripMenuItem
@@ -571,6 +596,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->ajudaToolStripMenuItem->Name = L"ajudaToolStripMenuItem";
 			this->ajudaToolStripMenuItem->Size = System::Drawing::Size(50, 20);
 			//this->ajudaToolStripMenuItem->Text = L"Ajuda";
+			this->ajudaToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->ajudaToolStripMenuItem->Text = Farol::Form1::getTag("AJUDA");
 			// 
 			// conteúdoToolStripMenuItem
@@ -596,6 +623,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->sairToolStripMenuItem->Name = L"sairToolStripMenuItem";
 			this->sairToolStripMenuItem->Size = System::Drawing::Size(38, 20);
 			//this->sairToolStripMenuItem->Text = L"Sair";
+			this->sairToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->sairToolStripMenuItem->Text = Farol::Form1::getTag("SAIR");
 			this->sairToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::sairToolStripMenuItem_Click);
 			// 
@@ -624,6 +653,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton1->ToolTipText = L"Abrir Arquivo XMI";
 			this->toolStripButton1->ToolTipText = Farol::Form1::getTag("ABRIR");
 			this->toolStripButton1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			this->toolStripButton1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripButton3
 			// 
@@ -638,6 +669,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton3->ToolTipText = L"Gerar Ordenação";
 			this->toolStripButton3->ToolTipText = Farol::Form1::getTag("GERARORD");
 			this->toolStripButton3->Click += gcnew System::EventHandler(this, &Form1::toolStripButton3_Click);
+			this->toolStripButton3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripButton2
 			// 
@@ -652,6 +685,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton2->ToolTipText = L"Fechar Arquivo";
 			this->toolStripButton2->ToolTipText = Farol::Form1::getTag("FECHAR");
 			this->toolStripButton2->Click += gcnew System::EventHandler(this, &Form1::toolStripButton2_Click);
+			this->toolStripButton2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripSeparator4
 			// 
@@ -671,6 +706,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton4->ToolTipText = L"Salvar Resultado";
 			this->toolStripButton4->ToolTipText = Farol::Form1::getTag("SALVAR");
 			this->toolStripButton4->Click += gcnew System::EventHandler(this, &Form1::toolStripButton4_Click);
+			this->toolStripButton4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripButton5
 			// 
@@ -684,6 +721,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton5->ToolTipText = L"Importar Resultado";
 			this->toolStripButton5->ToolTipText = Farol::Form1::getTag("IMPORTAR");
 			this->toolStripButton5->Click += gcnew System::EventHandler(this, &Form1::toolStripButton5_Click);
+			this->toolStripButton5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripButton6
 			// 
@@ -698,6 +737,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton6->ToolTipText = L"Imprimir Resultado";
 			this->toolStripButton6->ToolTipText = Farol::Form1::getTag("IMPRIMIR");
 			this->toolStripButton6->Click += gcnew System::EventHandler(this, &Form1::toolStripButton6_Click);
+			this->toolStripButton6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripSeparator5
 			// 
@@ -716,6 +757,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton7->ToolTipText = L"Ajuda";
 			this->toolStripButton7->ToolTipText = Farol::Form1::getTag("AJUDA");
 			this->toolStripButton7->Click += gcnew System::EventHandler(this, &Form1::toolStripButton7_Click);
+			this->toolStripButton7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// toolStripButton8
 			// 
@@ -729,12 +772,14 @@ private: System::Windows::Forms::Button^  moverCima;
 			//this->toolStripButton8->ToolTipText = L"Sair";
 			this->toolStripButton8->ToolTipText = Farol::Form1::getTag("SAIR");
 			this->toolStripButton8->Click += gcnew System::EventHandler(this, &Form1::toolStripButton8_Click);
+			this->toolStripButton8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// label1
 			// 
 			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(17, 2);
 			this->label1->Name = L"label1";
@@ -742,7 +787,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->label1->Size = System::Drawing::Size(99, 19);
 			this->label1->TabIndex = 0;
 			//this->label1->Text = L"Arquivo XMI";
-			this->label1->Text = Farol::Form1::getTag("ARQUIVOXMI");
+			this->label1->Text = ":"+Farol::Form1::getTag("ARQUIVOXMI");
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
 			// 
@@ -776,9 +821,9 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->label4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
 				| System::Windows::Forms::AnchorStyles::Left));
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(3, 2);
+			this->label4->Location = System::Drawing::Point(1, 1);
 			this->label4->Name = L"label4";
 			this->label4->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->label4->Size = System::Drawing::Size(0, 19);
@@ -789,7 +834,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(3, 4);
 			this->label2->Name = L"label2";
@@ -829,6 +874,8 @@ private: System::Windows::Forms::Button^  moverCima;
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->treeView1->Location = System::Drawing::Point(-2, -2);
 			this->treeView1->Name = L"treeView1";
+			this->treeView1->Font =(gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->treeView1->Size = System::Drawing::Size(242, 437);
 			this->treeView1->TabIndex = 0;
 			this->treeView1->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &Form1::treeView1_AfterSelect);
@@ -848,6 +895,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->groupBox2->TabStop = false;
 			//this->groupBox2->Text = L"Sequência de Ordenação";
 			this->groupBox2->Text = Farol::Form1::getTag("SEQUENCIAORD");
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->groupBox2->Enter += gcnew System::EventHandler(this, &Form1::groupBox2_Enter);
 			// 
 			// splitContainer4
@@ -901,7 +950,7 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView2->Location = System::Drawing::Point(0, 0);
 			this->dataGridView2->MultiSelect = false;
 			this->dataGridView2->Name = L"dataGridView2";
-			this->dataGridView2->ReadOnly = true;
+			this->dataGridView2->ReadOnly = true; 
 			this->dataGridView2->RowHeadersVisible = false;
 			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
 			this->dataGridView2->RowTemplate->ReadOnly = true;
@@ -909,12 +958,14 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView2->TabIndex = 0;
 			this->dataGridView2->Visible = false;
 			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Form1::dataGridView2_CellContentClick);
+			this->dataGridView2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// Column0
 			// 
 			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle6->BackColor = System::Drawing::Color::Silver;
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Yellow;
 			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Silver;
@@ -926,11 +977,11 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->Column0->Name = L"Column0";
 			this->Column0->ReadOnly = true;
 			this->Column0->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->Column0->Width = 115;
+			this->Column0->Width = 118;
 			// 
 			// Column1
 			// 
-			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::ColumnHeader;
+			//this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::ColumnHeader;
 			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle7->BackColor = System::Drawing::Color::LightYellow;
 			dataGridViewCellStyle7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)), 
@@ -945,13 +996,13 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
 			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
-			this->Column1->Width = 83;
+			this->Column1->Width = 85;
 			// 
 			// label3
 			// 
 			this->label3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(193, 3);
 			this->label3->Name = L"label3";
@@ -1013,6 +1064,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView1->Size = System::Drawing::Size(426, 192);
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill; 
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// moverBaixo
 			// 
@@ -1029,6 +1082,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->moverBaixo->Text = Farol::Form1::getTag("MOVERBAIXO");
 			this->moverBaixo->UseVisualStyleBackColor = true;
 			this->moverBaixo->Click += gcnew System::EventHandler(this, &Form1::moverBaixo_Click);
+			this->moverBaixo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// moverCima
 			// 
@@ -1045,6 +1100,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->moverCima->Text = Farol::Form1::getTag("MOVERCIMA");
 			this->moverCima->UseVisualStyleBackColor = true;
 			this->moverCima->Click += gcnew System::EventHandler(this, &Form1::moverCima_Click);
+			this->moverCima->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// groupBox3
 			// 
@@ -1092,6 +1149,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView3->Size = System::Drawing::Size(170, 46);
 			this->dataGridView3->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill; 
 			this->dataGridView3->TabIndex = 0;
+			this->dataGridView3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
@@ -1156,6 +1215,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->dataGridView4->Size = System::Drawing::Size(170, 46);
 			this->dataGridView4->AutoSizeColumnsMode= System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill; 
 			this->dataGridView4->TabIndex = 1;
+			this->dataGridView4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
@@ -1186,6 +1247,11 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->statusStrip1->TabIndex = 7;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
+			// printDialog1
+			// 
+			this->printDialog1->UseEXDialog = true;
+			//this->printDocument1->PrintPage += gcnew System::Drawing::Printing::PrintPageEventHandler(this, &Form1::document_PrintPage);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1200,6 +1266,8 @@ private: System::Windows::Forms::Button^  moverCima;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
 			this->Text = L"Farol Tool: "+Farol::Form1::getTag("OCTI");//Ordenador de Classes para Teste de Integração";
+			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -1246,20 +1314,44 @@ private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  
 private: System::Void openFileDialog1_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 }
 
-private: System::Void toolStripButton8_Click(System::Object^  sender, System::EventArgs^  e) {
-			 String^ msg = getTag("CONFIRMARSAIDA");
+private: System::Void toolStripButton8_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	String^ msg;
+	
+	if(this->openedFile)
+	{
+		msg = getTag("ARQUIVOABERTO");
+	}
+	else
+	{
+		msg = getTag("CONFIRMARSAIDA");
+	}
 
-			 if (MessageBox::Show(msg,getTag("SAIDAPROG"),MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
-				 Application::Exit();
-			 }
-		 }
-private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 String^ msg = getTag("CONFIRMARSAIDA");
+	if (MessageBox::Show(msg,getTag("SAIDAPROG"),MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes)
+	{
+		Application::Exit();
+	}
+}
 
-			 if (MessageBox::Show(msg,getTag("SAIDAPROG"),MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes){
-				 Application::Exit();
-			 }
-		 }
+private: System::Void sairToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	String^ msg;
+	
+	if(this->openedFile)
+	{
+		msg = getTag("ARQUIVOABERTO");
+	}
+	else
+	{
+		msg = getTag("CONFIRMARSAIDA");
+	}
+
+	if (MessageBox::Show(msg,getTag("SAIDAPROG"),MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes)
+	{
+		Application::Exit();
+	}
+}
+
 private: System::Void openFileDialog1_FileOk_1(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 }
 
@@ -1334,10 +1426,10 @@ System::Void AtualizarTreeViewIdioma()
 	{
 		array< String^, 1> ^TVTags = gcnew array< String^, 1>(21);
 		int t = 0;
-		int IDIOMA2;
+		/*int IDIOMA2;
 
 		if(IDIOMA==1) IDIOMA2 = 0;
-		else IDIOMA2 = 1;
+		else IDIOMA2 = 1;*/
 
 		for(int i=30;i<50;i++)
 		{
@@ -1427,7 +1519,7 @@ System::Void AtualizarIdioma()
 	this->toolStripButton6->ToolTipText = Farol::Form1::getTag("IMPRIMIR");
 	this->toolStripButton7->ToolTipText = Farol::Form1::getTag("AJUDA");
 	this->toolStripButton8->ToolTipText = Farol::Form1::getTag("SAIR");
-	this->label1->Text = Farol::Form1::getTag("ARQUIVOXMI");
+	this->label1->Text = ":"+Farol::Form1::getTag("ARQUIVOXMI");
 	this->groupBox2->Text = Farol::Form1::getTag("SEQUENCIAORD");
 	this->Column0->HeaderText = Farol::Form1::getTag("CLASSEITERACAO");
 	this->Column1->HeaderText = Farol::Form1::getTag("VALORFI");
@@ -1440,6 +1532,8 @@ System::Void AtualizarIdioma()
 	this->groupBox1->Text = Farol::Form1::getTag("ORDEMORIGINAL");
 	this->dataGridViewTextBoxColumn3->HeaderText = Farol::Form1::getTag("TOTSTUBS");
 	this->dataGridViewTextBoxColumn4->HeaderText = Farol::Form1::getTag("TAMANHO");
+
+	IDIOMA2 = IDIOMA;
 }
 
 //Retorna o nome da classe a partir do ID da classe fornecido
@@ -2003,6 +2097,7 @@ private: System::Void ordemIntegrar()
 			dataGridView2->Columns[it]->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightYellow;
 			dataGridView2->Columns[it]->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), 
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			dataGridView2->Columns[it]->Width = 107;
 		}
 
 		dataGridView2->Columns[it]->HeaderText = getTag("FITITERACAO")+Convert::ToString(it-1);
@@ -2135,7 +2230,26 @@ private: System::Void createTable()
 	dataGridView4->Rows[0]->Cells[0]->Value = getNumStubsAtual();
 	dataGridView4->Rows[0]->Cells[1]->Value = getComplexidadeAtual();
 
-
+	for(int i=0;i<numClass;i++)
+	{	
+		if(i%2==0)
+		{
+			dataGridView2->Rows[i]->DefaultCellStyle->BackColor = System::Drawing::Color::LightYellow;
+			dataGridView2->Rows[i]->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightYellow;
+		}
+		else
+		{
+			dataGridView2->Rows[i]->DefaultCellStyle->BackColor = System::Drawing::Color::White;
+			dataGridView2->Rows[i]->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::White;
+		}
+		dataGridView2->Rows[i]->Cells[0]->Style->BackColor = System::Drawing::Color::Silver;
+		dataGridView2->Rows[i]->Cells[0]->Style->SelectionBackColor = System::Drawing::Color::Silver;
+	}
+	
+	//this->Column0->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::Silver;
+	//this->dataGridView2->Columns[1]->DefaultCellStyle->BackColor = System::Drawing::Color::Silver;
+	//this->dataGridView2->Columns[1]->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::Silver;
+	
 }
 
 private: System::Void gerarTreeView(System::String ^filename)
@@ -2181,7 +2295,15 @@ private: System::Void gerarTreeView(System::String ^filename)
 	// Set the TreeView control's default image and selected image indexes.
 	treeView1->ImageIndex = 0;
 
-	System::Windows::Forms::TreeNode ^root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Collaboration"]["UML:Namespace.ownedElement"]["UML:ClassifierRole"]->GetAttribute("name"));
+	System::Windows::Forms::TreeNode ^root;
+	try
+	{
+		root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Collaboration"]["UML:Namespace.ownedElement"]["UML:ClassifierRole"]->GetAttribute("name"));
+	}
+	catch(Exception ^e)
+	{
+		root = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]->GetAttribute("name"));
+	}
 	root->ImageIndex = 0;
 	root->SelectedImageIndex = 0;
 
@@ -2189,15 +2311,21 @@ private: System::Void gerarTreeView(System::String ^filename)
 
 	treeView1->Nodes->Add(getTag("MODELO")+getName());
 
-	numClass = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;
-	
+	try
+	{
+		numClass = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;
+	}
+	catch(Exception ^e)
+	{
+		numClass = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class")->Count;
+	}
 	//Classes
 	System::Windows::Forms::TreeNode ^classes = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 	classes = treeView1->Nodes[0]->Nodes->Add(getTag("CLASSES"));
 	classes->ImageIndex = 1;
 	classes->SelectedImageIndex = 1;
 
-	System::Windows::Forms::TreeNode ^classe = gcnew System::Windows::Forms::TreeNode(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
+	System::Windows::Forms::TreeNode ^classe = gcnew System::Windows::Forms::TreeNode;//(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Class"]->GetAttribute("name"));
 	System::Windows::Forms::TreeNode ^classe1 = gcnew System::Windows::Forms::TreeNode;
 	System::Windows::Forms::TreeNode ^classe2 = gcnew System::Windows::Forms::TreeNode;
 	System::Windows::Forms::TreeNode ^classe3 = gcnew System::Windows::Forms::TreeNode;
@@ -2224,9 +2352,18 @@ private: System::Void gerarTreeView(System::String ^filename)
 
 	//Lista de tags de classes
 	//System::Xml::XmlNamespaceManager^ nsmgr = gcnew System::Xml::XmlNamespaceManager(dom->NameTable);
-	//nsmgr->AddNamespace("", "omg.org/UML1.3");
-	//System::Xml::XmlNodeList ^lclasses = dom->SelectNodes("/XMI/XMI.content/'UML:Model'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Class'",nsmgr);
-	System::Xml::XmlNodeList ^lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
+	//nsmgr->AddNamespace("/", "omg.org/UML1.3");
+	//System::Xml::XmlNode^ roots = dom->DocumentElement;
+	//System::Xml::XmlNodeList ^lclasses = roots->SelectNodes("XMI[XMI.content/'UML:Model'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement'/'UML:Package'/'UML:Namespace.ownedElement' ='UML:Class']",nsmgr);
+	System::Xml::XmlNodeList ^lclasses;
+	try
+	{
+		lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
+	}
+	catch(Exception ^e)
+	{
+		lclasses = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Class");
+	}
 
 
 	//TODO: Verificar como retirar classe <undefined> da lclasses antes de pegar valores da lclasses
@@ -2247,36 +2384,79 @@ private: System::Void gerarTreeView(System::String ^filename)
 
 	//Matriz de Associações e Composição/Agregação
 	//[direction, source, target, src_isNavigable, tgt_isNavigable]
-	MatAssoc = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count, 5);
+	try
+	{
+		MatAssoc = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count, 5);
+	}
+	catch(Exception ^e)
+	{
+		MatAssoc = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count, 5);
+	}
 
+	//Lista de tags de associações
+	System::Xml::XmlNodeList ^lassoc;
 	try{
-		//Lista de tags de associações
-		System::Xml::XmlNodeList ^lassoc = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association");
-
-		int j = 0;
-
-		for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count; i++)
+		
+		try
 		{
-			MatAssoc[j,0]=lassoc[i]->FirstChild->ChildNodes[2]->Attributes->Item(1)->InnerText;
-			MatAssoc[j,1]=lassoc[i]->FirstChild->ChildNodes[10]->Attributes->Item(1)->InnerText;
-			MatAssoc[j,2]=lassoc[i]->FirstChild->ChildNodes[11]->Attributes->Item(1)->InnerText;
-			MatAssoc[j,3]=lassoc[i]->ChildNodes[1]->FirstChild->FirstChild->FirstChild->Attributes->Item(1)->InnerText;
-			MatAssoc[j,4]=lassoc[i]->ChildNodes[1]->ChildNodes[1]->FirstChild->FirstChild->Attributes->Item(1)->InnerText;
+			lassoc = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association");
 			
-			j++;
+			int j = 0;
+
+			for(int i=0; i<lassoc->Count; i++)
+			{
+				MatAssoc[j,0]=lassoc[i]->FirstChild->ChildNodes[2]->Attributes->Item(1)->InnerText;
+				MatAssoc[j,1]=lassoc[i]->FirstChild->ChildNodes[10]->Attributes->Item(1)->InnerText;
+				MatAssoc[j,2]=lassoc[i]->FirstChild->ChildNodes[11]->Attributes->Item(1)->InnerText;
+				MatAssoc[j,3]=lassoc[i]->ChildNodes[1]->FirstChild->FirstChild->FirstChild->Attributes->Item(1)->InnerText;
+				MatAssoc[j,4]=lassoc[i]->ChildNodes[1]->ChildNodes[1]->FirstChild->FirstChild->Attributes->Item(1)->InnerText;
+				
+				j++;
+			}
 		}
+		catch(Exception ^e)
+		{
+			lassoc = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association");
+		
+			int j = 0;
+
+			for(int i=0; i<lassoc->Count; i++)
+			{
+				int k = 11;
+				MatAssoc[j,0]=lassoc[i]->FirstChild->ChildNodes[2]->Attributes->Item(1)->InnerText;
+				if(MatAssoc[j,0]=="Unspecified") k = 10;
+				MatAssoc[j,1]=lassoc[i]->FirstChild->ChildNodes[k]->Attributes->Item(1)->InnerText;
+				MatAssoc[j,2]=lassoc[i]->FirstChild->ChildNodes[k+1]->Attributes->Item(1)->InnerText;
+				MatAssoc[j,3]=lassoc[i]->ChildNodes[1]->FirstChild->FirstChild->ChildNodes[1]->Attributes->Item(1)->InnerText;
+				MatAssoc[j,4]=lassoc[i]->ChildNodes[1]->ChildNodes[1]->FirstChild->ChildNodes[1]->Attributes->Item(1)->InnerText;
+				
+				j++;
+			}
+		}
+
+		
 		Association = true;
 	}
 	catch(Exception ^e){
 	}
 
+	System::Xml::XmlNodeList ^lher;
+
 	//Matriz de Heranças
-	MatHer = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count, 2);
+	try
+	{
+		MatHer = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count, 2);
+		//Lista de tags de Herança
+		lher = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization");
+	}
+	catch(Exception ^e)
+	{
+		MatHer = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count, 2);
+		//Lista de tags de Herança
+		lher = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization");
+	}
 
-	//Lista de tags de Herança
-	System::Xml::XmlNodeList ^lher = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization");
-
-	for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
+	for(int i=0; i<lher->Count;i++)
 	{				
 		String ^sub_id = lher[i]->Attributes->Item(0)->InnerText;
 		String ^super_id = lher[i]->Attributes->Item(1)->InnerText;
@@ -2288,14 +2468,24 @@ private: System::Void gerarTreeView(System::String ^filename)
 		MatHer[i,1] = sub;
 	}
 
+	System::Xml::XmlNodeList ^ldepend;
+
 	//Matriz de Dependências
 	//[supplier, client]
-	MatDepend = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count, 2);
+	try
+	{
+		MatDepend = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count, 2);
+		//Lista de tags de dependências
+		ldepend = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency");
+	}
+	catch(Exception ^e)
+	{
+		MatDepend = gcnew array< String^, 2 >(dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count, 2);
+		//Lista de tags de dependências
+		ldepend = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency");
+	}
 
-	//Lista de tags de dependências
-	System::Xml::XmlNodeList ^ldepend = dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency");
-
-	for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
+	for(int i=0; i<ldepend->Count;i++)
 	{	
 		String ^client;
 		String ^supplier;
@@ -2372,7 +2562,7 @@ private: System::Void gerarTreeView(System::String ^filename)
 
 	if(Association)
 	{
-		for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
+		for(int i=0; i<lassoc->Count;i++)
 		{
 			int c1 = getContador(MatAssoc[i,1]);
 			int c2 = getContador(MatAssoc[i,2]);
@@ -2440,7 +2630,7 @@ private: System::Void gerarTreeView(System::String ^filename)
 
 	if(Association)
 	{
-		for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Association")->Count;i++)
+		for(int i=0; i<lassoc->Count;i++)
 		{
 			int c1 = getContador(MatAssoc[i,1]);
 			int c2 = getContador(MatAssoc[i,2]);
@@ -2473,7 +2663,7 @@ private: System::Void gerarTreeView(System::String ^filename)
 	her->ImageIndex = 4;
 	her->SelectedImageIndex = 4;
 
-	for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Generalization")->Count;i++)
+	for(int i=0; i<lher->Count;i++)
 	{
 		int c0 = getContador(MatHer[i,0]);
 		int c1 = getContador(MatHer[i,1]);
@@ -2502,7 +2692,7 @@ private: System::Void gerarTreeView(System::String ^filename)
 	depend->ImageIndex = 5;
 	depend->SelectedImageIndex = 5;
 
-	for(int i=0; i<dom->ChildNodes[2]["XMI.content"]["UML:Model"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]["UML:Package"]["UML:Namespace.ownedElement"]->GetElementsByTagName("UML:Dependency")->Count;i++)
+	for(int i=0; i<ldepend->Count;i++)
 	{	
 		int c0 = getContador(MatDepend[i,0]);
 		int c1 = getContador(MatDepend[i,1]);
@@ -2555,24 +2745,27 @@ private: System::Void gerarTreeView(System::String ^filename)
 
 private: System::Void importarSaida()
 {
-	System::Xml::XmlNodeList ^lresult = dom->ChildNodes[2]["Result"]->ChildNodes;
-
-	setNumStubsOriginal(Convert::ToInt32(lresult[0]->Attributes->Item(0)->InnerText));
-    setComplexidadeOriginal(Convert::ToInt32(lresult[0]->Attributes->Item(1)->InnerText));
-
-	dataGridView4->Rows[0]->Cells[0]->Value = getNumStubsOriginal().ToString();
-    dataGridView4->Rows[0]->Cells[1]->Value = getComplexidadeOriginal().ToString();
-
-    setNumStubsAtual(Convert::ToInt32(lresult[1]->Attributes->Item(0)->InnerText));
-    setComplexidadeAtual(Convert::ToInt32(lresult[1]->Attributes->Item(1)->InnerText));
-
-	dataGridView3->Rows[0]->Cells[0]->Value = getNumStubsAtual().ToString();
-	dataGridView3->Rows[0]->Cells[1]->Value = getComplexidadeAtual().ToString();
-
-	for(int i=0; i<lresult[2]->ChildNodes->Count; i++)
+	if((dom->ChildNodes[2]->LastChild->Name)->Contains("Result"))
 	{
-		setOrdemClass(i,Convert::ToInt32(lresult[2]->ChildNodes[i]->Attributes->Item(0)->Value));
-    }
+		System::Xml::XmlNodeList ^lresult = dom->ChildNodes[2]->LastChild->ChildNodes;
+
+		setNumStubsOriginal(Convert::ToInt32(lresult[0]->Attributes->Item(0)->InnerText));
+		setComplexidadeOriginal(Convert::ToInt32(lresult[0]->Attributes->Item(1)->InnerText));
+
+		dataGridView4->Rows[0]->Cells[0]->Value = getNumStubsOriginal().ToString();
+		dataGridView4->Rows[0]->Cells[1]->Value = getComplexidadeOriginal().ToString();
+
+		setNumStubsAtual(Convert::ToInt32(lresult[1]->Attributes->Item(0)->InnerText));
+		setComplexidadeAtual(Convert::ToInt32(lresult[1]->Attributes->Item(1)->InnerText));
+
+		dataGridView3->Rows[0]->Cells[0]->Value = getNumStubsAtual().ToString();
+		dataGridView3->Rows[0]->Cells[1]->Value = getComplexidadeAtual().ToString();
+
+		for(int i=0; i<lresult[2]->ChildNodes->Count; i++)
+		{
+			setOrdemClass(i,Convert::ToInt32(lresult[2]->ChildNodes[i]->Attributes->Item(0)->Value));
+		}
+	}
 }
 
 private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e)
@@ -2596,7 +2789,8 @@ private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^
 		  try 
          {
 		    gerarTreeView(filename);
-			maquinaEstado(1);	
+			maquinaEstado(1);
+			this->openedFile = true;
          }
 		  catch(System::Xml::XmlException ^xmlEx)
          {
@@ -2641,6 +2835,11 @@ private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, Syst
 	{
 		FSobre ^ sobre = gcnew FSobre();
 		sobre->Show();
+	}
+	else if(IDIOMA==2)
+	{
+		FSobre_ESP ^ about = gcnew FSobre_ESP();
+		about->Show();
 	}
 	else
 	{
@@ -2689,6 +2888,7 @@ System::Void liberarMemoria()
 	dataGridView4->Enabled = false;
 	maquinaEstado(0);
 	LCOTI->Clear;
+	this->openedFile = false;
 }
 //Procedimento que inicializa a tela para um novo modelo, ou seja, limpa os campos existentes na tela e remove objetos
 private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e)
@@ -2778,14 +2978,14 @@ private: System::Void painelDeSequênciaDeOrdenaçãoToolStripMenuItem_Click(System
 				 this->splitContainer4->SendToBack();
 				 this->splitContainer3->Location = System::Drawing::Point(0, 0);
 				 this->splitContainer3->BringToFront();
-				 this->splitContainer3->Height = 437;
+				 this->splitContainer3->Height = this->Height;//437;
 			 }
 			 else
 			 {
 				 this->painelDeSequênciaDeOrdenaçãoToolStripMenuItem->Checked = true;
 				 this->splitContainer4->BringToFront();
 				 this->splitContainer3->Location = System::Drawing::Point(3, 241);
-				 this->splitContainer3->Height = 196;
+				 this->splitContainer3->Height = this->Height;//196;
 			 }
 		 }
 
@@ -2802,7 +3002,7 @@ private: System::Void painelDeModeloDeClasseToolStripMenuItem_Click(System::Obje
 			 else
 			 {
 				 this->painelDeModeloDeClasseToolStripMenuItem->Checked = true;
-				 this->splitContainer1->SplitterDistance = 243;
+				 this->splitContainer1->SplitterDistance = this->Width/3.5;//243;
 				 this->dataGridView3->Columns[0]->Width-=34;
 				 this->dataGridView3->Columns[1]->Width-=34;
 				 this->dataGridView4->Columns[0]->Width-=34;
@@ -3013,7 +3213,7 @@ System::Void imprimirOrdem(String ^direct)
 
 		direct = direct->Insert(direct->Length,"reports/resultReport.xml");
 
-		System::Xml::XmlDocument outputReportXML;
+		
 
 		//System::Xml::XmlElement ^source;
 		outputReportXML.AppendChild(outputReportXML.CreateXmlDeclaration("1.0",String::Empty,String::Empty));
@@ -3214,9 +3414,94 @@ System::Void imprimirOrdem(String ^direct)
 		*/
 }
 
+//TODO: Imprimir XML como um site
+
+// Declare the PrintDocument object.
+//System::Drawing::Printing::PrintDocument^ docToPrint;
+
+// This method will set properties on the PrintDialog object and
+// then display the dialog.
+
+// The PrintDialog will print the document
+// by handling the document's PrintPage event.
+/*void document_PrintPage( Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e )
+{
+   // Insert code to render the page here.
+   // This code will be called when the control is drawn.
+   // The following code will render a simple
+   // message on the printed document.
+	String^ text = outputReportXML.ToString();
+   System::Drawing::Font^ printFont = gcnew System::Drawing::Font( "Arial",35,System::Drawing::FontStyle::Regular );
+
+   // Draw the content.
+   e->Graphics->DrawString( text, printFont, System::Drawing::Brushes::Black, 10, 10 );
+}*/
+
+
+
 private: System::Void toolStripButton6_Click(System::Object^  sender, System::EventArgs^  e)
 {
-	imprimirOrdem("./");
+	OperatingSystem^ os = Environment::OSVersion;
+	String ^windows = os->VersionString;
+
+	if(windows->Contains("NT 6"))
+	{
+		imprimirOrdem("./");
+	}
+	else
+	{
+		imprimirOrdem("../");
+	}
+
+
+	//imprimirOrdem("./");
+	outputReportXML.RemoveAll();
+	
+	//Release
+	//String ^Res = Application::StartupPath->Insert(Application::StartupPath->Length,"\\reports\\resultReport.xml");
+	//Debug
+	String ^Res = Application::StartupPath->Replace("Debug","Farol\\reports\\resultReport.xml");
+	
+	if (System::IO::File::Exists(Res))
+	{
+		System::Diagnostics::Process::Start("iexplore.exe",Res);
+	}
+	//TODO
+    else
+	{
+		MessageBox::Show(this->getTag("ARQINEXISTENTE"),this->getTag("ERRO"),MessageBoxButtons::OK);
+	}
+	// Allow the user to choose the page range he or she would
+	// like to print.
+	
+	/*printDialog1->AllowSomePages = true;
+
+	// Show the help button.
+	printDialog1->ShowHelp = true;
+
+	// Set the Document property to the PrintDocument for 
+	// which the PrintPage Event has been handled. To display the
+	// dialog, either this property or the PrinterSettings property 
+	// must be set 
+	printDialog1->Document = printDocument1;
+	if ( printDocument1 == nullptr )
+	      System::Windows::Forms::MessageBox::Show(  "null" );
+
+   
+	if ( printDialog1 == nullptr )
+         System::Windows::Forms::MessageBox::Show(  "pnull" );
+
+   
+	System::Windows::Forms::DialogResult result = printDialog1->ShowDialog();
+	System::Windows::Forms::MessageBox::Show( result.ToString() );
+   
+
+	// If the result is OK then print the document.
+	if ( result == ::DialogResult::OK )
+	{
+	   printDocument1->Print();
+	}
+	*/
 }
 
 private: System::Void toolStripButton7_Click(System::Object^  sender, System::EventArgs^  e)
@@ -3231,6 +3516,39 @@ private: System::Void toolStripButton7_Click(System::Object^  sender, System::Ev
 	if (System::IO::File::Exists(File))
 	{
 		System::Diagnostics::Process::Start(File);
+	}
+	//TODO
+    else
+	{
+		MessageBox::Show(this->getTag("ARQINEXISTENTE"),this->getTag("ERRO"),MessageBoxButtons::OK);
+	}
+}
+
+private: System::Void imprimirResultadoCtrlToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	OperatingSystem^ os = Environment::OSVersion;
+	String ^windows = os->VersionString;
+
+	if(windows->Contains("NT 6"))
+	{
+		imprimirOrdem("./");
+	}
+	else
+	{
+		imprimirOrdem("../");
+	}
+
+	//imprimirOrdem("./");
+	outputReportXML.RemoveAll();
+	
+	//Release
+	//String ^Res = Application::StartupPath->Insert(Application::StartupPath->Length,"\\reports\\resultReport.xml");
+	//Debug
+	String ^Res = Application::StartupPath->Replace("Debug","Farol\\reports\\resultReport.xml");
+	
+	if (System::IO::File::Exists(Res))
+	{
+		System::Diagnostics::Process::Start("IExplore.exe",Res);
 	}
 	//TODO
     else
