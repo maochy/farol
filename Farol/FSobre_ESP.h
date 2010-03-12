@@ -11,7 +11,7 @@ using namespace System::Drawing;
 namespace Farol {
 
 	/// <summary>
-	/// Summary for FAbout
+	/// Summary for FSobre_ESP 
 	///
 	/// WARNING: If you change the name of this class, you will need to change the
 	///          'Resource File Name' property for the managed resource compiler tool
@@ -19,10 +19,10 @@ namespace Farol {
 	///          the designers will not be able to interact properly with localized
 	///          resources associated with this form.
 	/// </summary>
-	public ref class FAbout : public System::Windows::Forms::Form
+	public ref class FSobre_ESP : public System::Windows::Forms::Form
 	{
 	public:
-		FAbout(void)
+		FSobre_ESP (void)
 		{
 			InitializeComponent();
 			//
@@ -34,7 +34,7 @@ namespace Farol {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~FAbout()
+		~FSobre_ESP ()
 		{
 			if (components)
 			{
@@ -77,7 +77,7 @@ namespace Farol {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(FAbout::typeid));
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(FSobre_ESP::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -116,12 +116,12 @@ namespace Farol {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(211, 3);
+			this->label1->Location = System::Drawing::Point(211, 4);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(257, 13);
+			this->label1->Size = System::Drawing::Size(369, 13);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"This Tool was developed as M.Sc. Thesys\' part about:";
-			this->label1->Click += gcnew System::EventHandler(this, &FAbout::label1_Click);
+			this->label1->Text = L"Esta herramienta fue desarrollada como parte de la tesis de la maestría sobre:";
+			this->label1->Click += gcnew System::EventHandler(this, &FSobre_ESP::label1_Click);
 			// 
 			// panel1
 			// 
@@ -130,46 +130,45 @@ namespace Farol {
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Location = System::Drawing::Point(214, 20);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(390, 33);
+			this->panel1->Size = System::Drawing::Size(390, 32);
 			this->panel1->TabIndex = 2;
-			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FAbout::panel1_Paint);
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FSobre_ESP::panel1_Paint);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(108, 15);
+			this->label3->Location = System::Drawing::Point(47, 14);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(163, 13);
+			this->label3->Size = System::Drawing::Size(293, 13);
 			this->label3->TabIndex = 1;
-			this->label3->Text = L"in Object-Oriented Software";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label3->Click += gcnew System::EventHandler(this, &FAbout::label3_Click);
+			this->label3->Text = L"Integración de Clases en Object-Oriented Software";
+			this->label3->Click += gcnew System::EventHandler(this, &FSobre_ESP::label3_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(21, 0);
+			this->label2->Location = System::Drawing::Point(14, 1);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(341, 13);
+			this->label2->Size = System::Drawing::Size(353, 13);
 			this->label2->TabIndex = 0;
-			this->label2->Text = L"Heuristics for Identify The Classes Integration Testing Order";
-			this->label2->Click += gcnew System::EventHandler(this, &FAbout::label2_Click);
+			this->label2->Text = L"Heurística para la Identificación de la Orden de Ensayo de la ";
+			this->label2->Click += gcnew System::EventHandler(this, &FSobre_ESP::label2_Click);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(212, 58);
+			this->label4->Location = System::Drawing::Point(211, 58);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(53, 12);
+			this->label4->Size = System::Drawing::Size(70, 12);
 			this->label4->TabIndex = 3;
-			this->label4->Text = L"Developers";
-			this->label4->Click += gcnew System::EventHandler(this, &FAbout::label4_Click);
+			this->label4->Text = L"Desarrolladores";
+			this->label4->Click += gcnew System::EventHandler(this, &FSobre_ESP::label4_Click);
 			// 
 			// label5
 			// 
@@ -181,85 +180,85 @@ namespace Farol {
 			this->label5->Size = System::Drawing::Size(123, 12);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Arilo Claudio Dias Neto";
-			this->label5->Click += gcnew System::EventHandler(this, &FAbout::label5_Click);
+			this->label5->Click += gcnew System::EventHandler(this, &FSobre_ESP::label5_Click);
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(212, 111);
+			this->label6->Location = System::Drawing::Point(212, 110);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(53, 12);
+			this->label6->Size = System::Drawing::Size(57, 12);
 			this->label6->TabIndex = 5;
-			this->label6->Text = L"Researcher";
-			this->label6->Click += gcnew System::EventHandler(this, &FAbout::label6_Click);
+			this->label6->Text = L"Investigador";
+			this->label6->Click += gcnew System::EventHandler(this, &FSobre_ESP::label6_Click);
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(297, 111);
+			this->label7->Location = System::Drawing::Point(298, 110);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(196, 12);
 			this->label7->TabIndex = 6;
 			this->label7->Text = L" Gladys Machado Pereira Santos Lima";
-			this->label7->Click += gcnew System::EventHandler(this, &FAbout::label7_Click);
+			this->label7->Click += gcnew System::EventHandler(this, &FSobre_ESP::label7_Click);
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(213, 130);
+			this->label8->Location = System::Drawing::Point(213, 129);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(38, 12);
+			this->label8->Size = System::Drawing::Size(35, 12);
 			this->label8->TabIndex = 7;
-			this->label8->Text = L"Advisor";
-			this->label8->Click += gcnew System::EventHandler(this, &FAbout::label8_Click);
+			this->label8->Text = L"Asesor";
+			this->label8->Click += gcnew System::EventHandler(this, &FSobre_ESP::label8_Click);
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(301, 130);
+			this->label9->Location = System::Drawing::Point(301, 129);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(182, 12);
 			this->label9->TabIndex = 8;
 			this->label9->Text = L"Guilherme Horta Travassos, D. Sc.";
-			this->label9->Click += gcnew System::EventHandler(this, &FAbout::label9_Click);
+			this->label9->Click += gcnew System::EventHandler(this, &FSobre_ESP::label9_Click);
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(213, 151);
+			this->label10->Location = System::Drawing::Point(213, 150);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(120, 12);
 			this->label10->TabIndex = 9;
-			this->label10->Text = L"Rio de Janeiro - Brazil / 2010";
-			this->label10->Click += gcnew System::EventHandler(this, &FAbout::label10_Click);
+			this->label10->Text = L"Río de Janeiro - Brasil / 2010";
+			this->label10->Click += gcnew System::EventHandler(this, &FSobre_ESP::label10_Click);
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(212, 168);
+			this->label11->Location = System::Drawing::Point(214, 168);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(119, 12);
+			this->label11->Size = System::Drawing::Size(187, 12);
 			this->label11->TabIndex = 10;
-			this->label11->Text = L"More informations, contact:";
+			this->label11->Text = L"Para más información, póngase en contacto:";
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(212, 180);
+			this->label12->Location = System::Drawing::Point(213, 181);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(147, 12);
 			this->label12->TabIndex = 11;
@@ -272,28 +271,28 @@ namespace Farol {
 				static_cast<System::Byte>(0)));
 			this->label13->Location = System::Drawing::Point(440, 168);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(87, 12);
+			this->label13->Size = System::Drawing::Size(114, 12);
 			this->label13->TabIndex = 12;
-			this->label13->Text = L"Visit our homepage:";
+			this->label13->Text = L"Visita nuestra página web:";
 			// 
 			// label14
 			// 
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(440, 180);
+			this->label14->Location = System::Drawing::Point(440, 181);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(117, 12);
 			this->label14->TabIndex = 13;
 			this->label14->Text = L"www.cos.ufrj.br/~ese";
-			this->label14->Click += gcnew System::EventHandler(this, &FAbout::label14_Click);
+			this->label14->Click += gcnew System::EventHandler(this, &FSobre_ESP::label14_Click);
 			// 
 			// label15
 			// 
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(299, 74);
+			this->label15->Location = System::Drawing::Point(300, 74);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(159, 12);
 			this->label15->TabIndex = 14;
@@ -304,13 +303,13 @@ namespace Farol {
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(300, 91);
+			this->label16->Location = System::Drawing::Point(301, 90);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(127, 12);
 			this->label16->TabIndex = 15;
 			this->label16->Text = L"Yuri Vasquez Fernandes";
 			// 
-			// FAbout
+			// FSobre_ESP
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -335,11 +334,11 @@ namespace Farol {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
-			this->Name = L"FAbout";
+			this->Name = L"FSobre_ESP";
 			this->ShowInTaskbar = false;
-			this->Text = L"About...";
+			this->Text = L"Sobre...";
 			this->TopMost = true;
-			this->Load += gcnew System::EventHandler(this, &FAbout::FAbout_Load);
+			this->Load += gcnew System::EventHandler(this, &FSobre_ESP::FSobre_ESP_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -352,7 +351,7 @@ namespace Farol {
 
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }
-	private: System::Void FAbout_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void FSobre_ESP_Load(System::Object^  sender, System::EventArgs^  e) {
 			 }
 private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }

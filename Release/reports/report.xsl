@@ -113,7 +113,7 @@
                 <table border="2" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
                   <tr>
             <td width="200%" style="color: navy; border-style: solid; border-width: 1; background-color: #C0C0C0" height="17" align="center" colspan="2">
-            <b><font size="4" color="#0000FF">Modified Order</font></b></td>
+            <b><font size="4" color="#0000FF">Modify Order</font></b></td>
                   </tr>
                   <tr>
             <td width="71%" style="color: navy; border-style: solid; border-width: 1; background-color: #E2E2E2" height="17" align="justify">
@@ -189,7 +189,7 @@
 
                 <hr>
                 <p style="margin-bottom: 0" align="right"><i><span lang="pt">
-                <font size="2">Empirical Software Engineering Group - 
+                <font size="2">Empirical Software Engineering Group  - 
                 COPPE/UFRJ</font></span></i></p>
                 <p style="margin-top: 0" align="right"><i><span lang="pt">
                 <font size="2" color="#0000FF">

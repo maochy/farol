@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FSobre_ESP.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Idioma.cpp"
 				>
 			</File>
@@ -279,6 +283,15 @@
 				<File
 					RelativePath=".\FSobre.resx"
 					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
+				RelativePath=".\FSobre_ESP.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\FSobre_ESP.resx"
 					>
 				</File>
 			</File>
